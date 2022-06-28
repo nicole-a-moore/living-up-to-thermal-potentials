@@ -1,7 +1,10 @@
 ## range filling figures 
 library(tidyverse)
 library(raster)
-select <- dplyr::select
+library(cowplot)
+library(sf)
+library(PNWColors)
+select = dplyr::select
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 #####       Prepping data for figure making     ######
@@ -891,4 +894,98 @@ ggplot(test, aes(x = longitude, y = latitude, alpha = 0.4)) +
 ggsave(range_potential, path = 'figures/didactic/', 
        filename = 'temp.png', 
        height = 4, width = 4, units = "in", device = "png", bg = "transparent")
+
+
+
+## make plot of species' potential latitudinal range extents 
+## get min and max latitude of each range 
+realized_ranges <- st_read("large-files/realized-ranges/realized-ranges.shp") %>%
+  mutate(range_id = paste(species, source, sep = "_")) 
+
+bbox <- as.data.frame(do.call("rbind", lapply(st_geometry(realized_ranges), st_bbox)))
+lat_lims <- data.frame(genus_species = str_replace_all(realized_ranges$species, ' ', "_"),
+                       source = realized_ranges$source,
+                       max_lat = bbox$ymax, min_lat = bbox$ymin)
+
+## get min and max latitude of each potential range 
+prs <- readRDS("data-processed/potential-ranges/all-realms/potential_ranges_Te.rds")
+prs_low <- readRDS("data-processed/potential-ranges/all-realms/potential_ranges_lower_Te.rds")
+prs_high <- readRDS("data-processed/potential-ranges/all-realms/potential_ranges_upper_Te.rds")
+
+all_prs <- stack(prs, prs_low, prs_high)
+
+mins = maxs = c()
+for (i in 1:nlayers(all_prs)) {
+  rpts = as.data.frame(rasterToPoints(all_prs[[i]]))
+  mins <- append(mins, min(rpts$y))
+  maxs <- append(maxs, max(rpts$y))
+}
+names <- append(names(prs), names(prs_low)) %>% append(., names(prs_high))
+lims_used = append(rep("both", nlayers(prs)), rep("lower", nlayers(prs_low))) %>% 
+  append(., rep("upper", nlayers(prs_high)))
+df <- data.frame(genus_species = paste(str_split_fixed(names, "_", 3)[,1], 
+                                       str_split_fixed(names, "_", 3)[,2], sep = "_"), 
+                 source = str_split_fixed(names, "_", 3)[,3],
+                 min_lat_pr = mins, max_lat_pr = maxs, 
+                 lims_used = lims_used)
+
+## combine with our thermal niche filling dataset 
+data <- read.csv("data-processed/thermal-niches/niche-filling/thermal-niche-filling-metrics_model-ready.csv")
+
+thermal_limits <- read.csv("data-processed/traits/thermal-limits_ectotherms-with-ranges_taxized.csv")%>%
+  select(genus_species, type, metric) %>%
+  unique(.)
+
+## re-order factors to give desired contrasts
+data$realm <- relevel(factor(data$realm), ref = "Terrestrial")
+
+## split data by sensitivity type
+sens_types <- group_split(data, sensitivity_type)
+data <- sens_types[[2]]
+data <- left_join(data, lat_lims)
+
+## join pr with rr data
+df <- left_join(data, df)
+
+## subset to only species with range filling values 
+rf <- read.csv("data-processed/potential-ranges/range-filling/rangefilling-metrics_model-ready.csv")
+rf$prop_occupied <- (rf$pr_cells - rf$u_cells) / rf$pr_cells
+rf$log_prop_occupied <- log(rf$prop_occupied)
+rf <- filter(rf, !is.infinite(log_prop_occupied), type == "Te")
+
+## make colour palette
+pal <- pnw_palette(name = "Sunset2",type =  "discrete", n = 2)
+
+p_and_rs <- df %>%
+  filter(lims_used == "both") %>%
+  filter(genus_species %in% rf$species) %>%
+  filter(!is.na(min_lat_pr)) %>%
+  select(range, genus_species, lat_mp, min_lat, max_lat, min_lat_pr, max_lat_pr, realm, lims_used) %>%
+  unique(.) %>%
+  gather(key = "max_lim_type", value = "max_lim", c(max_lat_pr, max_lat)) %>%
+  gather(key = "min_lim_type", value = "min_lim", c(min_lat_pr, min_lat)) %>%
+  filter((min_lim_type == "min_lat" & max_lim_type == "max_lat") | 
+           (min_lim_type == "min_lat_pr" & max_lim_type == "max_lat_pr")) %>%
+  mutate(latlim_type = ifelse(max_lim_type == "max_lat_pr", "Potential thermal range", "Realized range"))  %>%
+  arrange(-desc(lat_mp)) %>%
+  mutate(genus_species_type = factor(paste(genus_species, latlim_type), levels = 
+                                       paste(genus_species, latlim_type), ordered = T)) %>%
+  ggplot(aes(x = genus_species_type, y = lat_mp, colour = latlim_type)) + 
+  geom_hline(yintercept = c(-30, 30), linetype = "dashed", colour = "darkgrey") +
+  geom_hline(yintercept = c(0), colour = "darkgrey") +
+  theme_light() +
+  geom_linerange(aes(ymin = max_lim, ymax = min_lim), size = 0.5) +
+  theme(panel.grid = element_blank(), 
+        axis.ticks.x = element_blank(),
+        legend.position = c(0.15, 0.9),
+        legend.title = element_blank()) +
+  labs(x = "Species", y = "Latitude", colour = "") +
+  scale_x_discrete(labels = c()) +
+  scale_y_continuous(breaks = c(-50, -30, -10, 10, 30, 50, 70), 
+                     labels = c("-50°", "-30°", "-10°", "10°", "30°", "50°", "70°"))  +
+  scale_colour_manual(values = pal) 
+
+## save
+ggsave(p_and_rs, path = "figures/extended-data", filename = "potential-and-realized-across-lat.png",
+       width = 7, height = 4)
        
