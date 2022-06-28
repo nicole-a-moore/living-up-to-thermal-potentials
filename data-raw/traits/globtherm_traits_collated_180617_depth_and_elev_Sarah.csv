@@ -1,0 +1,442 @@
+data gatherer,habitat data gatherer,Genus,Species,Family,Realm,Kingdom,Phylum,Class,Order,genus_species,coastal_or_oceanic,notes/logic,coastal_or_oceanic_source,upper_depth_limit,lower_depth_limit,usual_range,depth_distribution_source,upper_elevation_limit_meters,lower_elevation_limit_meters,elevational_range_source,Pelagic habitat (for marine species),source/logic for pelagic habitat,notes
+Sally,,Carpiodes,cyprinus,Catostomidae,Freshwater,Animalia,Chordata,Actinopterygii,Cypriniformes,Carpiodes_cyprinus,NA,freshwater,,,,,,,,,demersal,,Freshwater
+Sally,,Pimephales,promelas,Cyprinidae,Freshwater,Animalia,Chordata,Actinopterygii,Cypriniformes,Pimephales_promelas,NA,freshwater,,,,,,,,,demersal,,NA
+Sally,,Cyprinodon,macularius,Cyprinodontidae,Freshwater,Animalia,Chordata,Actinopterygii,Cyprinodontiformes,Cyprinodon_macularius,NA,freshwater,,,,,,,,,benthopelagic,,NA
+Sally,Nikki,Floridichthys,carpio,Cyprinodontidae,Freshwater,Animalia,Chordata,Actinopterygii,Cyprinodontiformes,Floridichthys_carpio,coastal,brackish water ,fishbase,0,2,,https://biogeodb.stri.si.edu/caribbean/en/thefishes/species/3304,,,,benthopelagic,,listed freshwater but marine in thermal data - brackish water 
+Sally,,Gambusia,yucatana,Poeciliidae,Freshwater,Animalia,Chordata,Actinopterygii,Cyprinodontiformes,Gambusia_yucatana,NA,freshwater,,,,,,,,,benthopelagic,,NA
+Sally,,Poeciliopsis,occidentalis,Poeciliidae,Freshwater,Animalia,Chordata,Actinopterygii,Cyprinodontiformes,Poeciliopsis_occidentalis,NA,freshwater,,,,,,,,,benthopelagic,,NA
+Sally,,Hypomesus,nipponensis,Osmeridae,Freshwater,Animalia,Chordata,Actinopterygii,Osmeriformes,Hypomesus_nipponensis,NA,freshwater,,,,,,,,,pelagic,,NA
+Sally,,Lepomis,gibbosus,Centrarchidae,Freshwater,Animalia,Chordata,Actinopterygii,Perciformes,Lepomis_gibbosus,NA,freshwater,,,,,,,,,benthopelagic,,NA
+Jenn,Nikki,Oncorhynchus,tshawytscha,Salmonidae,Freshwater,Animalia,Chordata,Actinopterygii,Salmoniformes,Oncorhynchus_tshawytscha,coastal,migrates to coast,fishbase,0,375,,fishbase,,,,benthopelagic,,listed freshwater but marine in thermal data - migrates to ocean (range includes coastal areas)
+Jenn,,Alosa,pseudoharengus,Cottidae,Freshwater,Animalia,Chordata,Actinopterygii,Scorpaeniformes,Alosa_pseudoharengus,NA,freshwater,,,,,,,,,pelagic,,NA
+Jenn,,Cottus,cognatus,Cottidae,Freshwater,Animalia,Chordata,Actinopterygii,Scorpaeniformes,Cottus_cognatus,NA,freshwater,,,,,,,,,demersal,,NA
+Jenn,,Ameiurus,melas,Ictaluridae,Freshwater,Animalia,Chordata,Actinopterygii,Siluriformes,Ameiurus_melas,NA,freshwater,,,,,,,,,demersal,,NA
+Jenn,,Ameiurus,natalis,Ictaluridae,Freshwater,Animalia,Chordata,Actinopterygii,Siluriformes,Ameiurus_natalis,NA,freshwater,,,,,,,,,demersal,,NA
+Susana,,Halozetes,belgicae,Ameronothridae,Intertidal,Animalia,Arthropoda,Arachnida,Acarina,Halozetes_belgicae,NA,intertidal,,,,,,,,,intertidal,?,sealifebase says benthic
+Jenn,,Hemigrapsus,nudus,Varunidae,Intertidal,Animalia,Arthropoda,Malacostraca,Decapoda,Hemigrapsus_nudus,NA,intertidal,,,,,,,,,benthic,sealifebase,NA
+Jenn,,Pachygrapsus,marmoratus,Grapsidae,Intertidal,Animalia,Arthropoda,Malacostraca,Decapoda,Pachygrapsus_marmoratus,NA,intertidal,,,,,,,,,benthic,sealifebase,NA
+Jenn,,Petrolisthes,gracilis,Porcellanidae,Intertidal,Animalia,Arthropoda,Malacostraca,Decapoda,Petrolisthes_gracilis,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Petrolisthes,hirtipes,Porcellanidae,Intertidal,Animalia,Arthropoda,Malacostraca,Decapoda,Petrolisthes_hirtipes,NA,intertidal,,,,,,,,,demersal,,NA
+Jenn,,Gobius,cobitis,Gobiidae,Intertidal,Animalia,Chordata,Actinopterygii,Perciformes,Gobius_cobitis,NA,intertidal,,,,,,,,,demersal,,NA
+Jenn,Nikki,Gobius,niger,Gobiidae,Intertidal,Animalia,Chordata,Actinopterygii,Perciformes,Gobius_niger,coastal,brackish water ,fishbase,1,96,,fishbase,,,,demersal,,listed freshwater but marine in thermal data - brackish water 
+Sally,Nikki,Periophthalmus,kalolo,Gobiidae,Intertidal,Animalia,Chordata,Actinopterygii,Perciformes,Periophthalmus_kalolo,coastal,,fishbase,0,2,,fishbase,,,,reef-associated,,marked intertidal here but actually marine according to thermal data - fixed in trait wrangling script
+Jenn,,Patiriella,brevispina,Asterinidae,Intertidal,Animalia,Echinodermata,Asteroidae,Valvatida,Patiriella_brevispina,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Mytilus,edulis,Mytilidae,Intertidal,Animalia,Mollusca,Bivalvia,Mytiloida,Mytilus_edulis,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Barbatia,pistachia,Arcidae,Intertidal,Animalia,Mollusca,Bivalvia,Pteriomorpha,Barbatia_pistachia,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Anodontia,bullula,Lucinidae,Intertidal,Animalia,Mollusca,Bivalvia,Veneroida,Anodontia_bullula,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Cerastoderma,edule,Cardiidae,Intertidal,Animalia,Mollusca,Bivalvia,Veneroida,Cerastoderma_edule,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Divaricella,irpex,Lucinidae,Intertidal,Animalia,Mollusca,Bivalvia,Veneroida,Divaricella_irpex,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Macoma,balthica,Tellinidae,Intertidal,Animalia,Mollusca,Bivalvia,Veneroida,Macoma_balthica,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Mya,arenaria,Myidae,Intertidal,Animalia,Mollusca,Bivalvia,Veneroida,Mya_arenaria,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Spisula,subtruncata,Mactridae,Intertidal,Animalia,Mollusca,Bivalvia,Veneroida,Spisula_subtruncata,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Tellina,tenuis,Tellinidae,Intertidal,Animalia,Mollusca,Bivalvia,Veneroida,Tellina_tenuis,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Nacella,concinna,Patellidae,Intertidal,Animalia,Mollusca,Gastropoda,Archaeogastropoda,Nacella_concinna,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Nucella,lapillus,Muricidae,Intertidal,Animalia,Mollusca,Gastropoda,Archaeogastropoda,Nucella_lapillus,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Littorina,littorea,Littorinidae,Intertidal,Animalia,Mollusca,Gastropoda,Neotaenioglossa,Littorina_littorea,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Littorina,obtusata,Littorinidae,Intertidal,Animalia,Mollusca,Gastropoda,Neotaenioglossa,Littorina_obtusata,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Littorina,saxatilis,Littorinidae,Intertidal,Animalia,Mollusca,Gastropoda,Neotaenioglossa,Littorina_saxatilis,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,,Ischnochiton,australis,Ischnochitonidae,Intertidal,Animalia,Mollusca,Polyplaclophora,Chitonida,Ischnochiton_australis,NA,intertidal,,,,,,,,,benthic,,NA
+Jenn,Sarah,Crangon,crangon,Crangonidae,Marine,Animalia,Arthropoda,Malacostraca,Decapoda,Crangon_crangon,coastal,,sealifebase,0,50,,,,,,benthic,sealifebase,NA
+Jenn,Sarah,Liocarcinus,marmoreus,Portunidae,Marine,Animalia,Arthropoda,Malacostraca,Decapoda,Liocarcinus_marmoreus,coastal,,sealifebase,0,200,,,,,,benthic,EOL,NA
+Jenn,Sarah,Metacarcinus,magister,Cancridae,Marine,Animalia,Arthropoda,Malacostraca,Decapoda,Metacarcinus_magister,coastal-oceanic?,benthic up to 360 m,sealifebase,0,360,,,,,,benthic,EOL,NA
+Jenn,Sarah,Liothyrella,uva,Terebratulidae,Marine,Animalia,Brachiopoda,Articulata,Terebratulida,Liothyrella_uva,oceanic?,range deeper than 200,sealifebase,232,385,,,,,,benthic,sealifebase,NA
+Jenn,Sarah,Liothyrella,neozelanica,Terebratulidae,Marine,Animalia,Brachiopoda,Rhynchonellata,Terebratulida,Liothyrella_neozelanica,coastal-oceanic,,sealifebase,6,1939,,,,,,benthic,sealifebase,NA
+Sally,Sarah,Menidia,menidia,Atherinopsidae,Marine,Animalia,Chordata,Actinopterygii,Atheriniformes,Menidia_menidia,coastal,pelagic-neritic,fishbase,0,3,,fishbase,,,,pelagic,fishbase,NA
+Sally,Sarah,Clupea,harengus,Clupeidae,Marine,Animalia,Chordata,Actinopterygii,Clupeiformes,Clupea_harengus,coastal_oceanic,"""spawning and wintering grounds in coastal areas and feeding grounds in open water""",fishbase,0,364,0-200,fishbase,,,,benthopelagic,fishbase,NA
+Sally,Sarah,Engraulis,japonicus,Engraulidae,Marine,Animalia,Chordata,Actinopterygii,Clupeiformes,Engraulis_japonicus,coastal?,"pelagic-neritic; ""mainly in coastal waters but as far out as over 1,000 km from the shore""",fishbase,0,400,,fishbase,,,,pelagic,fishbase,NA
+Sally,Sarah,Fundulus,parvipinnis,Fundulidae,Marine,Animalia,Chordata,Actinopterygii,Cyprinodontiformes,Fundulus_parvipinnis,coastal,,fishbase,,,,,,,,benthopelagic,fishbase,NA
+Sally,Sarah,Boreogadus,saida,Gadidae,Marine,Animalia,Chordata,Actinopterygii,Gadiformes,Boreogadus_saida,coastal_oceanic,"""Occurs in coastal habitats during summer and winter""",fishbase,0,1383,0-400,fishbase,,,,demersal,fishbase,NA
+Sally,Sarah,Dascyllus,aruanus,Pomacentridae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Dascyllus_aruanus,coastal,,fishbase,0,20,,fishbase,,,,reef-associated,fishbase,NA
+Jenn,Sarah,Diplodus,bellottii,Sparidae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Diplodus_bellottii,coastal,,fishbase,0,100,30-50,fishbase,,,,benthopelagic,fishbase,NA
+Sally,Sarah,Halichoeres,dispilus,Labridae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Halichoeres_dispilus,coastal,,fishbase,2,76,,fishbase,,,,reef-associated,fishbase,NA
+Jenn,Sarah,Lipophrys,trigloides,Blenniidae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Lipophrys_trigloides,coastal,,fishbase,,,,,,,,demersal,fishbase,NA
+Sally,Sarah,Malacoctenus,zonifer,Labrisomidae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Malacoctenus_zonifer,coastal,,https://biogeodb.stri.si.edu/sftep/en/thefishes/species/1793,,,,,,,,demersal,fishbase,NA
+Sally,Sarah,Pachycara,brachycephalum,Zoarcidae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Pachycara_brachycephalum,oceanic,,fishbase,200,1810,,fishbase,,,,bathydemersal,fishbase,NA
+Jenn,Sarah,Parablennius,marmoreus,Blenniidae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Parablennius_marmoreus,coastal,,fishbase,0,10,,fishbase,,,,coral associated,fishbase,NA
+Sally,Sarah,Plagiotremus,azaleus,Blenniidae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Plagiotremus_azaleus,coastal,,fishbase,2,23,,fishbase,,,,reef-associated,fishbase,NA
+Sally,Sarah,Tautogolabrus,adspersus,Labridae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Tautogolabrus_adspersus,coastal,,fishbase,10,128,,fishbase,,,,reef-associated,fishbase,NA
+Sally,Sarah,Thalassoma,lucasanum,Labridae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Thalassoma_lucasanum,coastal,,fishbase,0,64,2.0-25,fishbase,,,,reef-associated,fishbase,NA
+Sally,Sarah,Trematomus,bernacchii,Nototheniidae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Trematomus_bernacchii,coastal-oceanic?,demersal up to 700 m; but usually 0-200 depth,fishbase,0,700,0-200,fishbase,,,,demersal,fishbase,NA
+Sally,Sarah,Trematomus,hansoni,Nototheniidae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Trematomus_hansoni,coastal-oceanic?,demersal up to 550 m,fishbase,6,549,,fishbase,,,,demersal,fishbase,NA
+Sally,Sarah,Zoarces,viviparus,Zoarcidae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Zoarces_viviparus,coastal,,fishbase,0,40,2.0-20,fishbase,,,,demersal,fishbase,NA
+Jenn,Sarah,Pegusa,lascaris,Soleidae,Marine,Animalia,Chordata,Actinopterygii,Pleuronectiformes,Pegusa_lascaris,coastal,,fishbase,5,350,20-50,fishbase,,,,demersal,fishbase,NA
+Jenn,Sarah,Sphoeroides,maculatus,Tetradontidae,Marine,Animalia,Chordata,Actinopterygii,Tetraodontiformes,Sphoeroides_maculatus,coastal,,fishbase,10,183,,fishbase,,,,demersal,fishbase,NA
+Sally,Sarah,Diplodus,sargus,Sparidae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Diplodus_sargus,coastal,,fishbase,0,50,,fishbase,,,,demersal,fishbase,NA
+Sally,Sarah,Diplodus,vulgaris,Sparidae,Marine,Animalia,Chordata,Actinopterygii,Perciformes,Diplodus_vulgaris,coastal,,fishbase,0,160,0-30,fishbase,,,,benthopelagic,fishbase,NA
+Jenn,Sarah,Distaplia,occidentalis,Holozoidae,Marine,Animalia,Chordata,Ascidiacea,Aplousobranchia,Distaplia_occidentalis,coastal,,sealifebase,0,15,,sealifebase,,,,benthic,sealifebase,NA
+Jenn,Sarah,Cnemidocarpa,bicornuta,Styelidae,Marine,Animalia,Chordata,Ascidiacea,Stolidobranchia,Cnemidocarpa_bicornuta,coastal,,sealifebase,NA,37,,sealifebase,,,,benthic,sealifebase,NA
+Jenn,Sarah,Echinometra,lucunter,Echinometridae,Marine,Animalia,Echinodermata,Echinoidea,Camarodonta,Echinometra_lucunter,coastal,,sealifebase,0,45,,sealifebase,,,,reef-associated,sealifebase,NA
+Jenn,Sarah,Pseudechinus,huttoni,Temnopleuridae,Marine,Animalia,Echinodermata,Echinoidea,Camarodonta,Pseudechinus_huttoni,coastal,,http://www.marinelife.ac.nz/species/994,,,,,,,,benthic,NA,NA
+Jenn,Sarah,Eucidaris,tribuloides,Cidaridae,Marine,Animalia,Echinodermata,Echinoidea,Cidaroida,Eucidaris_tribuloides,coastal,,sealifebase,0,50,,sealifebase,,,,benthic,sealifebase,NA
+Jenn,Sarah,Sterechinus,neumayeri,Echinidae,Marine,Animalia,Echinodermata,Echinoidea,Echinoida,Sterechinus_neumayeri,coastal-oceanic?,benthic up to 500,sealifebase,0,500,,sealifebase,,,,benthic,sealifebase,NA
+Jenn,Sarah,Bullia,rhodostoma,Nassariidae,Marine,Animalia,Gastropoda,Neogastropoda,Nassariidae,Bullia_rhodostoma,coastal,confined to intertidal slope,https://books.google.ca/books?id=LWAfWCcMoNUC&pg=PA366&lpg=PA366&dq=Bullia+rhodostoma+maximum+depth&source=bl&ots=1wQGIsFxFw&sig=ACfU3U3EWGvnLzZQhQoaR9vNNanGuZRlQw&hl=en&sa=X&ved=2ahUKEwjn_oLjxK3wAhWMMlkFHQKODGMQ6AEwCHoECAUQAw#v=onepage&q=Bullia%20rhodostoma%20maximum%20depth&f=false,,,,,,,,benthic,sealifebase,NA
+Jenn,Sarah,Acar,domingensis,Arcidae,Marine,Animalia,Mollusca,Bivalvia,Arcoida,Acar_domingensis,coastal,,sealifebase,0,155,,sealifebase,,,,benthic,sealifebase,NA
+Jenn,Sarah,Limatula,hodgsoni,Limidae,Marine,Animalia,Mollusca,Bivalvia,Limoida,Limatula_hodgsoni,coastal-oceanic?,edge-shelf? based on depth range,sealifebase,115,346,,sealifebase,,,,benthic,sealifebase,NA
+Jenn,Sarah,Mya,arenaria,Myidae,Marine,Animalia,Mollusca,Bivalvia,Myoida,Mya_arenaria,coastal,,sealifebase,0,192,,sealifebase,,,,benthic,sealifebase,NA
+Jenn,Sarah,Adamussium,colbecki,Pectinidae,Marine,Animalia,Mollusca,Bivalvia,Ostreoida,Adamussium_colbecki,coastal,,sealifebase,37,136,,sealifebase,,,,benthic,sealifebase,NA
+Jenn,Sarah,Laternula,elliptica,Laternulidae,Marine,Animalia,Mollusca,Bivalvia,Pholadomyoida,Laternula_elliptica,coastal,maybe extends just past shelf,sealifebase,1,248,,sealifebase,,,,benthic,sealifebase,NA
+Jenn,Sarah,Donax,serra,Donacidae,Marine,Animalia,Mollusca,Bivalvia,Veneroida,Donax_serra,coastal,seems to be intertidal only,https://www.jstor.org/stable/4297763,,,,,,,,benthic,sealifebase,NA
+Jenn,Sarah,Gemma,gemma,Veneridae,Marine,Animalia,Mollusca,Bivalvia,Veneroida,Gemma_gemma,coastal,,sealifebase,0,66,,sealifebase,,,,benthic,sealifebase,NA
+Jenn,Sarah,Macoma,balthica,Tellinidae,Marine,Animalia,Mollusca,Bivalvia,Veneroida,Macoma_balthica,coastal,,sealifebase,0,270,,sealifebase,,,,benthic,sealifebase,NA
+Jenn,Sarah,Mulinia,lateralis,Mactridae,Marine,Animalia,Mollusca,Bivalvia,Veneroida,Mulinia_lateralis,coastal,,sealifebase,0,134,,sealifebase,,,,benthic,sealifebase,NA
+Jenn,Sarah,Cookia,sulcata,Turbinidae,Marine,Animalia,Mollusca,Gastropoda,Vetigastropoda,Cookia_sulcata,coastal,max sample depth 134m,https://obis.org/taxon/413403,,,,,,,,demersal,sealifebase,NA
+Jenn,Sarah,Argopecten,purpuratus,Pectininae,Marine,Animalia,Molusca,Bivalvia,Pectinoida,Argopecten_purpuratus,coastal-oceanic?,up to 500 m,sealifebase,0,500,,sealifebase,,,,benthic,sealifebase,NA
+Jenn,Sarah,Ensis,macha,Solnoidea,Marine,Animalia,Molusca,Bivalvia,Veneroida,Ensis_macha,coastal,,sealifebase,0,55,,sealifebase,,,,benthic,sealifebase,NA
+Jenn,Sarah,Protothaca,thaca,Veneridae,Marine,Animalia,Molusca,Bivalvia,Veneroida,Leukoma_thaca,coastal,,sealifebase,0,20,,sealifebase,,,,benthic,FAO species fact sheet,Changed from Protothaca to Leukoma
+Jenn,Sarah,Semele,solida,Samelidae,Marine,Animalia,Molusca,Bivalvia,Veneroida,Semele_solida,coastal,,sealifebase,0,11,,sealifebase,,,,benthic,sealifebase,NA
+Susana,Sarah,Agroeca,proxima,Liocranidae,Terrestrial,Animalia,Arthropoda,Arachnida,Araneae,Agroeca_proxima,,,,,,,,,,,NA,terrestrial,NA
+Susana,Sarah,Clubiona,diversa,Clubionidae,Terrestrial,Animalia,Arthropoda,Arachnida,Araneae,Clubiona_diversa,,,,,,,,,,,NA,terrestrial,NA
+Susana,Sarah,Crustulina,guttata,Theridiidae,Terrestrial,Animalia,Arthropoda,Arachnida,Araneae,Crustulina_guttata,,,,,,,,,,,NA,terrestrial,NA
+Susana,Sarah,Oedothorax,apicatus,Linyphiidae,Terrestrial,Animalia,Arthropoda,Arachnida,Araneae,Oedothorax_apicatus,,,,,,,,,,,NA,terrestrial,NA
+Susana,Sarah,Pardosa,nigriceps,Lycosidae,Terrestrial,Animalia,Arthropoda,Arachnida,Araneae,Pardosa_nigriceps,,,,,,,,,,,NA,terrestrial,NA
+Susana,Sarah,Philodromus,aureolus,Philodromidae,Terrestrial,Animalia,Arthropoda,Arachnida,Araneae,Philodromus_aureolus,,,,,,,,,,,NA,terrestrial,NA
+Susana,Sarah,Phrurolithus,festivus,Corinnidae,Terrestrial,Animalia,Arthropoda,Arachnida,Araneae,Phrurolithus_festivus,,,,,,,,,,,NA,terrestrial,NA
+Susana,Sarah,Prinerigone,vagans,Linyphiidae,Terrestrial,Animalia,Arthropoda,Arachnida,Araneae,Prinerigone_vagans,,,,,,,,,,,NA,terrestrial,NA
+Susana,Sarah,Scotina,gracilipes,Liocranidae,Terrestrial,Animalia,Arthropoda,Arachnida,Araneae,Scotina_gracilipes,,,,,,,,,,,NA,terrestrial,NA
+Susana,Sarah,Stemonyphantes,lineatus,Linyphiidae,Terrestrial,Animalia,Arthropoda,Arachnida,Araneae,Stemonyphantes_lineatus,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Calathus,melanocephalus,Carabidae,Terrestrial,Animalia,Arthropoda,Insecta,Coleoptera,Calathus_melanocephalus,,,,,,,,1000,543,IUCN,NA,terrestrial,NA
+Piero,Sarah,Aphaenogaster,fulva,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Aphaenogaster_fulva,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Camponotus,americanus,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Camponotus_americanus,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Camponotus,castaneus,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Camponotus_castaneus,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Camponotus,chromaiodes,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Camponotus_chromaiodes,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Camponotus,novaeboracensis,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Camponotus_novaeboracensis,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Camponotus,pennsylvanicus,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Camponotus_pennsylvanicus,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Crematogaster,lineolata,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Crematogaster_lineolata,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Formica,neogagates,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Formica_neogagates,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Formica,obscuripes,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Formica_obscuripes,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Linepithema,humile,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Linepithema_humile,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Myrmecocystus,mimicus,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Myrmecocystus_mimicus,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Pogonomyrmex,barbatus,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Pogonomyrmex_barbatus,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Pogonomyrmex,californicus,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Pogonomyrmex_californicus,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Pogonomyrmex,rugosus,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Pogonomyrmex_rugosus,,,,,,,,,,,NA,terrestrial,NA
+Piero,Sarah,Proceratium,silaceum,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Proceratium_silaceum,,,,,,,,,,,NA,terrestrial,NA
+Susana,Sarah,Tetramorium,caespitum,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Tetramorium_caespitum,,,,,,,,,,,NA,terrestrial,NA
+Susana,Sarah,Trachymyrmex,septentrionalis,Formicidae,Terrestrial,Animalia,Arthropoda,Insecta,Hymenoptera,Trachymyrmex_septentrionalis,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Acris,crepitans,Hylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Acris_crepitans,,,,,,,,,,,NA,terrestrial,AmphibiaWeb
+Micky,Sarah,Adelotus,brevis,Myobatrachidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Adelotus_brevis,,,,,,,,400,0,Amphibia Web,NA,terrestrial,NA
+Micky,Sarah,Anaxyrus,compactilis,Bufonidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Anaxyrus_compactilis,,,,,,,,2000,1000,IUCN,NA,terrestrial,NA
+Micky,Sarah,Craugastor,fitzingeri,Eleutherodactylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Craugastor_fitzingeri,,,,,,,,1520,0,IUCN,NA,terrestrial,NA
+Micky,Sarah,Craugastor,fleischmanni,Craugastoridae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Craugastor_fleischmanni,,,,,,,,2286,1050,IUCN,NA,terrestrial,NA
+Micky,Sarah,Crinia,signifera,Myobatrachidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Crinia_signifera,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Dendrobates,auratus,Dendrobatidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Dendrobates_auratus,,,,,,,,1000,0,IUCN,NA,terrestrial,NA
+Micky,Sarah,Eleutherodactylus,coqui,Eleutherodactylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Eleutherodactylus_coqui,,,,,,,,1338,0,IUCN,NA,terrestrial,NA
+Micky,Sarah,Engystomops,pustulosus,Leptodactylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Engystomops_pustulosus,,,,,,,,1540,0,IUCN,NA,terrestrial,NA
+Micky,Sarah,Hyalinobatrachium,fleischmanni,Centrolenidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Hyalinobatrachium_fleischmanni,,,,,,,,1680,0,IUCN,NA,terrestrial,NA
+Micky,Sarah,Leptodactylus,pentadactylus,Leptodactylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Leptodactylus_pentadactylus,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Limnodynastes,dorsalis,Myobatrachidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Limnodynastes_dorsalis,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Limnodynastes,fletcheri,Myobatrachidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Limnodynastes_fletcheri,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Limnodynastes,tasmaniensis,Myobatrachidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Limnodynastes_tasmaniensis,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Litoria,gracilenta,Hylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Litoria_gracilenta,,,,,,,,,,,NA,terrestrial,Changed from Litoria
+Micky,Sarah,Neobatrachus,pictus,Myobatrachidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Neobatrachus_pictus,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Philoria,frosti,Myobatrachidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Philoria_frosti,,,,,,,,1560,900,Amphibia Web,NA,terrestrial,NA
+Micky,Sarah,Philoria,loveridgei,Myobatrachidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Philoria_loveridgei,,,,,,,,1219,1,Amphibians of the World,NA,terrestrial,"McPherson range, although Amphibia web said it occurs in rainforests above 1000m "
+Micky,Sarah,Pseudacris,cadaverina,Hylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Pseudacris_cadaverina,,,,,,,,2290,0,NatureServe Explorer,NA,terrestrial,NA
+Micky,Sarah,Pseudacris,regilla,Hylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Pseudacris_regilla,,,,,,,,3540,0,NatureServe Explorer,NA,terrestrial,NA
+Micky,Sarah,Pseudacris,triseriata,Hylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Pseudacris_triseriata,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Pseudophryne,corroboree,Myobatrachidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Pseudophryne_corroboree,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Pseudophryne,dendyi,Myobatrachidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Pseudophryne_dendyi,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Rana,cascadae,Ranidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Rana_cascadae,,,,,,,,2500,400,NatureServe Explorer,NA,terrestrial,NA
+Micky,Sarah,Rana,pretiosa,Ranidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Rana_pretiosa,,,,,,,,1500,0,NatureServe Explorer,NA,terrestrial,NA
+Micky,Sarah,Scinax,staufferi,Hylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Scinax_staufferi,,,,,,,,1530,0,IUCN,NA,terrestrial,NA
+Micky,Sarah,Spea,hammondii,Scaphiopodidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Spea_hammondii,,,,,,,,1363,0,NatureServe Explorer,NA,terrestrial,NA
+Micky,Sarah,Ambystoma,jeffersonianum,Ambystomatidae,Terrestrial,Animalia,Chordata,Amphibia,Caudata,Ambystoma_jeffersonianum,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Ambystoma,macrodactylum,Ambystomatidae,Terrestrial,Animalia,Chordata,Amphibia,Caudata,Ambystoma_macrodactylum,,,,,,,,3050,0,IUCN,NA,terrestrial,NA
+Micky,Sarah,Ambystoma,maculatum,Ambystomatidae,Terrestrial,Animalia,Chordata,Amphibia,Caudata,Ambystoma_maculatum,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Desmognathus,fuscus,Plethodontidae,Terrestrial,Animalia,Chordata,Amphibia,Caudata,Desmognathus_fuscus,,,,,,,,1200,0,Animal Diversity,NA,terrestrial,NA
+Micky,Sarah,Desmognathus,ochrophaeus,Plethodontidae,Terrestrial,Animalia,Chordata,Amphibia,Caudata,Desmognathus_ochrophaeus,,,,,,,,1280,168,NatureServe Explorer,NA,terrestrial,NA
+Micky,Sarah,Desmognathus,quadramaculatus,Plethodontidae,Terrestrial,Animalia,Chordata,Amphibia,Caudata,Desmognathus_quadramaculatus,,,,,,,,1646,500,IUCN,NA,terrestrial,NA
+Micky,Sarah,Eurycea,bislineata,Plethodontidae,Terrestrial,Animalia,Chordata,Amphibia,Caudata,Eurycea_bislineata,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Eurycea,longicauda,Plethodontidae,Terrestrial,Animalia,Chordata,Amphibia,Caudata,Eurycea_longicauda,,,,,,,,700,0,Animal Diversity,NA,terrestrial,NA
+Micky,Sarah,Eurycea,lucifuga,Plethodontidae,Terrestrial,Animalia,Chordata,Amphibia,Caudata,Eurycea_lucifuga,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Eurycea,multiplicata,Plethodontidae,Terrestrial,Animalia,Chordata,Amphibia,Caudata,Eurycea_multiplicata,,,,,,,,763,107,Amphibia Web,NA,terrestrial,NA
+Micky,Sarah,Eurycea,nana,Plethodontidae,Terrestrial,Animalia,Chordata,Amphibia,Caudata,Eurycea_nana,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Notophthalmus,viridescens,Plethodontidae,Terrestrial,Animalia,Chordata,Amphibia,Caudata,Notophthalmus_viridescens,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Plethodon,glutinosus,Plethodontidae,Terrestrial,Animalia,Chordata,Amphibia,Caudata,Plethodon_glutinosus,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Pseudotriton,ruber,Plethodontidae,Terrestrial,Animalia,Chordata,Amphibia,Caudata,Pseudotriton_ruber,,,,,,,,1500,0,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Acanthodactylus,erythrurus,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Acanthodactylus_erythrurus,,,,,,,,2800,NA,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Acontias,meleagris,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Acontias_meleagris,,,,,,,,1400,0,IUCN,NA,terrestrial,"This species is fossorial and legless hence ""walking"" may not be an accurate description of its dispersal method, diet classification based on congener"
+Miguel R.,Sarah,Agkistrodon,contortrix,Viperidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Agkistrodon_contortrix,,,,,,,,914,0,Snake Database,NA,terrestrial,NA
+Ignacio,Sarah,Ameiva,festiva,Teiidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Holcosus_festivus,,,,,,,,1435,0,IUCN,NA,terrestrial,Changed name from Ameiva festiva to Holcosus festivus
+Ignacio,Sarah,Amphibolurus,muricatus,Agamidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Amphibolurus_muricatus,,,,,,,,,,,NA,terrestrial,NA
+Miguel R.,Sarah,Anniella,pulchra,Anniellidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anniella_pulchra,,,,,,,,1550,0,NatureServe Explorer,NA,terrestrial,NA
+Adam A,Sarah,Anolis,barbouri,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_barbouri,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Anolis,carolinensis,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_carolinensis,,,,,,,,610,46,Animal Diversity,NA,terrestrial,NA
+Adam A,Sarah,Anolis,cooki,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_cooki,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Anolis,cristatellus,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_cristatellus,,,,,,,,549,0,Animal Diversity,NA,terrestrial,NA
+Adam A,Sarah,Anolis,cybotes,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_cybotes,,,,,,,,1830,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Anolis,evermanni,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_evermanni,,,,,,,,1205,20,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Anolis,frenatus,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_frenatus,,,,,,,,900,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Anolis,gundlachi,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_gundlachi,,,,,,,,1200,240,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Anolis,krugi,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_krugi,,,,,,,,1205,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Anolis,lionotus,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_lionotus,,,,,,,,805,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Anolis,marcanoi,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_marcanoi,,,,,,,,1800,200,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Anolis,oculatus,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_oculatus,,,,,,,,914,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Anolis,pulchellus,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_pulchellus,,,,,,,,945,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Anolis,roquet,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_roquet,,,,,,,,1370,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Anolis,semilineatus,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_semilineatus,,,,,,,,1700,-20,IUCN,NA,terrestrial,"Found around islands, mangroves (range data from Schwartz and Henderson 1991)"
+Adam A,Sarah,Anolis,shrevei,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_shrevei,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Anolis,stratulus,Dactyloidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anolis_stratulus,,,,,,,,950,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Anomalopus,brevicollis,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anomalopus_brevicollis,,,,,,,,,,,NA,terrestrial,"This species is fossorial and legless hence ""walking"" may not be an accurate description of its dispersal method"
+Adam A,Sarah,Anomalopus,leuckartii,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Anomalopus_leuckartii,,,,,,,,,,,NA,terrestrial,"This species is fossorial and legless hence ""walking"" may not be an accurate description of its dispersal method"
+Miguel R.,Sarah,Arizona,elegans,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Arizona_elegans,,,,,,,,2200,0,NatureServe Explorer,NA,terrestrial,NA
+Miguel R.,Sarah,Austrelaps,superbus,Elapidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Austrelaps_superbus,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Basiliscus,vittatus,Corytophanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Basiliscus_vittatus,,,,,,,,1500,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Bassiana,duperreyi,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Acritoscincus_duperreyi,,,,,,,,,,,NA,terrestrial,Bassiana is listed as a synonym for Acritoscincus on Reptile Database & IUCN
+Adam A,Sarah,Bassiana,platynota,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Acritoscincus_platynota,,,,,,,,,,,NA,terrestrial,Bassiana is listed as a synonym for Acritoscincus on Reptile Database & IUCN
+Adam A,Sarah,Calyptotis,temporalis,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Calyptotis_temporalis,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Carlia,longipes,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Carlia_longipes,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Carlia,munda,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Carlia_munda,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Carlia,pectoralis,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Carlia_pectoralis,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Carlia,rhomboidalis,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Carlia_rhomboidalis,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Carlia,vivax,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Carlia_vivax,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Chamaeleo,dilepis,Chamaeleonidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Chamaeleo_dilepis,,,,,,,,2600,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Chamaeleo,jacksonii,Chamaeleonidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Chamaeleo_jacksonii,,,,,,,,3200,1500,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Charina,bottae,Boidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Charina_bottae,,,,,,,,3050,0,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Chionactis,occipitalis,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Chionactis_occipitalis,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Chondrodactylus,angulifer,Gekkonidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Chondrodactylus_angulifer,,,,,,,,,,,NA,terrestrial,No data available- assumptions based on similar species/sympatric species of other families
+Adam A,Sarah,Chondrodactylus,bibronii,Gekkonidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Chondrodactylus_bibronii,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Coleonyx,brevis,Eublepharidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Coleonyx_brevis,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Coleonyx,variegatus,Eublepharidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Coleonyx_variegatus,,,,,,,,2000,0,NatureServe Explorer,NA,terrestrial,NA
+Miguel R.,Sarah,Coluber,constrictor,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Coluber_constrictor,,,,,,,,2438,0,Snake Database,NA,terrestrial,NA
+Ignacio,Sarah,Cophosaurus,texanus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Cophosaurus_texanus,,,,,,,,2100,0,NatureServe Explorer,NA,terrestrial,NA
+Ignacio,Sarah,Cordylus,cordylus,Cordylidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Cordylus_cordylus,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Cordylus,niger,Cordylidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Cordylus_niger,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Cordylus,oelofseni,Cordylidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Cordylus_oelofseni,,,,,,,,,,,NA,terrestrial,NA
+Miguel R.,Sarah,Crotalus,atrox,Viperidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Crotalus_atrox,,,,,,,,2500,0,Snake Database,NA,terrestrial,NA
+Miguel R.,Sarah,Crotalus,cerastes,Viperidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Crotalus_cerastes,,,,,,,,1850,0,NatureServe Explorer,NA,terrestrial,NA
+Miguel R.,Sarah,Crotalus,scutulatus,Viperidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Crotalus_scutulatus,,,,,,,,2530,0,Snake Database,NA,terrestrial,NA
+Miguel R.,Sarah,Crotalus,viridis,Viperidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Crotalus_viridis,,,,,,,,3000,0,Snake Database,NA,terrestrial,NA
+Adam A,Sarah,Crotaphytus,collaris,Crotaphytidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Crotaphytus_collaris,,,,,,,,,,,NA,terrestrial,"Many reptile species undergo partial cold season dormancy termed ""brumation"". This is not full dormancy as they can return to more 'normal' activity on warm days"
+Adam A,Sarah,Cryptoblepharus,litoralis,Scincidae,Intertidal,Animalia,Chordata,Reptilia,Squamata,Cryptoblepharus_litoralis,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Cryptoblepharus,plagiocephalus,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Cryptoblepharus_plagiocephalus,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Cryptoblepharus,virgatus,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Cryptoblepharus_virgatus,,,,,,,,600,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Ctenophorus,cristatus,Agamidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Ctenophorus_cristatus,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Ctenophorus,decresii,Agamidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Ctenophorus_decresii,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Ctenophorus,fordi,Agamidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Ctenophorus_fordi,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Ctenophorus,maculosus,Agamidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Ctenophorus_maculosus,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Ctenophorus,nuchalis,Agamidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Ctenophorus_nuchalis,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Ctenophorus,pictus,Agamidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Ctenophorus_pictus,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Ctenophorus,reticulatus,Agamidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Ctenophorus_reticulatus,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Ctenotus,pantherinus,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Ctenotus_pantherinus,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Ctenotus,regius,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Ctenotus_regius,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Ctenotus,spaldingi,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Ctenotus_spaldingi,,,,,,,,800,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Ctenotus,taeniolatus,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Ctenotus_taeniolatus,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Ctenotus,uber,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Ctenotus_uber,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Cyclodomorphus,branchialis,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Cyclodomorphus_branchialis,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Cyclodomorphus,melanops,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Cyclodomorphus_melanops,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Dipsosaurus,dorsalis,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Dipsosaurus_dorsalis,,,,,,,,1520,-40,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Egernia,cunninghami,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Egernia_cunninghami,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Egernia,saxatilis,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Egernia_saxatilis,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Egernia,striolata,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Egernia_striolata,,,,,,,,,,,NA,terrestrial,NA
+Miguel R.,Sarah,Elgaria,coerulea,Anguidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Elgaria_coerulea,,,,,,,,3200,0,NatureServe Explorer,NA,terrestrial,NA
+Miguel R.,Sarah,Elgaria,multicarinata,Anguidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Elgaria_multicarinata,,,,,,,,1524,0,NatureServe Explorer,NA,terrestrial,NA
+Miguel R.,Sarah,Eremias,argus,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Eremias_argus,,,,,,,,3000,0,IUCN,NA,terrestrial,Changed from argus to arguta (as seen on IUCN)
+Miguel R.,Sarah,Eremias,brenchleyi,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Eremias_brenchleyi,,,,,,,,1000,200,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Eremias,multiocellata,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Eremias_multiocellata,,,,,,,,2700,600,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Eremiascincus,fasciolatus,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Eremiascincus_fasciolatus,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Eulamprus,heatwolei,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Eulamprus_heatwolei,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Eulamprus,kosciuskoi,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Eulamprus_kosciuskoi,,,,,,,,NA,1000,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Eulamprus,murrayi,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Eulamprus_murrayi,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Eulamprus,quoyii,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Eulamprus_quoyii,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Eulamprus,tenuis,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Eulamprus_tenuis,,,,,,,,,,,NA,terrestrial,Changed from Eulamprus (inaturalist)
+Adam A,Sarah,Eulamprus,tympanum,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Eulamprus_tympanum,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Gambelia,wislizenii,Crotaphytidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Gambelia_wislizenii,,,,,,,,,,,NA,terrestrial,some populations carnivorous according to Perry & Garland 2002
+Adam A,Sarah,Gehyra,variegata,Gekkonidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Gehyra_variegata,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Glaphyromorphus,punctulatus,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Glaphyromorphus_punctulatus,,,,,,,,,,,NA,terrestrial,NA
+Miguel R.,Sarah,Hemachatus,haemachatus,Elapidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Hemachatus_haemachatus,,,,,,,,2500,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Hemidactylus,frenatus,Gekkonidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Hemidactylus_frenatus,,,,,,,,1600,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Hemidactylus,turcicus,Gekkonidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Hemidactylus_turcicus,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Hemiergis,decresiensis,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Hemiergis_decresiensis,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Hemiergis,quadrilineatum,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Hemiergis_quadrilineatum,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Heteronotia,binoei,Gekkonidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Heteronotia_binoei,,,,,,,,,,,NA,terrestrial,Pianka found one plant item in a stomach
+Ignacio,Sarah,Holbrookia,maculata,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Holbrookia_maculata,,,,,,,,2100,0,NatureServe Explorer,NA,terrestrial,NA
+Adam A,Sarah,Hoplodactylus,maculatus,Gekkonidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Hoplodactylus_maculatus,,,,,,,,,,,NA,terrestrial,Changed from Hoplodactylus maculatus. Listed as a synonym of Woodwarthia maculatus on Reptile database
+Miguel R.,Sarah,Lacerta,agilis,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Lacerta_agilis,,,,,,,,2500,0,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Lacerta,schreiberi,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Lacerta_schreiberi,,,,,,,,2100,0,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Lampropeltis,zonata,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Lampropeltis_zonata,,,,,,,,2750,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Lampropholis,delicata,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Lampropholis_delicata,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Lampropholis,guichenoti,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Lampropholis_guichenoti,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Lepidophyma,flavimaculatum,Xantusiidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Lepidophyma_flavimaculatum,,,,,,,,1500,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Lerista,frosti,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Lerista_frosti,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Lerista,neander,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Lerista_neander,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Lerista,orientalis,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Lerista_orientalis,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Lerista,terdigitata,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Lerista_terdigitata,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,abaucan,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_abaucan,,,,,,,,2600,900,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,albiceps,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_albiceps,,,,,,,,4020,3060,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,alticolor,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_alticolor,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,bibronii,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_bibronii,,,,,,,,3000,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,bisignatus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_bisignatus,,,,,,,,,,,NA,terrestrial,I think is a synonym for Liolaemus nigromaculatus (below)
+Ignacio,Sarah,Liolaemus,boulengeri,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_boulengeri,,,,,,,,1600,400,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,canqueli,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_canqueli,,,,,,,,1000,500,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,capillitas,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_capillitas,,,,,,,,3600,2700,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,chacoensis,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_chacoensis,,,,,,,,800,250,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,chiliensis,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_chiliensis,,,,,,,,2100,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,constanzae,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_constanzae,,,,,,,,3900,1400,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,curis,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_curis,,,,,,,,3000,1520,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,cuyanus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_cuyanus,,,,,,,,1300,250,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,cyanogaster,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_cyanogaster,,,,,,,,800,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,darwinii,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_darwinii,,,,,,,,3000,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,eleodori,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_eleodori,,,,,,,,3500,3500,IUCN,NA,terrestrial,"Endemic to a National Park, collected at single elevation. IUCN reports 3500 as lower and upper, but I'm unsure whether representative of true range"
+Ignacio,Sarah,Liolaemus,elongatus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_elongatus,,,,,,,,1500,350,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,fabiani,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_fabiani,,,,,,,,3000,2300,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,fitzgeraldi,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_fitzgeraldi,,,,,,,,4500,2700,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,fitzingerii,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_fitzingerii,,,,,,,,1100,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,fuscus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_fuscus,,,,,,,,1900,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,hellmichi,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_hellmichi,,,,,,,,1400,1000,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,irregularis,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_irregularis,,,,,,,,5000,3060,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,jamesi,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_jamesi,,,,,,,,4700,3300,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,kingii,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_kingii,,,,,,,,1340,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,koslowskyi,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_koslowskyi,,,,,,,,2450,800,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,kriegi,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_kriegi,,,,,,,,2000,950,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,laurenti,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_laurenti,,,,,,,,1100,800,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,lemniscatus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_lemniscatus,,,,,,,,2100,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,leopardinus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_leopardinus,,,,,,,,3000,1800,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,lorenzmuelleri,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_lorenzmuelleri,,,,,,,,3500,3200,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,melanops,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_melanops,,,,,,,,1000,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,monticola,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_monticola,,,,,,,,2200,320,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,multicolor,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_multicolor,,,,,,,,4400,3000,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,multimaculatus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_multimaculatus,,,,,,,,50,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,nigromaculatus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_nigromaculatus,,,,,,,,250,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,nigroviridis,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_nigroviridis,,,,,,,,3370,1550,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,nitidus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_nitidus,,,,,,,,3153,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,olongasta,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_olongasta,,,,,,,,1770,900,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,ornatus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_ornatus,,,,,,,,4800,2000,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,petrophilus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_petrophilus,,,,,,,,1400,350,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,pictus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_pictus,,,,,,,,1600,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,platei,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_platei,,,,,,,,1050,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,poecilochromus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_poecilochromus,,,,,,,,4500,3600,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,pseudoanomalus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_pseudoanomalus,,,,,,,,1500,1500,IUCN,NA,terrestrial,"Endemic northwest Argentian province, recorded at 1500 only. Used as upper and lower on IUCN."
+Ignacio,Sarah,Liolaemus,pseudolemniscatus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_pseudolemniscatus,,,,,,,,2100,25,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,quilmes,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_quilmes,,,,,,,,2200,1600,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,riojanus,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_riojanus,,,,,,,,1200,550,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,robertmertensi,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_robertmertensi,,,,,,,,2600,690,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,rothi,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_rothi,,,,,,,,1800,700,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,salinicola,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_salinicola,,,,,,,,2000,1500,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,scapularis,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_scapularis,,,,,,,,2400,1600,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,schroederi,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_schroederi,,,,,,,,2590,500,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,telsen,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_telsen,,,,,,,,1425,900,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,tenuis,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_tenuis,,,,,,,,1800,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,vallecurensis,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_vallecurensis,,,,,,,,4100,3600,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,walkeri,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_walkeri,,,,,,,,4211,3963,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Liolaemus,xanthoviridis,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_xanthoviridis,,,,,,,,300,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Lophognathus,gilberti,Agamidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Lophognathus_gilberti,,,,,,,,,,,NA,terrestrial,NA
+Miguel R.,Sarah,Masticophis,anthonyi,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Masticophis_anthonyi,,,,,,,,,,,NA,terrestrial,NA
+Miguel R.,Sarah,Masticophis,lateralis,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Masticophis_lateralis,,,,,,,,2200,0,Snake Database,NA,terrestrial,NA
+Miguel R.,Sarah,Meroles,suborbitalis,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Meroles_suborbitalis,,,,,,,,1500,10,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Moloch,horridus,Agamidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Moloch_horridus,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Morethia,butleri,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Morethia_butleri,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Morethia,lineoocellata,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Morethia_lineoocellata,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Morethia,obscura,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Morethia_obscura,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Morethia,taeniopleura,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Morethia_taeniopleura,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Nannoscincus,maccoyi,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Nannoscincus_maccoyi,,,,,,,,,,,NA,terrestrial,Synonym Anepischetosia maccoyi
+Adam A,Sarah,Niveoscincus,coventryi,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Carinascincus_coventryi,,,,,,,,1500,600,IUCN,NA,terrestrial,Updated from Niveoscincus coventryi (IUCN)
+Adam A,Sarah,Niveoscincus,metallicus,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Carinascincus_metallicus,,,,,,,,,,,NA,terrestrial,Updated from Niveoscincus coventryi (IUCN)
+Adam A,Sarah,Niveoscincus,ocellatus,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Carinascincus_ocellatus,,,,,,,,,,,NA,terrestrial,Updated from Niveoscincus coventryi (IUCN)
+Miguel R.,Sarah,Notechis,scutatus,Elapidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Notechis_scutatus,,,,,,,,,,,NA,terrestrial,NA
+Miguel R.,Sarah,Pedioplanis,lineoocellata,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Pedioplanis_lineoocellata,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Petrosaurus,mearnsi,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Petrosaurus_mearnsi,,,,,,,,1200,0,NatureServe Explorer,NA,terrestrial,NA
+Ignacio,Sarah,Phrynosoma,cornutum,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Phrynosoma_cornutum,,,,,,,,1330,106,Animal Diversity,NA,terrestrial,NA
+Ignacio,Sarah,Phrynosoma,coronatum,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Phrynosoma_coronatum,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Phrynosoma,platyrhinos,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Phrynosoma_platyrhinos,,,,,,,,1980,-80,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Phyllorhynchus,decurtatus,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Phyllorhynchus_decurtatus,,,,,,,,1220,0,NatureServe Explorer,NA,terrestrial,NA
+Adam A,Sarah,Phymaturus,antofagastensis,Liolaemidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Phymaturus_antofagastensis,,,,,,,,4500,3700,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Phymaturus,dorsimaculatus,Liolaemidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Phymaturus_dorsimaculatus,,,,,,,,2100,1800,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Phymaturus,indistinctus,Liolaemidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Phymaturus_indistinctus,,,,,,,,550,500,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Phymaturus,palluma,Liolaemidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Phymaturus_palluma,,,,,,,,2200,1300,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Phymaturus,somuncurensis,Liolaemidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Phymaturus_somuncurensis,,,,,,,,1200,1000,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Phymaturus,tenebrosus,Liolaemidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Phymaturus_tenebrosus,,,,,,,,1100,900,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Phymaturus,zapalensis,Liolaemidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Phymaturus_zapalensis,,,,,,,,1350,1100,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Pituophis,catenifer,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Pituophis_catenifer,,,,,,,,2743,2743,Snake Database,NA,terrestrial,NA
+Ignacio,Sarah,Platysaurus,intermedius,Cordylidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Platysaurus_intermedius,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Plestiodon,chinensis,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Plestiodon_chinensis,,,,,,,,1030,10,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Plestiodon,elegans,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Plestiodon_elegans,,,,,,,,2500,10,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Plestiodon,gilberti,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Plestiodon_gilberti,,,,,,,,2200,0,NatureServe Explorer,NA,terrestrial,NA
+Adam A,Sarah,Plestiodon,obsoletus,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Plestiodon_obsoletus,,,,,,,,2650,0,NatureServe Explorer,NA,terrestrial,synonym Eumeces obsoletus
+Adam A,Sarah,Plestiodon,skiltonianus,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Plestiodon_skiltonianus,,,,,,,,2530,0,NatureServe Explorer,NA,terrestrial,NA
+Miguel R.,Sarah,Podarcis,bocagei,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Podarcis_bocagei,,,,,,,,1900,0,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Podarcis,lilfordi,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Podarcis_lilfordi,,,,,,,,,,,NA,terrestrial,NA
+Miguel R.,Sarah,Podarcis,muralis,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Podarcis_muralis,,,,,,,,2500,0,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Podarcis,tiliguerta,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Podarcis_tiliguerta,,,,,,,,1800,0,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Protobothrops,mucrosquamatus,Viperidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Protobothrops_mucrosquamatus,,,,,,,,2000,NA,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Psammodromus,algirus,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Psammodromus_algirus,,,,,,,,2600,0,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Psammodromus,hispanicus,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Psammodromus_hispanicus,,,,,,,,1700,NA,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Pseudechis,porphyriacus,Elapidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Pseudechis_porphyriacus,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Pseudemoia,entrecasteauxii,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Pseudemoia_entrecasteauxii,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Pseudemoia,spenceri,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Pseudemoia_spenceri,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Pseudocordylus,melanotus,Cordylidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Pseudocordylus_melanotus,,,,,,,,3200,1100,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Pseudonaja,nuchalis,Elapidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Pseudonaja_nuchalis,,,,,,,,,,,NA,terrestrial,NA
+Miguel R.,Sarah,Pseudonaja,textilis,Elapidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Pseudonaja_textilis,,,,,,,,50,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Ptenopus,garrulus,Gekkonidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Ptenopus_garrulus,,,,,,,,1500,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Rankinia,diemensis,Agamidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Rankinia_diemensis,,,,,,,,,,,NA,terrestrial,NA
+Miguel R.,Sarah,Rhinocheilus,lecontei,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Rhinocheilus_lecontei,,,,,,,,1676,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Saiphos,equalis,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Saiphos_equalis,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Saproscincus,basiliscus,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Saproscincus_basiliscus,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Sceloporus,graciosus,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sceloporus_graciosus,,,,,,,,3200,150,NatureServe Explorer,NA,terrestrial,NA
+Ignacio,Sarah,Sceloporus,grammicus,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sceloporus_grammicus,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Sceloporus,magister,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sceloporus_magister,,,,,,,,1520,0,NatureServe Explorer,NA,terrestrial,NA
+Ignacio,Sarah,Sceloporus,malachiticus,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sceloporus_malachiticus,,,,,,,,3800,146,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Sceloporus,merriami,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sceloporus_merriami,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Sceloporus,occidentalis,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sceloporus_occidentalis,,,,,,,,3353,0,NatureServe Explorer,NA,terrestrial,NA
+Ignacio,Sarah,Sceloporus,undulatus,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sceloporus_undulatus,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Sceloporus,variabilis,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sceloporus_variabilis,,,,,,,,2500,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Sceloporus,woodi,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sceloporus_woodi,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Scelotes,gronovii,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Scelotes_gronovii,,,,,,,,100,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Sphaerodactylus,gaigeae,Sphaerodactylidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sphaerodactylus_gaigeae,,,,,,,,450,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Sphaerodactylus,klauberi,Sphaerodactylidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sphaerodactylus_klauberi,,,,,,,,1220,50,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Sphaerodactylus,macrolepis,Sphaerodactylidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sphaerodactylus_macrolepis,,,,,,,,850,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Sphaerodactylus,nicholsi,Sphaerodactylidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sphaerodactylus_nicholsi,,,,,,,,450,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Sphaerodactylus,roosevelti,Sphaerodactylidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sphaerodactylus_roosevelti,,,,,,,,100,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Sphaerodactylus,townsendi,Sphaerodactylidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sphaerodactylus_townsendi,,,,,,,,200,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Sphenomorphus,incognitus,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sphenomorphus_incognitus,,,,,,,,2000,200,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Sphenomorphus,indicus,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Sphenomorphus_indicus,,,,,,,,,,,NA,terrestrial,NA
+Miguel R.,Sarah,Storeria,occipitomaculata,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Storeria_occipitomaculata,,,,,,,,1700,0,Snake Database,NA,terrestrial,NA
+Miguel R.,Sarah,Takydromus,formosanus,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Takydromus_formosanus,,,,,,,,1500,0,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Takydromus,hsuehshanensis,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Takydromus_hsuehshanensis,,,,,,,,3000,1800,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Takydromus,septentrionalis,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Takydromus_septentrionalis,,,,,,,,1700,0,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Takydromus,sexlineatus,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Takydromus_sexlineatus,,,,,,,,,,,NA,terrestrial,NA
+Miguel R.,Sarah,Takydromus,stejnegeri,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Takydromus_stejnegeri,,,,,,,,1000,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Tarentola,boettgeri,Gekkonidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Tarentola_boettgeri,,,,,,,,1000,NA,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Teratoscincus,przewalskii,Gekkonidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Teratoscincus_przewalskii,,,,,,,,2000,500,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Thamnophis,butleri,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Thamnophis_butleri,,,,,,,,500,0,Snake Database,NA,terrestrial,NA
+Miguel R.,Sarah,Thamnophis,elegans,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Thamnophis_elegans,,,,,,,,3200,0,Snake Database,NA,terrestrial,NA
+Miguel R.,Sarah,Thamnophis,marcianus,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Thamnophis_marcianus,,,,,,,,2200,0,IUCN,NA,terrestrial,NA
+Miguel R.,Sarah,Thamnophis,melanogaster,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Thamnophis_melanogaster,,,,,,,,2550,1150,Snake Database,NA,terrestrial,NA
+Miguel R.,Sarah,Thamnophis,ordinoides,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Thamnophis_ordinoides,,,,,,,,1400,0,Snake Database,NA,terrestrial,NA
+Miguel R.,Sarah,Thamnophis,radix,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Thamnophis_radix,,,,,,,,2000,0,Snake Database,NA,terrestrial,NA
+Miguel R.,Sarah,Thamnophis,sirtalis,Colubridae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Thamnophis_sirtalis,,,,,,,,2500,0,Snake Database,NA,terrestrial,NA
+Adam A,Sarah,Tiliqua,nigrolutea,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Tiliqua_nigrolutea,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Tiliqua,rugosa,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Tiliqua_rugosa,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Tiliqua,scincoides,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Tiliqua_scincoides,,,,,,,,,,,NA,terrestrial,NA
+Adam A,Sarah,Trachylepis,capensis,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Trachylepis_capensis,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Trapelus,savignii,Agamidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Trapelus_savignii,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Uma,inornata,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Uma_inornata,,,,,,,,490,0,NatureServe Explorer,NA,terrestrial,NA
+Ignacio,Sarah,Urosaurus,auriculatus,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Urosaurus_auriculatus,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Urosaurus,clarionensis,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Urosaurus_clarionensis,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Urosaurus,ornatus,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Urosaurus_ornatus,,,,,,,,2770,0,NatureServe Explorer,NA,terrestrial,NA
+Ignacio,Sarah,Uta,stansburiana,Phrynosomatidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Uta_stansburiana,,,,,,,,2750,0,NatureServe Explorer,NA,terrestrial,NA
+Ignacio,Sarah,Varanus,gouldii,Varanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Varanus_gouldii,,,,,,,,520,0,IUCN,NA,terrestrial,NA
+Ignacio,Sarah,Varanus,varius,Varanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Varanus_varius,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Xantusia,henshawi,Xantusiidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Xantusia_henshawi,,,,,,,,2320,120,NatureServe Explorer,NA,terrestrial,NA
+Ignacio,Sarah,Xantusia,riversiana,Xantusiidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Xantusia_riversiana,,,,,,,,,,,NA,terrestrial,NA
+Ignacio,Sarah,Xantusia,vigilis,Xantusiidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Xantusia_vigilis,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Cophixalus,aenigma,Microhylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Cophixalus_aenigma,,,,,,,,1300,750,Amphibians Of The World,NA,terrestrial,NA
+Micky,Sarah,Cophixalus,bombiens,Microhylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Cophixalus_bombiens,,,,,,,,1300,900,Amphibians Of The World,NA,terrestrial,NA
+Micky,Sarah,Cophixalus,exiguus,Microhylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Cophixalus_exiguus,,,,,,,,2000,555,Amphibians Of The World,NA,terrestrial,NA
+Micky,Sarah,Cophixalus,hosmeri,Microhylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Cophixalus_hosmeri,,,,,,,,1370,800,IUCN,NA,terrestrial,NA
+Micky,Sarah,Cophixalus,mcdonaldi,Microhylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Cophixalus_mcdonaldi,,,,,,,,1200,900,Amphibians Of The World,NA,terrestrial,NA
+Micky,Sarah,Cophixalus,neglectus,Microhylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Cophixalus_neglectus,,,,,,,,1500,900,Amphibians Of The World,NA,terrestrial,NA
+Micky,Sarah,Hylarana,erythraea,Ranidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Hylarana_erythraea,,,,,,,,1200,,IUCN,NA,terrestrial,NA
+Micky,Sarah,Kaloula,kalingensis,Microhylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Kaloula_kalingensis,,,,,,,,1600,50,IUCN,NA,terrestrial,NA
+Micky,Sarah,Limnonectes,woodworthi,Dicroglossidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Limnonectes_woodworthi,,,,,,,,600,0,IUCN,NA,terrestrial,NA
+Micky,Sarah,Occidozyga,laevis,Dicroglossidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Occidozyga_laevis,,,,,,,,,,,NA,terrestrial,NA
+Micky,Sarah,Philautus,surdus,Rhacophoridae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Philautus_surdus,,,,,,,,2000,0,IUCN,NA,terrestrial,NA
+Micky,Sarah,Platymantis,banahao,Ceratobatrachidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Platymantis_banahao,,,,,,,,1700,700,IUCN,NA,terrestrial,NA
+Micky,Sarah,Platymantis,corrugatus,Ceratobatrachidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Platymantis_corrugatus,,,,,,,,1300,0,IUCN,NA,terrestrial,NA
+Micky,Sarah,Platymantis,dorsalis,Ceratobatrachidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Platymantis_dorsalis,,,,,,,,1500,0,IUCN,NA,terrestrial,NA
+Micky,Sarah,Platymantis,luzonensis,Ceratobatrachidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Platymantis_luzonensis,,,,,,,,1200,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Cyrtodactylus,philippinicus,Gekkonidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Cyrtodactylus_philippinicus,,,,,,,,1200,0,IUCN,NA,terrestrial,NA
+Adam A,Sarah,Lipinia,pulchella,Scincidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Lipinia_pulchella,,,,,,,,1100,250,IUCN,NA,terrestrial,NA
+Nikki,Sarah,Heloderma,suspectum,Helodermatidae,Terrestrial,Animalia,Chordata,Lepidosauria,Squamata,Heloderma_suspectum,,,,,,,,1545,0,NatureServe Explorer,NA,terrestrial,NA
+Nikki,Sarah,Liolaemus,dorbignyi,Iguanidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Liolaemus_dorbignyi,,,,,,,,4350,3900,IUCN,NA,terrestrial,NA
+Nikki,Sarah,Tlalocohyla,smithii,Hylidae,Terrestrial,Animalia,Chordata,Amphibia,Anura,Tlalocohyla_smithii,,,,,,,,1332,0,IUCN,NA,terrestrial,NA
+Nikki,Sarah,Zootoca,vivipara,Lacertidae,Terrestrial,Animalia,Chordata,Reptilia,Squamata,Zootoca_vivipara,,,,,,,,2900,0,IUCN,NA,terrestrial,NA
