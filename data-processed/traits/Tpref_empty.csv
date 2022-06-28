@@ -1,0 +1,402 @@
+"Genus","Species","Kingdom","Phylum","Class","Order","Family","limit_type","Tpref","ref_Tpref","n_Tpref","ref_from_ref","notes_Tpref"
+"Agroeca","proxima","Animalia","Arthropoda","Arachnida","Araneae","Liocranidae","max, min",NA,NA,NA,NA,NA
+"Clubiona","diversa","Animalia","Arthropoda","Arachnida","Araneae","Clubionidae","max, min",NA,NA,NA,NA,NA
+"Crustulina","guttata","Animalia","Arthropoda","Arachnida","Araneae","Theridiidae","max, min",NA,NA,NA,NA,NA
+"Oedothorax","apicatus","Animalia","Arthropoda","Arachnida","Araneae","Linyphiidae","max, min",NA,NA,NA,NA,NA
+"Pardosa","nigriceps","Animalia","Arthropoda","Arachnida","Araneae","Lycosidae","max, min",NA,NA,NA,NA,NA
+"Philodromus","aureolus","Animalia","Arthropoda","Arachnida","Araneae","Philodromidae","max, min",NA,NA,NA,NA,NA
+"Phrurolithus","festivus","Animalia","Arthropoda","Arachnida","Araneae","Corinnidae","max",NA,NA,NA,NA,NA
+"Prinerigone","vagans","Animalia","Arthropoda","Arachnida","Araneae","Linyphiidae","max, min",NA,NA,NA,NA,NA
+"Scotina","gracilipes","Animalia","Arthropoda","Arachnida","Araneae","Liocranidae","max, min",NA,NA,NA,NA,NA
+"Stemonyphantes","lineatus","Animalia","Arthropoda","Arachnida","Araneae","Linyphiidae","max, min",NA,NA,NA,NA,NA
+"Calathus","melanocephalus","Animalia","Arthropoda","Insecta","Coleoptera","Carabidae","min",NA,NA,NA,NA,NA
+"Aphaenogaster","fulva","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Camponotus","americanus","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Camponotus","castaneus","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Camponotus","chromaiodes","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Camponotus","novaeboracensis","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Camponotus","pennsylvanicus","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Crematogaster","lineolata","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Formica","neogagates","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Formica","obscuripes","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Linepithema","humile","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max, min",NA,NA,NA,NA,NA
+"Myrmecocystus","mimicus","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max, min",NA,NA,NA,NA,NA
+"Pogonomyrmex","barbatus","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Pogonomyrmex","californicus","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Pogonomyrmex","rugosus","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Proceratium","silaceum","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Tetramorium","caespitum","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Trachymyrmex","septentrionalis","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","max",NA,NA,NA,NA,NA
+"Acris","crepitans","Animalia","Chordata","Amphibia","Anura","Hylidae","min",NA,NA,NA,NA,NA
+"Adelotus","brevis","Animalia","Chordata","Amphibia","Anura","Myobatrachidae","max",NA,NA,NA,NA,NA
+"Anaxyrus","compactilis","Animalia","Chordata","Amphibia","Anura","Bufonidae","max",NA,NA,NA,NA,NA
+"Craugastor","fitzingeri","Animalia","Chordata","Amphibia","Anura","Eleutherodactylidae","min",NA,NA,NA,NA,NA
+"Craugastor","fleischmanni","Animalia","Chordata","Amphibia","Anura","Craugastoridae","max, min",NA,NA,NA,NA,NA
+"Crinia","signifera","Animalia","Chordata","Amphibia","Anura","Myobatrachidae","max",NA,NA,NA,NA,NA
+"Dendrobates","auratus","Animalia","Chordata","Amphibia","Anura","Dendrobatidae","max, min",NA,NA,NA,NA,NA
+"Eleutherodactylus","coqui","Animalia","Chordata","Amphibia","Anura","Eleutherodactylidae","max, min",NA,NA,NA,NA,NA
+"Engystomops","pustulosus","Animalia","Chordata","Amphibia","Anura","Leptodactylidae","min",NA,NA,NA,NA,NA
+"Hyalinobatrachium","fleischmanni","Animalia","Chordata","Amphibia","Anura","Centrolenidae","min",NA,NA,NA,NA,NA
+"Leptodactylus","pentadactylus","Animalia","Chordata","Amphibia","Anura","Leptodactylidae","min",NA,NA,NA,NA,NA
+"Limnodynastes","dorsalis","Animalia","Chordata","Amphibia","Anura","Myobatrachidae","max",NA,NA,NA,NA,NA
+"Limnodynastes","fletcheri","Animalia","Chordata","Amphibia","Anura","Myobatrachidae","max",NA,NA,NA,NA,NA
+"Limnodynastes","tasmaniensis","Animalia","Chordata","Amphibia","Anura","Myobatrachidae","max",NA,NA,NA,NA,NA
+"Litoria","gracilenta","Animalia","Chordata","Amphibia","Anura","Hylidae","max",NA,NA,NA,NA,NA
+"Neobatrachus","pictus","Animalia","Chordata","Amphibia","Anura","Myobatrachidae","max",NA,NA,NA,NA,NA
+"Philoria","frosti","Animalia","Chordata","Amphibia","Anura","Myobatrachidae","max",NA,NA,NA,NA,NA
+"Philoria","loveridgei","Animalia","Chordata","Amphibia","Anura","Myobatrachidae","max",NA,NA,NA,NA,NA
+"Pseudacris","cadaverina","Animalia","Chordata","Amphibia","Anura","Hylidae","max, min",NA,NA,NA,NA,NA
+"Pseudacris","regilla","Animalia","Chordata","Amphibia","Anura","Hylidae","max, min",NA,NA,NA,NA,NA
+"Pseudacris","triseriata","Animalia","Chordata","Amphibia","Anura","Hylidae","max",NA,NA,NA,NA,NA
+"Pseudophryne","corroboree","Animalia","Chordata","Amphibia","Anura","Myobatrachidae","max",NA,NA,NA,NA,NA
+"Pseudophryne","dendyi","Animalia","Chordata","Amphibia","Anura","Myobatrachidae","max",NA,NA,NA,NA,NA
+"Rana","cascadae","Animalia","Chordata","Amphibia","Anura","Ranidae","max, min",NA,NA,NA,NA,NA
+"Rana","pretiosa","Animalia","Chordata","Amphibia","Anura","Ranidae","max, min",NA,NA,NA,NA,NA
+"Scinax","staufferi","Animalia","Chordata","Amphibia","Anura","Hylidae","min",NA,NA,NA,NA,NA
+"Spea","hammondii","Animalia","Chordata","Amphibia","Anura","Scaphiopodidae","max, min",NA,NA,NA,NA,NA
+"Ambystoma","jeffersonianum","Animalia","Chordata","Amphibia","Caudata","Ambystomatidae","max",NA,NA,NA,NA,NA
+"Ambystoma","macrodactylum","Animalia","Chordata","Amphibia","Caudata","Ambystomatidae","max",NA,NA,NA,NA,NA
+"Ambystoma","maculatum","Animalia","Chordata","Amphibia","Caudata","Ambystomatidae","max",NA,NA,NA,NA,NA
+"Desmognathus","fuscus","Animalia","Chordata","Amphibia","Caudata","Plethodontidae","max, min",NA,NA,NA,NA,NA
+"Desmognathus","ochrophaeus","Animalia","Chordata","Amphibia","Caudata","Plethodontidae","max",NA,NA,NA,NA,NA
+"Desmognathus","quadramaculatus","Animalia","Chordata","Amphibia","Caudata","Plethodontidae","max",NA,NA,NA,NA,NA
+"Eurycea","bislineata","Animalia","Chordata","Amphibia","Caudata","Plethodontidae","max, min",NA,NA,NA,NA,NA
+"Eurycea","longicauda","Animalia","Chordata","Amphibia","Caudata","Plethodontidae","max",NA,NA,NA,NA,NA
+"Eurycea","lucifuga","Animalia","Chordata","Amphibia","Caudata","Plethodontidae","max",NA,NA,NA,NA,NA
+"Eurycea","multiplicata","Animalia","Chordata","Amphibia","Caudata","Plethodontidae","max",NA,NA,NA,NA,NA
+"Eurycea","nana","Animalia","Chordata","Amphibia","Caudata","Plethodontidae","max",NA,NA,NA,NA,NA
+"Notophthalmus","viridescens","Animalia","Chordata","Amphibia","Caudata","Plethodontidae","max",NA,NA,NA,NA,NA
+"Plethodon","glutinosus","Animalia","Chordata","Amphibia","Caudata","Plethodontidae","max",NA,NA,NA,NA,NA
+"Pseudotriton","ruber","Animalia","Chordata","Amphibia","Caudata","Plethodontidae","max",NA,NA,NA,NA,NA
+"Acanthodactylus","erythrurus","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max",NA,NA,NA,NA,NA
+"Acontias","meleagris","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Agkistrodon","contortrix","Animalia","Chordata","Reptilia","Squamata","Viperidae","max, min",NA,NA,NA,NA,NA
+"Ameiva","festiva","Animalia","Chordata","Reptilia","Squamata","Teiidae","max, min",NA,NA,NA,NA,NA
+"Amphibolurus","muricatus","Animalia","Chordata","Reptilia","Squamata","Agamidae","max, min",NA,NA,NA,NA,NA
+"Anniella","pulchra","Animalia","Chordata","Reptilia","Squamata","Anniellidae","max",NA,NA,NA,NA,NA
+"Anolis","barbouri","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max, min",NA,NA,NA,NA,NA
+"Anolis","carolinensis","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max, min",NA,NA,NA,NA,NA
+"Anolis","cooki","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max, min",NA,NA,NA,NA,NA
+"Anolis","cristatellus","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max, min",NA,NA,NA,NA,NA
+"Anolis","cybotes","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","evermanni","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","frenatus","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","gundlachi","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max, min",NA,NA,NA,NA,NA
+"Anolis","krugi","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","lionotus","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max, min",NA,NA,NA,NA,NA
+"Anolis","marcanoi","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","oculatus","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","pulchellus","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","roquet","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","semilineatus","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","shrevei","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","stratulus","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anomalopus","brevicollis","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Anomalopus","leuckartii","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Arizona","elegans","Animalia","Chordata","Reptilia","Squamata","Colubridae","max",NA,NA,NA,NA,NA
+"Austrelaps","superbus","Animalia","Chordata","Reptilia","Squamata","Elapidae","max, min",NA,NA,NA,NA,NA
+"Basiliscus","vittatus","Animalia","Chordata","Reptilia","Squamata","Corytophanidae","max",NA,NA,NA,NA,NA
+"Bassiana","duperreyi","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Bassiana","platynota","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Calyptotis","temporalis","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Carlia","longipes","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Carlia","munda","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Carlia","pectoralis","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Carlia","rhomboidalis","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Carlia","vivax","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Chamaeleo","dilepis","Animalia","Chordata","Reptilia","Squamata","Chamaeleonidae","max, min",NA,NA,NA,NA,NA
+"Chamaeleo","jacksonii","Animalia","Chordata","Reptilia","Squamata","Chamaeleonidae","max, min",NA,NA,NA,NA,NA
+"Charina","bottae","Animalia","Chordata","Reptilia","Squamata","Boidae","max",NA,NA,NA,NA,NA
+"Chionactis","occipitalis","Animalia","Chordata","Reptilia","Squamata","Colubridae","max",NA,NA,NA,NA,NA
+"Chondrodactylus","angulifer","Animalia","Chordata","Reptilia","Squamata","Gekkonidae","max",NA,NA,NA,NA,NA
+"Chondrodactylus","bibronii","Animalia","Chordata","Reptilia","Squamata","Gekkonidae","max",NA,NA,NA,NA,NA
+"Coleonyx","brevis","Animalia","Chordata","Reptilia","Squamata","Eublepharidae","max, min",NA,NA,NA,NA,NA
+"Coleonyx","variegatus","Animalia","Chordata","Reptilia","Squamata","Eublepharidae","max, min",NA,NA,NA,NA,NA
+"Coluber","constrictor","Animalia","Chordata","Reptilia","Squamata","Colubridae","max",NA,NA,NA,NA,NA
+"Cophosaurus","texanus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Cordylus","cordylus","Animalia","Chordata","Reptilia","Squamata","Cordylidae","max, min",NA,NA,NA,NA,NA
+"Cordylus","niger","Animalia","Chordata","Reptilia","Squamata","Cordylidae","max, min",NA,NA,NA,NA,NA
+"Cordylus","oelofseni","Animalia","Chordata","Reptilia","Squamata","Cordylidae","max, min",NA,NA,NA,NA,NA
+"Crotalus","atrox","Animalia","Chordata","Reptilia","Squamata","Viperidae","max",NA,NA,NA,NA,NA
+"Crotalus","cerastes","Animalia","Chordata","Reptilia","Squamata","Viperidae","max",NA,NA,NA,NA,NA
+"Crotalus","scutulatus","Animalia","Chordata","Reptilia","Squamata","Viperidae","max",NA,NA,NA,NA,NA
+"Crotalus","viridis","Animalia","Chordata","Reptilia","Squamata","Viperidae","max",NA,NA,NA,NA,NA
+"Crotaphytus","collaris","Animalia","Chordata","Reptilia","Squamata","Crotaphytidae","max",NA,NA,NA,NA,NA
+"Cryptoblepharus","litoralis","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Cryptoblepharus","plagiocephalus","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Cryptoblepharus","virgatus","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Ctenophorus","cristatus","Animalia","Chordata","Reptilia","Squamata","Agamidae","max",NA,NA,NA,NA,NA
+"Ctenophorus","decresii","Animalia","Chordata","Reptilia","Squamata","Agamidae","max, min",NA,NA,NA,NA,NA
+"Ctenophorus","fordi","Animalia","Chordata","Reptilia","Squamata","Agamidae","max",NA,NA,NA,NA,NA
+"Ctenophorus","maculosus","Animalia","Chordata","Reptilia","Squamata","Agamidae","max",NA,NA,NA,NA,NA
+"Ctenophorus","nuchalis","Animalia","Chordata","Reptilia","Squamata","Agamidae","max",NA,NA,NA,NA,NA
+"Ctenophorus","pictus","Animalia","Chordata","Reptilia","Squamata","Agamidae","max",NA,NA,NA,NA,NA
+"Ctenophorus","reticulatus","Animalia","Chordata","Reptilia","Squamata","Agamidae","max",NA,NA,NA,NA,NA
+"Ctenotus","pantherinus","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Ctenotus","regius","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Ctenotus","spaldingi","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Ctenotus","taeniolatus","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Ctenotus","uber","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Cyclodomorphus","branchialis","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Cyclodomorphus","melanops","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Dipsosaurus","dorsalis","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Egernia","cunninghami","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Egernia","saxatilis","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Egernia","striolata","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Elgaria","coerulea","Animalia","Chordata","Reptilia","Squamata","Anguidae","max",NA,NA,NA,NA,NA
+"Elgaria","multicarinata","Animalia","Chordata","Reptilia","Squamata","Anguidae","max, min",NA,NA,NA,NA,NA
+"Eremias","argus","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max, min",NA,NA,NA,NA,NA
+"Eremias","brenchleyi","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max, min",NA,NA,NA,NA,NA
+"Eremias","multiocellata","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max, min",NA,NA,NA,NA,NA
+"Eremiascincus","fasciolatus","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Eulamprus","heatwolei","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Eulamprus","kosciuskoi","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Eulamprus","murrayi","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Eulamprus","quoyii","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Eulamprus","tenuis","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Eulamprus","tympanum","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Gambelia","wislizenii","Animalia","Chordata","Reptilia","Squamata","Crotaphytidae","min",NA,NA,NA,NA,NA
+"Gehyra","variegata","Animalia","Chordata","Reptilia","Squamata","Gekkonidae","max, min",NA,NA,NA,NA,NA
+"Glaphyromorphus","punctulatus","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Hemachatus","haemachatus","Animalia","Chordata","Reptilia","Squamata","Elapidae","max, min",NA,NA,NA,NA,NA
+"Hemidactylus","frenatus","Animalia","Chordata","Reptilia","Squamata","Gekkonidae","max, min",NA,NA,NA,NA,NA
+"Hemidactylus","turcicus","Animalia","Chordata","Reptilia","Squamata","Gekkonidae","max, min",NA,NA,NA,NA,NA
+"Hemiergis","decresiensis","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Hemiergis","quadrilineatum","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Heteronotia","binoei","Animalia","Chordata","Reptilia","Squamata","Gekkonidae","max, min",NA,NA,NA,NA,NA
+"Holbrookia","maculata","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max",NA,NA,NA,NA,NA
+"Hoplodactylus","maculatus","Animalia","Chordata","Reptilia","Squamata","Gekkonidae","min",NA,NA,NA,NA,NA
+"Lacerta","agilis","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max, min",NA,NA,NA,NA,NA
+"Lacerta","schreiberi","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max",NA,NA,NA,NA,NA
+"Lampropeltis","zonata","Animalia","Chordata","Reptilia","Squamata","Colubridae","max",NA,NA,NA,NA,NA
+"Lampropholis","delicata","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Lampropholis","guichenoti","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Lepidophyma","flavimaculatum","Animalia","Chordata","Reptilia","Squamata","Xantusiidae","max, min",NA,NA,NA,NA,NA
+"Lerista","frosti","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Lerista","neander","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Lerista","orientalis","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Lerista","terdigitata","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Liolaemus","abaucan","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","albiceps","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","alticolor","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","bibronii","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","bisignatus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","boulengeri","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","canqueli","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","capillitas","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","chacoensis","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","chiliensis","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","constanzae","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","curis","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","cuyanus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","cyanogaster","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","darwinii","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","eleodori","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","elongatus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","fabiani","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","fitzgeraldi","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","fitzingerii","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","fuscus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","hellmichi","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","irregularis","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","jamesi","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","kingii","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","koslowskyi","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","kriegi","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","laurenti","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","lemniscatus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","leopardinus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","lorenzmuelleri","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","melanops","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","monticola","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","multicolor","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","multimaculatus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","nigromaculatus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","nigroviridis","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","nitidus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","olongasta","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","ornatus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","petrophilus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","pictus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","platei","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","poecilochromus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","pseudoanomalus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","pseudolemniscatus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","quilmes","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","riojanus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","robertmertensi","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","rothi","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","salinicola","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","scapularis","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","schroederi","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","telsen","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","tenuis","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","vallecurensis","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","walkeri","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Liolaemus","xanthoviridis","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Lophognathus","gilberti","Animalia","Chordata","Reptilia","Squamata","Agamidae","max, min",NA,NA,NA,NA,NA
+"Masticophis","anthonyi","Animalia","Chordata","Reptilia","Squamata","Colubridae","max",NA,NA,NA,NA,NA
+"Masticophis","lateralis","Animalia","Chordata","Reptilia","Squamata","Colubridae","max",NA,NA,NA,NA,NA
+"Meroles","suborbitalis","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max",NA,NA,NA,NA,NA
+"Moloch","horridus","Animalia","Chordata","Reptilia","Squamata","Agamidae","max, min",NA,NA,NA,NA,NA
+"Morethia","butleri","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Morethia","lineoocellata","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Morethia","obscura","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Morethia","taeniopleura","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Nannoscincus","maccoyi","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Niveoscincus","coventryi","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Niveoscincus","metallicus","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Niveoscincus","ocellatus","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Notechis","scutatus","Animalia","Chordata","Reptilia","Squamata","Elapidae","max, min",NA,NA,NA,NA,NA
+"Pedioplanis","lineoocellata","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max",NA,NA,NA,NA,NA
+"Petrosaurus","mearnsi","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max",NA,NA,NA,NA,NA
+"Phrynosoma","cornutum","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max, min",NA,NA,NA,NA,NA
+"Phrynosoma","coronatum","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max",NA,NA,NA,NA,NA
+"Phrynosoma","platyrhinos","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max",NA,NA,NA,NA,NA
+"Phyllorhynchus","decurtatus","Animalia","Chordata","Reptilia","Squamata","Colubridae","max",NA,NA,NA,NA,NA
+"Phymaturus","antofagastensis","Animalia","Chordata","Reptilia","Squamata","Liolaemidae","max, min",NA,NA,NA,NA,NA
+"Phymaturus","dorsimaculatus","Animalia","Chordata","Reptilia","Squamata","Liolaemidae","max, min",NA,NA,NA,NA,NA
+"Phymaturus","indistinctus","Animalia","Chordata","Reptilia","Squamata","Liolaemidae","max, min",NA,NA,NA,NA,NA
+"Phymaturus","palluma","Animalia","Chordata","Reptilia","Squamata","Liolaemidae","max, min",NA,NA,NA,NA,NA
+"Phymaturus","somuncurensis","Animalia","Chordata","Reptilia","Squamata","Liolaemidae","max, min",NA,NA,NA,NA,NA
+"Phymaturus","tenebrosus","Animalia","Chordata","Reptilia","Squamata","Liolaemidae","max, min",NA,NA,NA,NA,NA
+"Phymaturus","zapalensis","Animalia","Chordata","Reptilia","Squamata","Liolaemidae","max, min",NA,NA,NA,NA,NA
+"Pituophis","catenifer","Animalia","Chordata","Reptilia","Squamata","Colubridae","max",NA,NA,NA,NA,NA
+"Platysaurus","intermedius","Animalia","Chordata","Reptilia","Squamata","Cordylidae","max, min",NA,NA,NA,NA,NA
+"Plestiodon","chinensis","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Plestiodon","elegans","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Plestiodon","gilberti","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Plestiodon","obsoletus","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Plestiodon","skiltonianus","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Podarcis","bocagei","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max",NA,NA,NA,NA,NA
+"Podarcis","lilfordi","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max",NA,NA,NA,NA,NA
+"Podarcis","muralis","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max, min",NA,NA,NA,NA,NA
+"Podarcis","tiliguerta","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max",NA,NA,NA,NA,NA
+"Protobothrops","mucrosquamatus","Animalia","Chordata","Reptilia","Squamata","Viperidae","max, min",NA,NA,NA,NA,NA
+"Psammodromus","algirus","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max, min",NA,NA,NA,NA,NA
+"Psammodromus","hispanicus","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max, min",NA,NA,NA,NA,NA
+"Pseudechis","porphyriacus","Animalia","Chordata","Reptilia","Squamata","Elapidae","min",NA,NA,NA,NA,NA
+"Pseudemoia","entrecasteauxii","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Pseudemoia","spenceri","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Pseudocordylus","melanotus","Animalia","Chordata","Reptilia","Squamata","Cordylidae","min",NA,NA,NA,NA,NA
+"Pseudonaja","nuchalis","Animalia","Chordata","Reptilia","Squamata","Elapidae","min",NA,NA,NA,NA,NA
+"Pseudonaja","textilis","Animalia","Chordata","Reptilia","Squamata","Elapidae","max, min",NA,NA,NA,NA,NA
+"Ptenopus","garrulus","Animalia","Chordata","Reptilia","Squamata","Gekkonidae","max",NA,NA,NA,NA,NA
+"Rankinia","diemensis","Animalia","Chordata","Reptilia","Squamata","Agamidae","max, min",NA,NA,NA,NA,NA
+"Rhinocheilus","lecontei","Animalia","Chordata","Reptilia","Squamata","Colubridae","max",NA,NA,NA,NA,NA
+"Saiphos","equalis","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Saproscincus","basiliscus","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Sceloporus","graciosus","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max, min",NA,NA,NA,NA,NA
+"Sceloporus","grammicus","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max",NA,NA,NA,NA,NA
+"Sceloporus","magister","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max",NA,NA,NA,NA,NA
+"Sceloporus","malachiticus","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max, min",NA,NA,NA,NA,NA
+"Sceloporus","merriami","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max, min",NA,NA,NA,NA,NA
+"Sceloporus","occidentalis","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max, min",NA,NA,NA,NA,NA
+"Sceloporus","undulatus","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max, min",NA,NA,NA,NA,NA
+"Sceloporus","variabilis","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max, min",NA,NA,NA,NA,NA
+"Sceloporus","woodi","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max",NA,NA,NA,NA,NA
+"Scelotes","gronovii","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Sphaerodactylus","gaigeae","Animalia","Chordata","Reptilia","Squamata","Sphaerodactylidae","max, min",NA,NA,NA,NA,NA
+"Sphaerodactylus","klauberi","Animalia","Chordata","Reptilia","Squamata","Sphaerodactylidae","max, min",NA,NA,NA,NA,NA
+"Sphaerodactylus","macrolepis","Animalia","Chordata","Reptilia","Squamata","Sphaerodactylidae","max, min",NA,NA,NA,NA,NA
+"Sphaerodactylus","nicholsi","Animalia","Chordata","Reptilia","Squamata","Sphaerodactylidae","max, min",NA,NA,NA,NA,NA
+"Sphaerodactylus","roosevelti","Animalia","Chordata","Reptilia","Squamata","Sphaerodactylidae","max, min",NA,NA,NA,NA,NA
+"Sphaerodactylus","townsendi","Animalia","Chordata","Reptilia","Squamata","Sphaerodactylidae","max, min",NA,NA,NA,NA,NA
+"Sphenomorphus","incognitus","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Sphenomorphus","indicus","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Storeria","occipitomaculata","Animalia","Chordata","Reptilia","Squamata","Colubridae","max",NA,NA,NA,NA,NA
+"Takydromus","formosanus","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max, min",NA,NA,NA,NA,NA
+"Takydromus","hsuehshanensis","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max, min",NA,NA,NA,NA,NA
+"Takydromus","septentrionalis","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max, min",NA,NA,NA,NA,NA
+"Takydromus","sexlineatus","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max, min",NA,NA,NA,NA,NA
+"Takydromus","stejnegeri","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max, min",NA,NA,NA,NA,NA
+"Tarentola","boettgeri","Animalia","Chordata","Reptilia","Squamata","Gekkonidae","max, min",NA,NA,NA,NA,NA
+"Teratoscincus","przewalskii","Animalia","Chordata","Reptilia","Squamata","Gekkonidae","min",NA,NA,NA,NA,NA
+"Thamnophis","butleri","Animalia","Chordata","Reptilia","Squamata","Colubridae","min",NA,NA,NA,NA,NA
+"Thamnophis","elegans","Animalia","Chordata","Reptilia","Squamata","Colubridae","max, min",NA,NA,NA,NA,NA
+"Thamnophis","marcianus","Animalia","Chordata","Reptilia","Squamata","Colubridae","min",NA,NA,NA,NA,NA
+"Thamnophis","melanogaster","Animalia","Chordata","Reptilia","Squamata","Colubridae","min",NA,NA,NA,NA,NA
+"Thamnophis","ordinoides","Animalia","Chordata","Reptilia","Squamata","Colubridae","max, min",NA,NA,NA,NA,NA
+"Thamnophis","radix","Animalia","Chordata","Reptilia","Squamata","Colubridae","min",NA,NA,NA,NA,NA
+"Thamnophis","sirtalis","Animalia","Chordata","Reptilia","Squamata","Colubridae","max, min",NA,NA,NA,NA,NA
+"Tiliqua","nigrolutea","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Tiliqua","rugosa","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Tiliqua","scincoides","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Trachylepis","capensis","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Trapelus","savignii","Animalia","Chordata","Reptilia","Squamata","Agamidae","max, min",NA,NA,NA,NA,NA
+"Uma","inornata","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max",NA,NA,NA,NA,NA
+"Urosaurus","auriculatus","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max",NA,NA,NA,NA,NA
+"Urosaurus","clarionensis","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max",NA,NA,NA,NA,NA
+"Urosaurus","ornatus","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max",NA,NA,NA,NA,NA
+"Uta","stansburiana","Animalia","Chordata","Reptilia","Squamata","Phrynosomatidae","max, min",NA,NA,NA,NA,NA
+"Varanus","gouldii","Animalia","Chordata","Reptilia","Squamata","Varanidae","max",NA,NA,NA,NA,NA
+"Varanus","varius","Animalia","Chordata","Reptilia","Squamata","Varanidae","max, min",NA,NA,NA,NA,NA
+"Xantusia","henshawi","Animalia","Chordata","Reptilia","Squamata","Xantusiidae","max",NA,NA,NA,NA,NA
+"Xantusia","riversiana","Animalia","Chordata","Reptilia","Squamata","Xantusiidae","max, min",NA,NA,NA,NA,NA
+"Xantusia","vigilis","Animalia","Chordata","Reptilia","Squamata","Xantusiidae","max, min",NA,NA,NA,NA,NA
+"Cophixalus","aenigma","Animalia","Chordata","Amphibia","Anura","Microhylidae","max",NA,NA,NA,NA,NA
+"Cophixalus","bombiens","Animalia","Chordata","Amphibia","Anura","Microhylidae","max",NA,NA,NA,NA,NA
+"Cophixalus","exiguus","Animalia","Chordata","Amphibia","Anura","Microhylidae","max",NA,NA,NA,NA,NA
+"Cophixalus","hosmeri","Animalia","Chordata","Amphibia","Anura","Microhylidae","max",NA,NA,NA,NA,NA
+"Cophixalus","mcdonaldi","Animalia","Chordata","Amphibia","Anura","Microhylidae","max",NA,NA,NA,NA,NA
+"Cophixalus","neglectus","Animalia","Chordata","Amphibia","Anura","Microhylidae","max",NA,NA,NA,NA,NA
+"Hylarana","erythraea","Animalia","Chordata","Amphibia","Anura","Ranidae","max",NA,NA,NA,NA,NA
+"Kaloula","kalingensis","Animalia","Chordata","Amphibia","Anura","Microhylidae","max",NA,NA,NA,NA,NA
+"Limnonectes","woodworthi","Animalia","Chordata","Amphibia","Anura","Dicroglossidae","max",NA,NA,NA,NA,NA
+"Occidozyga","laevis","Animalia","Chordata","Amphibia","Anura","Dicroglossidae","max",NA,NA,NA,NA,NA
+"Philautus","surdus","Animalia","Chordata","Amphibia","Anura","Rhacophoridae","max",NA,NA,NA,NA,NA
+"Platymantis","banahao","Animalia","Chordata","Amphibia","Anura","Ceratobatrachidae","max",NA,NA,NA,NA,NA
+"Platymantis","corrugatus","Animalia","Chordata","Amphibia","Anura","Ceratobatrachidae","max",NA,NA,NA,NA,NA
+"Platymantis","dorsalis","Animalia","Chordata","Amphibia","Anura","Ceratobatrachidae","max",NA,NA,NA,NA,NA
+"Platymantis","luzonensis","Animalia","Chordata","Amphibia","Anura","Ceratobatrachidae","max",NA,NA,NA,NA,NA
+"Cyrtodactylus","philippinicus","Animalia","Chordata","Reptilia","Squamata","Gekkonidae","max",NA,NA,NA,NA,NA
+"Lipinia","pulchella","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Heloderma","suspectum","Animalia","Chordata","Lepidosauria","Squamata","Helodermatidae","max",NA,NA,NA,NA,NA
+"Liolaemus","dorbignyi","Animalia","Chordata","Reptilia","Squamata","Iguanidae","max, min",NA,NA,NA,NA,NA
+"Tlalocohyla","smithii","Animalia","Chordata","Amphibia","Anura","Hylidae","max, min",NA,NA,NA,NA,NA
+"Zootoca","vivipara","Animalia","Chordata","Reptilia","Squamata","Lacertidae","max, min",NA,NA,NA,NA,NA
+"Cyclorana","alboguttatus",NA,"Chordata","Amphibia","Anura","Hylidae","max",NA,NA,NA,NA,NA
+"Cyclorana","brevipes",NA,"Chordata","Amphibia","Anura","Hylidae","max",NA,NA,NA,NA,NA
+"Gopherus","agassizii",NA,"Chordata","Archelosauria","Testudines","Emydidae","max",NA,NA,NA,NA,NA
+"Hyla","phyllochroa",NA,"Chordata","Amphibia","Anura","Hylidae","max",NA,NA,NA,NA,NA
+"Testudo","hermanni",NA,"Chordata","Archelosauria","Testudines","Testudinidae","max, min",NA,NA,NA,NA,NA
+"Clubiona","trivialis","Animalia","Arthropoda","Arachnida","Araneae","Clubionidae","max, min",NA,NA,NA,NA,NA
+"Apteropanorpa","tasmanica","Animalia","Arthropoda","Insecta","Mecoptera","Apteropanorpidae",NA,NA,NA,NA,NA,NA
+"Hyla","aurea","Animalia","Chordata","Amphibia","Anura","Hylidae","max",NA,NA,NA,NA,NA
+"Hyla","caerulea","Animalia","Chordata","Amphibia","Anura","Hylidae","max",NA,NA,NA,NA,NA
+"Hyla","chloris","Animalia","Chordata","Amphibia","Anura","Hylidae","max",NA,NA,NA,NA,NA
+"Hyla","citropa","Animalia","Chordata","Amphibia","Anura","Hylidae","max",NA,NA,NA,NA,NA
+"Hyla","lesueuri","Animalia","Chordata","Amphibia","Anura","Hylidae","max",NA,NA,NA,NA,NA
+"Anolis","auratus","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","cupreus","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max, min",NA,NA,NA,NA,NA
+"Anolis","distichus","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","humilis","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max, min",NA,NA,NA,NA,NA
+"Anolis","intermedius","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max, min",NA,NA,NA,NA,NA
+"Anolis","lemurinus","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max, min",NA,NA,NA,NA,NA
+"Anolis","limifrons","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max, min",NA,NA,NA,NA,NA
+"Anolis","pentaprion","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","sagrei","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","tropidogaster","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max",NA,NA,NA,NA,NA
+"Anolis","tropidolepis","Animalia","Chordata","Reptilia","Squamata","Dactyloidae","max, min",NA,NA,NA,NA,NA
+"Lepidodactylus","lugubris","Animalia","Chordata","Reptilia","Squamata","Gekkonidae","max, min",NA,NA,NA,NA,NA
+"Liolaemus","altissimus","Animalia","Chordata","Reptilia","Squamata","Iguanidae","min",NA,NA,NA,NA,NA
+"Phymaturus","patagonicus","Animalia","Chordata","Reptilia","Squamata","Liolaemidae","max, min",NA,NA,NA,NA,NA
+"Carlia","schmeltzi","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Ctenotus","essingtoni","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Eremiascincus","richardsoni","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Hemiergis","peroni","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Lerista","bougainvilli","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Oligosoma","maccanni","Animalia","Chordata","Reptilia","Squamata","Scincidae","min",NA,NA,NA,NA,NA
+"Saproscincus","mustelina","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Saproscincus","tetradactyla","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Sphenomorphus","taiwanensis","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Trachylepis","striata","Animalia","Chordata","Reptilia","Squamata","Scincidae","max, min",NA,NA,NA,NA,NA
+"Tropidophorus","queenslandiae","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Typhlacontias","brevipes","Animalia","Chordata","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Cnemidophorus","sexlineatus","Animalia","Chordata","Reptilia","Squamata","Teiidae","max",NA,NA,NA,NA,NA
+"Parvoscincus","decipiens","Animalia","ChordataŒæ","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Pinoyscincus","abdictus","Animalia","ChordataŒæ","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Pinoyscincus","jagori","Animalia","ChordataŒæ","Reptilia","Squamata","Scincidae","max",NA,NA,NA,NA,NA
+"Trimeresurus","gracilis","Animalia","Chordata","Reptilia","Squamata","Viperidae","max, min",NA,NA,NA,NA,NA
+"Trimeresurus","stejnegeri","Animalia","Chordata","Reptilia","Squamata","Viperidae","max, min",NA,NA,NA,NA,NA
+"Eciton","burchellii","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae",NA,NA,NA,NA,NA,NA
