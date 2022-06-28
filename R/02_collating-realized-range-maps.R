@@ -143,10 +143,10 @@ st_write(IUCN, "data-raw/polygons/IUCN-ectotherms.shp", driver = "ESRI Shapefile
 ## data from: https://datadryad.org/stash/dataset/doi:10.5061/dryad.83s7k
 
 ## read in ranges:
-GARD <- st_read("data-raw/polygons/GARD1.1_dissolved_ranges/modeled_reptiles.shp")
+GARD <- st_read("large-files/realized-ranges/GARD1.1_dissolved_ranges/modeled_reptiles.shp")
 
 ## remove species with IUCN ranges since GARD took ranges from IUCN when available
-IUCN <- st_read("data-raw/polygons/IUCN-ectotherms.shp")
+IUCN <- st_read("large-files/realized-ranges/IUCN-ectotherms.shp")
 GARD <- GARD[which(!GARD$Binomial %in% IUCN$binomial),]
 
 ## look for GARD species in synonym database: 
@@ -172,7 +172,7 @@ st_write(GARD_ol, "data-raw/polygons/GARD_ol.shp", driver = "ESRI Shapefile",
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 ######      GBIF RANGES        #####
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
-GBIF_og <- st_read("data-raw/polygons/GBIF polygons/Filtered occurences ectotherm animals_020817.shp")
+GBIF_og <- st_read("large-files/realized-ranges/GBIF polygons/Filtered occurences ectotherm animals_020817.shp")
 
 # get species synonyms from files:
 path = "large-files/filtered-occurrences/dropbox filtered occurrences for sWEEP/Filtered occurences ectotherm animals 16 12 31 copy/"
@@ -245,7 +245,7 @@ GBIF_ol <- rbind(GBIF_ol, GBIF_i)  ## 240 ranges!
 GBIF_missing <- GBIF_missing[which(!GBIF_missing$single_i %in% GBIF_i$binomial),] 
 GBIF_missing$species ## 17 still missing
 
-st_write(GBIF_ol, "data-raw/polygons/gbif_error-checked.shp", append = FALSE)
+st_write(GBIF_ol, "large-files/realized-ranges/gbif_error-checked.shp", append = FALSE)
 
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
@@ -253,7 +253,7 @@ st_write(GBIF_ol, "data-raw/polygons/gbif_error-checked.shp", append = FALSE)
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 IUCN <- st_read("data-raw/polygons/IUCN-ectotherms.shp") %>%
   select(binomial, geometry)
-GBIF <- st_read("data-raw/polygons/gbif_error-checked.shp") 
+GBIF <- st_read("large-files/gbif_error-checked.shp") 
 GARD <- st_read("data-raw/polygons/GARD_ol.shp") 
 
 ## add source column to identify which ranges are from GBIF vs which are from IUCN:

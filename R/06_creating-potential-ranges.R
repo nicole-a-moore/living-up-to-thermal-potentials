@@ -527,14 +527,14 @@ write.csv(niche_upper_reg_marine, "data-processed/thermal-niches/marine/niche_up
           row.names = FALSE)
 write.csv(niche_lower_reg_marine, "data-processed/thermal-niches/marine/niche_lower_reg_marine.csv", 
           row.names = FALSE)
-write.csv(niche_upper_acclimatized_marine, "data-processed/thermal-niches/marine/niche_upper_acclimatized_marine.csv", 
+write.csv(niche_upper_acclimatized_marine, "large-files/thermal-niches/marine/niche_upper_acclimatized_marine.csv", 
           row.names = FALSE)
 write.csv(niche_lower_acclimatized_marine, "data-processed/thermal-niches/marine/niche_lower_acclimatized_marine.csv", 
           row.names = FALSE)
 
 niche_upper_reg_marine <- read.csv("data-processed/thermal-niches/marine/niche_upper_reg_marine.csv")
 niche_lower_reg_marine <- read.csv("data-processed/thermal-niches/marine/niche_lower_reg_marine.csv")
-niche_upper_acclimatized_marine <- read.csv("data-processed/thermal-niches/marine/niche_upper_acclimatized_marine.csv")
+niche_upper_acclimatized_marine <- read.csv("large-files/thermal-niches/marine/niche_upper_acclimatized_marine.csv")
 niche_lower_acclimatized_marine <- read.csv("data-processed/thermal-niches/marine/niche_lower_acclimatized_marine.csv")
 
 
@@ -780,9 +780,9 @@ niche_Te_in_sun <- rbind(niche_Te_in_sun_terr, niche_Te_in_sun_marine,
 niche_acclimatized <- rbind(niche_acclimatized_terr, niche_acclimatized_marine, 
                           niche_acclimatized_intertidal)
 
-write.csv(niche_Te, "data-processed/thermal-niches/all-realms/niche_Te.csv", row.names = FALSE)
-write.csv(niche_Te_in_sun, "data-processed/thermal-niches/all-realms/niche_Te_in_sun.csv", row.names = FALSE)
-write.csv(niche_acclimatized, "data-processed/thermal-niches/all-realms/niche_acclimatized.csv", row.names = FALSE)
+write.csv(niche_Te, "large-files/thermal-niches/all-realms/niche_Te.csv", row.names = FALSE)
+write.csv(niche_Te_in_sun, "large-files/thermal-niches/all-realms/niche_Te_in_sun.csv", row.names = FALSE)
+write.csv(niche_acclimatized, "large-files/thermal-niches/all-realms/niche_acclimatized.csv", row.names = FALSE)
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
 #####         Functions           #####
