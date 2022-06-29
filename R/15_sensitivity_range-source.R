@@ -1,15 +1,15 @@
 ## range source sensitivity
 library(tidyverse)
+detach(package:plyr)
 select <- dplyr::select
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 #####      Prepping data       #####
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
-uofill <- read.csv("data-processed/niche-filling/thermal-niche-filling-metrics.csv") 
+uofill <- read.csv("data-processed/thermal-niches/niche-filling/thermal-niche-filling-metrics.csv") 
 traits <- read.csv("data-processed/traits/rangetherm-traits_all-spp.csv") %>%
   rename("realm" = Realm) %>%
   select(-limit_type)
-
 
 thermal_limits <- read.csv("data-processed/traits/thermal-limits_ectotherms-with-ranges_taxized.csv")%>%
   select(genus_species, type, metric) %>%
@@ -49,8 +49,6 @@ data <- data %>%
   arrange(genus_species, filling_type, sensitivity_type, source) %>%
   filter(!is.infinite(filling_value)) ## get rid of infinite filling values:
 
-
-
 ## plot correlation 
 ## cold
 cold <- data %>%
@@ -63,10 +61,9 @@ cold <- data %>%
          GBIF = max(GBIF, na.rm=T)) %>%
   filter(!is.infinite(expert_informed), !is.infinite(GBIF))
   
-  
 cold_plot <- cold %>%
   ggplot(., aes(x = expert_informed, y = GBIF, shape = source)) + theme_bw() + 
-  geom_point(colour = "steelblue") +
+  geom_point(colour = "steelblue", size = 2) +
   geom_abline(intercept = 0, slope = 1) + 
   theme(panel.grid = element_blank()) + 
   labs(x = "Cool niche filling (expert-informed range)",
@@ -85,10 +82,9 @@ warm <- data %>%
          GBIF = max(GBIF, na.rm=T)) %>%
   filter(!is.infinite(expert_informed), !is.infinite(GBIF)) 
 
-
 warm_plot <- warm %>%
   ggplot(., aes(x = expert_informed, y = GBIF, shape = source)) + theme_bw() + 
-  geom_point(colour = '#b45346') +
+  geom_point(colour = '#b45346', size = 2) +
   geom_abline(intercept = 0, slope = 1) + 
   theme(panel.grid = element_blank()) + 
   labs(x = "Warm niche filling (expert-informed range)",
@@ -97,14 +93,12 @@ warm_plot <- warm %>%
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme(legend.position = "none")
   
-
 ## now do the same for range filling values 
-
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 #####      Prepping data       #####
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 ## read in under/over/filling data:
-rf <- read.csv("data-processed/range-filling/rangefilling.csv")
+rf <- read.csv("data-processed/potential-ranges/range-filling/rangefilling.csv")
 traits <- read.csv("data-processed/traits/rangetherm-traits_all-spp.csv")
 ## get rid of species in traits that are not in uofill
 traits <- filter(traits, genus_species %in% rf$species)
@@ -151,7 +145,7 @@ range <- rf %>%
 
 range_plot <- range %>%
   ggplot(., aes(x = expert_informed, y = GBIF, shape = source)) + theme_bw() + 
-  geom_point(colour = 'darkgrey') +
+  geom_point(colour = 'darkgrey', size = 2) +
   geom_abline(intercept = 0, slope = 1) + 
   theme(panel.grid = element_blank()) + 
   labs(x = "Log(range filling) (expert-informed range)",
@@ -172,10 +166,9 @@ rsource <- ggdraw() +
                   y = c(1, 1, 1), size = 10, 
                   color = "grey30")
 
-ggsave(rsource, path = "figures", 
+ggsave(rsource, path = "figures/extended-data", 
        filename = "range-source-plot.png", 
-       device = "png", width = 12, height = 4)
-
+       device = "png", width = 10.5, height = 4)
 
 ## legend
 range %>%
@@ -188,4 +181,3 @@ range %>%
        shape = "Expert range source") + 
   geom_vline(xintercept = 0, linetype = "dashed") +
   geom_hline(yintercept = 0, linetype = "dashed") 
-

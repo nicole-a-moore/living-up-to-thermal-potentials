@@ -1004,7 +1004,7 @@ latitude <- latitude + theme(legend.position = "none")
 saveRDS(latitude, "data-processed/intermediate-files/predictions_niche_latitude.rds")
 
 ggsave(latitude, path ="figures/main", filename = "predictions_niche_latitude.png",
-       width = 8, height = 4, device = "png")
+       width = 6.5, height = 4, device = "png")
 
 latitude_talk <- both %>%
   ggplot(., aes(x = abs_lat_mp, y = filling_value,
@@ -1187,9 +1187,6 @@ ggsave(realm_distributions, "figures/main",
 ## save dataset 
 full_withdormancy <- saveRDS(both, "data-processed/intermediate-files/full_withdormancy.rds") 
 
-
-## flag 
-
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 #####             Plot distributions              #####
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
@@ -1250,13 +1247,24 @@ ggsave(ghostly, "figures/main", filename = "distributions_niche_realm-with-acc.p
        width = 5, height = 3, device = "png")
 
 
+
 ## plot only ghosts and overlay in inkscape
+acc_no_int <- acc_both %>%
+  mutate(filling_value = ifelse(niche_edge == "Cold" & realm == "Intertidal" & colour == "acclimatized",
+                                NA,
+                                filling_value))
+
+acc_int <- acc_both %>%
+  mutate(filling_value = ifelse(!(niche_edge == "Cold" & realm == "Intertidal" & colour == "acclimatized"),
+                                NA,
+                                filling_value))
+  
 ghostly_only <- acc_both %>%
   filter(colour == "acclimatized") %>%
   ggplot(., aes(x = filling_value, y = realm, 
                 fill = colour, colour = colour)) +
   geom_density_ridges(aes(height = ..density..), stat = "density", scale = 0.9,
-                      alpha = 0.6, trim = TRUE)  +
+                      alpha = 0.6, trim = TRUE) + 
   theme_ridges() +
   theme(legend.position = "none") +
   coord_flip() +
@@ -1283,9 +1291,9 @@ ghostly_only <- acc_both %>%
                                 "0°C", "10°C",
                                 "20°C", "30°C"),
                      limits = c(-25, 40)) +
-  facet_wrap(~edge_type) 
+  facet_wrap(~edge_type)
 
-ggsave(ghostly_only, "figures/main", filename = "distributions_niche_realm-acc-only.png",
+ggsave(ghostly_only, "figures/main", filename = "distributions_niche_realm-acc-only_both.png",
        width = 5, height = 3, device = "png")
 
 ## save legend of ghost:

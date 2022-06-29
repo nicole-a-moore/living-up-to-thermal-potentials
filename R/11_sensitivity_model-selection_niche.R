@@ -10,7 +10,6 @@ library(ggridges)
 select <- dplyr::select
 rename <- dplyr::rename
 
-
 ## read in the data
 data <- read.csv("data-processed/thermal-niches/niche-filling/thermal-niche-filling-metrics_model-ready.csv")
 
@@ -584,6 +583,7 @@ distrib <- warm_both %>%
   geom_vline(xintercept = 0, size = 0.4) +
   scale_x_continuous(breaks = c(-20, -10, 0, 10), labels = c("-20°C", "-10°C", 
                                                              "0°C", "10°C")) 
+
 ggsave(distrib, path ="figures/extended-data", filename = "distributions_warm-niche_behav.png",
        width = 5.5, height = 4, device = "png")
 
@@ -1006,12 +1006,27 @@ both <- rbind(warm_acc, warm_no_acc) %>%
                                      "full data Marine", "not acclimatized Marine", "acclimatized Marine"), 
                     ordered = T))
 
+no_int <- both %>%
+  mutate(filling_value = ifelse(y %in% c("not acclimatized Intertidal", "acclimatized Intertidal",
+                                         "full data Intertidal") &
+                                  edge_type == "Cold niche filling",
+                                NA,
+                                filling_value))
+int_only <- both  %>%
+  mutate(filling_value = ifelse(!(y %in% c("not acclimatized Intertidal", "acclimatized Intertidal",
+                                         "full data Intertidal" ) &
+                                  edge_type == "Cold niche filling"),
+                                NA,
+                                filling_value))
+
 ## plot:
-acclimatized_dist <- both %>%
+acclimatized_dist <- no_int %>%
   ggplot(., aes(x = filling_value, y = y, fill = colour, colour = colour)) +
   geom_density_ridges(aes(height = ..density..), stat = "density", scale = 0.9, 
                       alpha = 0.6, trim = TRUE)  +
-  geom_point(shape = 95, size = 4) +
+  geom_density_ridges(data = int_only, aes(height = ..density..), stat = "density", scale = 0.9, 
+                      alpha = 0.6, trim = TRUE) +
+  geom_point(data = both, shape = 95, size = 4) +
   theme_ridges() + 
   theme(legend.position = "none") +
   coord_flip() +
@@ -1021,8 +1036,8 @@ acclimatized_dist <- both %>%
   labs(y = "", 
        #x = "Niche filling (°C)"
        x = "") +
-  scale_y_discrete(labels = c("Terrestrial", "", "", "  Marine\n(intertidal)", "", "",
-                              "  Marine\n(subtidal)", "","")) +
+  scale_y_discrete(labels = c("Terrestrial", "", "", "Intertidal\n marine", "", "",
+                              "Subtidal\n marine", "","")) +
   theme(strip.text = element_text(size = 10, vjust = 1),
         axis.text.x = element_text(size = 10, hjust = 0),
         axis.title.y = element_text(size = 10, hjust = 0.5),
@@ -1070,7 +1085,7 @@ behav_dw <- dwplot(behav_warm,
                               "Maximum body size (log cm)",
                               "Metric: lethal",
                               "Realized range size (log no. cells)", 
-                              "Abs. latitude of realized range", 
+                              "Abs. realized range latitudinal midpoint", 
                               "Reference")) +
   labs(colour = '', x = "Effect of variable on warm niche filling") +
   theme_light() +
@@ -1097,13 +1112,13 @@ acc_warm_dw <- dwplot(acc_warm,
                       show_intercept = TRUE) +
   scale_y_discrete(labels = c("Dispersal distance (km)",
                               "Maximum body size (log cm)",
-                              "Abs. latitude of realized range x realm: subtidal",
-                              "Abs. latitude of realized range x realm: intertidal",
+                              "Abs. realized range latitudinal midpoint x realm: subtidal",
+                              "Abs. realized range latitudinal midpoint x realm: intertidal",
                               "Realm: subtidal",
                               "Realm: intertidal",
                               "Metric: lethal",
                               "Realized range size (log no. cells)", 
-                              "Abs. latitude of realized range", 
+                              "Abs. realized range latitudinal midpoint", 
                               "Reference")) +
   labs(colour = '', x = "Effect of variable on warm niche filling") +
   theme_light() +
@@ -1118,13 +1133,13 @@ acc_cold_dw <- dwplot(acc_cold,
                       show_intercept = TRUE) +
   scale_y_discrete(labels = c("Dispersal distance (km)",
                               "Maximum body size (log cm)",
-                              "Abs. latitude of realized range x realm: subtidal",
-                              "Abs. latitude of realized range x realm: intertidal",
+                              "Abs. realized range latitudinal midpoint x realm: subtidal",
+                              "Abs. realized range latitudinal midpoint x realm: intertidal",
                               "Realm: subtidal",
                               "Realm: intertidal",
                               "Metric: lethal",
                               "Realized range size (log no. cells)", 
-                              "Abs. latitude of realized range", 
+                              "Abs. realized range latitudinal midpoint", 
                               "Reference")) +
   labs(colour = '', x = "Effect of variable on cool niche filling") +
   theme_light() +

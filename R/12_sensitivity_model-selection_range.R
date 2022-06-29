@@ -316,7 +316,7 @@ names(acc_uf) <- c("Acclimatization", "No acclimatization")
 acc_uf_dw <- dwplot(acc_uf, 
                     vline = geom_vline(xintercept = 0, colour = "grey50"),
                     show_intercept = TRUE) + 
-  scale_y_discrete(labels = c("intertidal Abs. realized range latitudinal midpoint", 
+  scale_y_discrete(labels = c("x realm: intertidal Abs. realized range latitudinal midpoint", 
                               "Maximum body size (log cm)",
                               "Dispersal distance (km)",
                               "Realm: subtidal",
@@ -569,13 +569,13 @@ acc_asym_dw <- dwplot(acc_asym,
                               "Realm: intertidal",
                               "Abs. realized range latitudinal midpoint", 
                               "Reference")) +
-  labs(colour = "", x = "Effect of variable on range filling") +
+  labs(colour = "", x = "Effect of variable on asymmetry in underfilling") +
   theme_light() +
   scale_colour_manual(values = c("grey", "black")) + 
   theme(legend.text = element_text(size = 8), legend.key.size = unit(0.75, 'lines'),
         axis.text.y = element_text(size = 8),  legend.position = "bottom",
         panel.grid = element_blank()) +
-  scale_x_continuous(limits = c(-0.8, 0.8))
+  scale_x_continuous(limits = c(-0.65, 0.8))
 
 ggsave(acc_asym_dw, width = 6, height = 3, path = "figures/extended-data", 
        filename = "whisker-plot_acclimatization_asym.png", 
@@ -603,6 +603,7 @@ acc_dw <- ggdraw() +
                   y = c(1, 0.73, 0.46, 0.25), size = 10, 
                   color = "grey30") 
 
-ggsave(acc_dw, width = 6, height = 6.5, path = "figures/extended-data", 
+ggsave(acc_dw, width = 6.2, height = 6.5, path = "figures/extended-data", 
        filename = "whisker-plot_acclimatization_all.png", 
        device = "png")
+

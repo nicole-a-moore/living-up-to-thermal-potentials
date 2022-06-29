@@ -467,7 +467,7 @@ acc_methods <- ggdraw() +
                   y = c(1, 1), size = 10, 
                   color = "grey30") 
 
-ggsave(acc_methods, path = "figures/additional-figures/acclimatisation-analysis", filename = "ARR-methods.png", 
+ggsave(acc_methods, path = "figures/extended-data", filename = "ARR-methods.png", 
        device = "png", height = 4.8, width = 8)
 
 write.csv(acc_data, "data-processed/traits/acclimation-data.csv", row.names = FALSE)

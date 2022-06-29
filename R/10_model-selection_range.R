@@ -267,24 +267,6 @@ ggsave(whisker_uf, width = 6, height = 2.5, path = "figures/extended-data",
        filename = "whisker-plot_range-filling.png", 
        device = "png")
 
-## combine all whisker plots and save figure:
-whisker_uf <- readRDS("data-processed/intermediate-files/whisker_range.rds")
-whisker_warm <- readRDS("data-processed/intermediate-files/whisker_warm.rds")
-whisker_cold <- readRDS("data-processed/intermediate-files/whisker_cold.rds")
-
-whisker <- ggdraw() + 
-  draw_plot(whisker_warm, x = 0, y = 0.63, width = 1, height = 0.37) +
-  draw_plot(whisker_cold, x = 0, y = 0.26, width = 1, height = 0.37) + 
-  draw_plot(whisker_uf, x = 0, y = 0, width = 1, height = 0.26) +
-  draw_plot_label(label = c("a)", "b)", "c)"),
-                  x = c(0, 0,0),
-                  y = c(1, 0.63, 0.26), size = 10, 
-                  color = "grey30") 
-
-ggsave(whisker, width = 6, height = 6, path = "figures/extended-data", 
-       filename = "whisker-plot_warm-cold-range.png", 
-       device = "png")
-
 ### assess model averaging by looking at top model set 
 library(dotwhisker)
 library(RColorBrewer)
@@ -337,7 +319,7 @@ model_check <- ggdraw() +
                   y = c(1, 0.63, 0.26), size = 10, 
                   color = "grey30") 
 
-ggsave(model_check, height = 6, width = 6, path = "figures/extended-data", 
+ggsave(model_check, height = 6, width = 6.5, path = "figures/extended-data", 
        filename = "whisker-plot_model-averaging-check.png", 
        device = "png")
 
@@ -448,6 +430,48 @@ ggsave(whisker_asym, width = 7, height = 2.5, path = "figures/extended-data",
        filename = "whisker-plot_asym-underfilling.png", 
        device = "png")
 
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
+#####         Exporting tables                  #####
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
+## make data frame of details I want to include in our table:
+sum <- summary(confset.95p_asym[[1]])
+sum_uf <- sum$coefficients$fixed
+eff_type <- c("intercept", "slope", "slope", "slope","intercept","intercept")
+coefs <- sum_uf[c(1,2,5,6,3,4)] # reorder
+f_effects <- c("(Intercept)",
+               "Abs. realized range latitudinal midpoint",
+               "Abs. realized range latitudinal midpoint x realm: subtidal",
+               "Abs. realized range latitudinal midpoint x realm: intertidal",
+               "Realm: intertidal",
+               "Realm: marine")
+ttable <- as.data.frame(sum$tTable)
+std_err <- ttable[c(1,2,5,6,3,4),2]  # reorder fixed effects
+z_val <- ttable[c(1,2,5,6,3,4),4]
+p_val <- ttable[c(1,2,5,6,3,4),5]
+names(coefs) <- names(std_err) <- names(z_val) <- names(p_val) <- NULL
+
+## put all into a table:
+results <- data.frame("fixed effects" = f_effects, 
+                      "effect type" = eff_type,
+                      "estimate" = coefs,
+                      "s.e." = std_err,
+                      "z-value" = z_val,
+                      "p-value" = p_val)
+colnames(results) = c("fixed effects",	"effect type",	"estimate", "s.e.",'z-value',	"p-value")
+
+results[c(c(3,4,5))] <- round(results[,c(3,4,5)], digits = 2) # round estimates to 2 decimal places
+results[6] <- round(results[,6], digits = 3) # round p values to 3 decimal places
+## add significance indicators
+results$`p-value` <- ifelse(results$`p-value` == 0, "<0.001 **", 
+                            ifelse(results$`p-value` <= 0.01, paste(results$`p-value`, " **", sep= ""), 
+                                   ifelse(results$`p-value` <= 0.05, paste(results$`p-value`, " *", sep= ""),
+                                          ifelse(results$`p-value` <= 0.1, paste(results$`p-value`, " ", sep= ""),
+                                                 as.character(results$`p-value`)))))
+
+table <- results %>%
+  addHtmlTableStyle(col.rgroup = c("none", "#F7F7F7")) %>%
+  htmlTable(., rnames = rep("", 8))
+
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 #####         Plotting model predictions         ######
@@ -538,7 +562,7 @@ asym_lat <- uf %>%
 saveRDS(asym_lat, "data-processed/intermediate-files/asym-underfilling_latitude.rds")
 
 ggsave(asym_lat, path ="figures/main", filename = "predictions_asym_latitude.png",
-       width = 5.5, height = 3.5, device = "png")
+       width = 6.5, height = 3.5, device = "png")
 
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
@@ -610,6 +634,11 @@ realms_all <- rbind(realm_int, realm_mar) %>%
   rbind(., realm_terr)
 
 latitude <- uf %>%
+  mutate(realm = ifelse(realm == "Intertidal", "Intertidal marine", 
+                        ifelse(realm == "Marine", "Subtidal marine",
+                               "Terrestrial"))) %>%
+  mutate(realm = factor(.$realm, levels = c("Terrestrial", "Intertidal marine", "Subtidal marine"), 
+                        ordered = TRUE)) %>%
   ggplot(., aes(x = abs_lat_mp, y = log_prop_occupied,
                 shape = realm, colour = bias_in_uf, fill = bias_in_uf, group = realm)) +
   labs(col = "", shape = "", x =  "Absolute realized range latitudinal midpoint (°N/S)", 
@@ -634,3 +663,23 @@ saveRDS(latitude, "data-processed/intermediate-files/range_latitude.rds")
 
 ggsave(latitude, path ="figures/main", filename = "predictions_range_latitude.png",
        width = 6.5, height = 2.5, device = "png")
+
+## combine all whisker plots and save figure:
+whisker_uf <- readRDS("data-processed/intermediate-files/whisker_range.rds")
+whisker_warm <- readRDS("data-processed/intermediate-files/whisker_warm.rds")
+whisker_cold <- readRDS("data-processed/intermediate-files/whisker_cold.rds")
+whisker_asym <- readRDS("data-processed/intermediate-files/whisker_asym-underfilling.rds")
+
+whisker <- ggdraw() + 
+  draw_plot(whisker_warm, x = 0, y = 0.73, width = 1, height = 0.27) +
+  draw_plot(whisker_cold, x = 0, y = 0.46, width = 1, height = 0.27) + 
+  draw_plot(whisker_uf, x = 0, y = 0.23, width = 1, height = 0.23) +
+  draw_plot(whisker_asym, x = 0, y = 0.03, width = 1, height = 0.20) +
+  draw_plot_label(label = c("a)", "b)", "c)", "d)"),
+                  x = c(0, 0, 0, 0),
+                  y = c(1, 0.73, 0.46, 0.23), size = 10, 
+                  color = "grey30") 
+
+ggsave(whisker, width = 6.5, height = 8, path = "figures/extended-data", 
+       filename = "whisker-plot_warm-cold-range.png", 
+       device = "png")

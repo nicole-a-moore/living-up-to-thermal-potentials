@@ -5,12 +5,13 @@ library(cowplot)
 library(sf)
 library(PNWColors)
 select = dplyr::select
+rename = dplyr::rename
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 #####       Prepping data for figure making     ######
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 ## niche:
-uofill <- read.csv("data-processed/niche-filling/thermal-niche-filling-metrics.csv") 
+uofill <- read.csv("data-processed/thermal-niches/niche-filling/thermal-niche-filling-metrics.csv") 
 traits <- read.csv("data-processed/traits/rangetherm-traits_all-spp.csv")
 thermal_limits <- read.csv("data-processed/traits/thermal-limits_ectotherms-with-ranges_taxized.csv")%>%
   select(genus_species, type, metric) %>%
@@ -49,8 +50,8 @@ names(types) = c("Te_acclimatized", "Te", "Te_tpref", "Te_tpreftb",
                  "Te_subset_tpref")
 ## range: 
 ## read in results:
-rf <- read.csv("data-processed/range-filling/rangefilling-metrics_model-ready.csv")
-nf <- read.csv("data-processed/niche-filling/thermal-niche-filling-metrics_model-ready.csv")
+rf <- read.csv("data-processed/potential-ranges/range-filling/rangefilling-metrics_model-ready.csv")
+nf <- read.csv("data-processed/thermal-niches/niche-filling/thermal-niche-filling-metrics_model-ready.csv")
 
 ## calculate the proportion of occupied cells in the potential range
 rf$prop_occupied <- (rf$pr_cells - rf$u_cells) / rf$pr_cells
@@ -85,199 +86,9 @@ acc <- acc %>%
   filter(!duplicated(species)) 
 
 
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
-#####       Plot range filling versus niche filling     ######
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
-## get rid of niche filling data for species without range filling values 
-rf <- te
-rf$filling <- log(rf$prop_occupied <- (rf$pr_cells - rf$u_cells) / rf$pr_cells)
-rf <- rf[!is.na(rf$filling),]
-
-nf <- Te
-nf <- nf[nf$range %in% rf$range,]
-nf$species <- str_replace_all(nf$species, " ", "_")
-
-## combine data 
-data <- left_join(nf, rf)
-## make columns for warm and cold niche filling 
-data$warm_filling <- ifelse(data$warm_over == 0, data$warm_under, data$warm_over) 
-data$cold_filling <- ifelse(data$cold_over == 0, data$cold_under, data$cold_over) 
-
-## get rid of niche overfilling, since we got rid of areas of overfilling:
-data$warm_filling <- ifelse(data$warm_filling > 0, 0, data$warm_filling) 
-data$cold_filling <- ifelse(data$cold_filling > 0, 0, data$cold_filling) 
-
-## make positive so axes can say underfilling
-data <- data %>%
-  mutate(warm_underfilling = abs(warm_filling),
-         cold_underfilling = abs(cold_filling))
-
-## plot range filling versus warm niche filling:
-ggplot(data, aes(x = filling, y = warm_underfilling)) + geom_point() +
-  theme_minimal() +
-  labs(y = "Warm niche underfilling (°C)", x = "Range filling")
-
-ggplot(data, aes(x = filling, y = cold_underfilling)) + geom_point() +
-  theme_minimal() +
-  labs(y = "Cold niche underfilling (°C)", x = "Range filling")
-
-ggplot(data, aes(x = cold_underfilling, y = warm_underfilling, size = filling)) + geom_point() +
-  theme_minimal() +
-  labs(y = "Warm niche underfilling (°C)", x = "Cold niche underfilling (°C)", size = "Range filling")
-
-ggplot(data, aes(x = log(filling), y = warm_underfilling)) + geom_point() +
-  theme_minimal() +
-  labs(y = "Warm niche underfilling (°C)", x = "Ln range filling")
-
-ggplot(data, aes(x = log(filling), y = cold_underfilling)) + geom_point() +
-  theme_minimal() +
-  labs(y = "Cold niche underfilling (°C)", x = "Ln range filling")
-
-ggplot(data, aes(x = cold_underfilling, y = warm_underfilling, size = log(filling))) + 
-  geom_point(position = position_jitter()) +
-  theme_minimal() +
-  labs(y = "Warm niche underfilling (°C)", x = "Cold niche underfilling (°C)", 
-       size = "Ln range filling") +
-  scale_size(range = c(0.5, 2)) 
-
-
-
-
-
-## where is the realized niche position within the potential niche?
-data <- data %>%
-  mutate(r_niche_upper = ifelse(r_niche_upper > p_niche_upper, p_niche_upper, r_niche_upper)) %>%
-  mutate(r_niche_lower = ifelse(r_niche_lower < p_niche_lower, p_niche_lower, r_niche_lower))
-
-data$realized_position = (data$r_niche_upper - data$r_niche_lower)/2
-data$potential_position = (data$p_niche_upper - data$p_niche_lower)/2
-
-data$relative_niche_position = data$potential_position - data$realized_position
-
-
-ggplot(data, aes(x = filling, y = relative_niche_position)) + geom_point() +
-  labs(x = "Occupied proportion of potential range", 
-       y = "Relative niche position\n(potential - realized niche midpoint)") +
-  theme_minimal()
-
-ggplot(data, aes(x = cold_underfilling, y = warm_underfilling, size = log(filling),
-                 colour = relative_niche_position)) + 
-  geom_point(position = position_jitter()) +
-  theme_minimal() +
-  labs(y = "Warm niche underfilling (°C)", x = "Cold niche underfilling (°C)", 
-       size = "Ln range filling") +
-  scale_size(range = c(0.5, 2)) 
-
-
-
-## make nice plots:
-data <- gather(data, key = "facet", value = "underfilling_value", 
-                     c(warm_underfilling, cold_underfilling))
-  
-
-warm_range <- data %>%
-  filter(facet == "warm_underfilling") %>%
-  ggplot(., aes(x = log(filling), y = underfilling_value)) + 
-  geom_point(aes(colour = underfilling_value)) +
-  labs(y = "Shortfall of temperatures occupied (°C)", x = "Ln proportion of occupied potential range") +
-  scale_colour_gradient(high = "#b45346", low = "white") +
-  theme_bw() +
-  theme(axis.line.x.top = element_line(),
-        axis.line.y.right = element_line(), 
-        panel.border = element_blank(),
-        strip.background = element_blank(),
-        legend.position = "none",
-        strip.text.x = element_blank())  +
-  annotate("segment", x = -Inf, xend = Inf, y = -Inf, yend = -Inf, size = 1) +
-  annotate("segment", x = -Inf, xend = -Inf, y = -Inf, yend = Inf, size = 1) +
-  scale_x_continuous(expand = c(0.01,0.01), limits = c(-7.5, 0)) +
-  scale_y_continuous(expand = c(0.01,0.01)) +
-  geom_point(shape = 1, aes(x = log(filling), y = underfilling_value), 
-             inherit.aes = F, stroke = 0.5) 
-
-cold_range <- data %>%
-  filter(facet == "cold_underfilling") %>%
-  ggplot(., aes(x = log(filling), y = underfilling_value)) + 
-  geom_point(aes(colour = underfilling_value)) +
-  labs(y = "Shortfall of temperatures occupied (°C)", x = "Ln proportion of occupied potential range") +
-  scale_colour_gradient(high = "steelblue", low = "white") +
-  theme_bw() +
-  theme(axis.line.x.top = element_line(),
-        axis.line.y.right = element_line(), 
-        panel.border = element_blank(),
-        strip.background = element_blank(),
-        legend.position = "none",
-        strip.text.x = element_blank())  +
-  annotate("segment", x = -Inf, xend = Inf, y = -Inf, yend = -Inf, size = 1) +
-  annotate("segment", x = -Inf, xend = -Inf, y = -Inf, yend = Inf, size = 1) +
-  scale_x_continuous(expand = c(0.01,0.01), limits = c(-7.5, 0)) +
-  scale_y_continuous(expand = c(0.01,0.01)) +
-  geom_point(shape = 1, aes(x = log(filling), y = underfilling_value), 
-             inherit.aes = F, stroke = 0.5) 
-
-
-ggplot(data, aes(x = log(filling), y = underfilling_value, colour = facet)) + 
-  geom_point() +
-  labs(y = "Shortfall of temperatures occupied (°C)", 
-       x = "Ln proportion of occupied potential range") +
-  facet_wrap(~facet) +
-  scale_colour_manual(values = c("steelblue", "#b45346")) +
-  theme_bw() +
-  theme(axis.line.x.top = element_line(),
-        axis.line.y.right = element_line(), 
-        panel.border = element_blank(),
-        strip.background = element_blank(),
-        legend.position = "none",
-        strip.text.x = element_blank())  +
-  annotate("segment", x = -Inf, xend = Inf, y = -Inf, yend = -Inf, size = 1) +
-  annotate("segment", x = -Inf, xend = -Inf, y = -Inf, yend = Inf, size = 1) +
-  scale_x_continuous(expand = c(0.01,0.01), limits = c(-7.5, 0)) +
-  scale_y_continuous(expand = c(0.01,0.01)) 
-  
-
-
-rel_niche_pos <- ggplot(data, aes(x = log(filling), y = relative_niche_position, colour = relative_niche_position)) + 
-  geom_point() +
-  labs(y = "Potential - realized niche\nmidpoint (°C)", x = "Ln proportion of occupied potential range") +
-  theme_bw() +
-  theme(axis.line.x.top = element_line(),
-        axis.line.y.right = element_blank(), 
-        panel.border = element_blank(),
-        strip.background = element_blank(),
-        legend.position = "none",
-        strip.text.x = element_blank())  +
-  annotate("segment", x = -Inf, xend = Inf, y = 0, yend = 0) +
-  annotate("segment", x = -Inf, xend = -Inf, y = -Inf, yend = Inf) +
-  scale_x_continuous(expand = c(0.01,0.01), limits = c(-7.5, 0)) +
-  scale_y_continuous(expand = c(0.01,0.01), limits = c(-11, 11)) +
-  scale_colour_gradient(high = "#b45346", low = "white") +
-  geom_point(shape = 1, aes(x = log(filling), y = relative_niche_position), 
-             inherit.aes = F, stroke = 0.5)
-
-
-ggsave(rel_niche_pos, path ="figures/range-filling", filename = "rel-niche-position.png",
-       width = 4, height = 3, device = "png")
-ggsave(cold_range, path ="figures/range-filling", filename = "cold-range-filling.png",
-       width = 2, height = 2, device = "png")
-ggsave(warm_range, path ="figures/range-filling", filename = "warm-range-filling.png",
-       width = 2, height = 2, device = "png")
-
-cold_range = cold_range + labs(y = "", x = "")
-
-warm_range = warm_range + labs(y = "", x = "")
-
-grob <- grid.arrange(cold_range, warm_range, nrow = 2)
-
-
-grid <- grid.arrange(arrangeGrob(grob, 
-                                  left = textGrob("Shortfall of temperatures occupied (°C)", 
-                                                  gp=gpar(size = 6), rot=90)))
-
-ggsave(grid, path ="figures/range-filling", filename = "warm-cold-range-filling.png",
-       width = 4, height = 3, device = "png")
-
-
-
+##~~~~~~~~~~~~~~~~~~~~~~~##
+#####       Plots    ######
+##~~~~~~~~~~~~~~~~~~~~~~~##
 ## plot collection point on map 
 ## colour by difference between 95% percentile of cold body temperature across range and species' coldest body temperature at collection point 
 library(rgeos)
@@ -285,12 +96,12 @@ r <- raster(xmn=-180, xmx=180, ymn=-90, ymx=90,
             crs=CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"),
             res = 1)
 
-op_temps <- stack("data-processed/temperature-data/operative-temperatures/Te_shade_min.grd")
-mar_temps <- stack("data-processed/temperature-data/raster_marine_low.grd")
-int_temps <- stack("data-processed/temperature-data/raster_intertidal_low.grd") 
+op_temps <- stack("large-files/operative-temperatures/Te_shade_min.grd")
+mar_temps <- stack("data-processed/temperature-data/marine/raster_marine_low.grd")
+int_temps <- stack("data-processed/temperature-data/intertidal/raster_intertidal_low.grd") 
 
 ## read in niche limits to get species list 
-filling <- read.csv("data-processed/niche-filling/thermal-niche-filling-metrics_model-ready.csv") %>%
+filling <- read.csv("data-processed/thermal-niches/niche-filling/thermal-niche-filling-metrics_model-ready.csv") %>%
   mutate(species = str_replace_all(genus_species, "_", ".")) %>%
   mutate(range = paste(species, source, sep = "_")) %>%
   filter(sensitivity_type == "Te") %>%
@@ -393,18 +204,19 @@ col_map <- ggplot(countries, aes(x=long, y=lat, group = group)) + theme_minimal(
   scale_y_continuous(breaks = c(-90, -60, -30, 0, 30, 60, 90)) +
   theme(legend.title = element_text(size = 9))
   
-ggsave(col_map, path = "figures/extended-data/", filename = "collection_map.png", width = 9, height = 7)
+ggsave(col_map, path = "figures/extended-data/", filename = "collection-point-map.png", width = 9, height = 7)
 
 
 
 ## map for ink scape:
-map <- as.data.frame(raster('data-processed/masks/raster_terr_mask_nichemapr.grd'), xy = T)
+map <- as.data.frame(raster('data-processed/masks/raster_terr_mask_nichemapr.grd'), xy = TRUE)
 colnames(map)[1:3] <- c("longitude", "latitude", "mask")
 
-rrs <- as.data.frame(stack("data-processed/realized-ranges/rasterized_rrs_nichemapr.grd"), xy=TRUE)
+rrs <- as.data.frame(readRDS("data-processed/realized-ranges/rasterized_rrs_nichemapr.rds"), xy=TRUE)
 colnames(rrs)[1:2] <- c("longitude", "latitude")
 
-prs <- as.data.frame(stack(readRDS("data-processed/potential-ranges/prs_terrestrial_acclimatized.rds")[[1]]), xy=TRUE)
+prs <- as.data.frame(stack(readRDS("data-processed/potential-ranges/terrestrial/prs_terrestrial_acclimatized.rds")[[1]]), 
+                     xy=TRUE)
 colnames(prs)[1:2] <- c("longitude", "latitude")
 
 range = 'Elgaria_multicarinata_IUCN'
@@ -427,7 +239,6 @@ r <- left_join(r, prs[,c(1:2, which(colnames(prs) == range))])
 colnames(r)[4] <- "pr"
 r$rr <- as.factor(r$rr)
 
-
 rangemap = ggplot(r, aes(x = longitude, y = latitude)) +
   xlim(-180, 180) + ylim(-90,90) + coord_fixed(ratio = 1) +
   geom_raster(aes(fill = rr)) + 
@@ -440,11 +251,10 @@ rangemap = ggplot(r, aes(x = longitude, y = latitude)) +
   scale_y_continuous(breaks = c(-90,-60,-30,0,30,60,90), expand = c(0.01,0.01)) + theme_void() +
   theme(legend.position = "none") 
 
-
-ggsave(rangemap, path = 'figures/didactic/', filename = 'range-map-ggplot.svg', 
+ggsave(rangemap, path = 'figures/main/didactic/', filename = 'range-map-ggplot.svg', 
        height = 6, width = 10, units = "in", device = "svg")
 
-map <- stack('data-processed/temperature-data/raster_terr_high.grd')[[1]]
+map <- stack('data-processed/temperature-data/terrestrial/raster_terr_high.grd')[[1]]
 mask <- raster('data-processed/masks/raster_terr_mask_nichemapr.grd')
 map <- mask(map, mask)
 
@@ -454,12 +264,11 @@ colnames(map)[1:2] <- c("longitude", "latitude")
 base <- as.data.frame(mask, xy = T)
 colnames(base)[1:2] <- c("longitude", "latitude")
 
-rrs <- as.data.frame(stack("data-processed/realized-ranges/rasterized_rrs_nichemapr.grd"), xy=TRUE)
+rrs <- as.data.frame(readRDS("data-processed/realized-ranges/rasterized_rrs_nichemapr.rds"), xy=TRUE)
 colnames(rrs)[1:2] <- c("longitude", "latitude")
 
-prs <- as.data.frame(stack(readRDS("data-processed/potential-ranges/prs_terrestrial_acclimatized.rds")[[1]]), xy=TRUE)
+prs <- as.data.frame(stack(readRDS("data-processed/potential-ranges/terrestrial/prs_terrestrial_acclimatized.rds")[[1]]), xy=TRUE)
 colnames(prs)[1:2] <- c("longitude", "latitude")
-
 
 range = 'Elgaria_multicarinata_IUCN'
 
@@ -504,9 +313,8 @@ rangemap_coloured = ggplot(r, aes(x = longitude, y = latitude)) +
   scale_y_continuous(breaks = c(-90,-60,-30,0,30,60,90), expand = c(0.01,0.01)) + theme_void() +
   theme(legend.position = "none") 
 
-ggsave(rangemap_coloured, path = 'figures/didactic/', filename = 'range-map-coloured-ggplot.svg', 
+ggsave(rangemap_coloured, path = 'figures/main/didactic', filename = 'range-map-coloured-ggplot.svg', 
        height = 6, width = 10, units = "in", device = "svg")
-
 
 r <- rrs[,c(1:2, rr_index)] 
 colnames(r)[3] <- "rr"
@@ -533,7 +341,7 @@ rangemap_no_pr = ggplot(r, aes(x = longitude, y = latitude)) +
   scale_y_continuous(breaks = c(-90,-60,-30,0,30,60,90), expand = c(0.01,0.01)) + theme_void() +
   theme(legend.position = "none") 
 
-ggsave(rangemap_no_pr, path = 'figures/didactic/', filename = 'range-map-only-rr.svg', 
+ggsave(rangemap_no_pr, path = 'figures/main/didactic', filename = 'range-map-only-rr.svg', 
        height = 6, width = 10, units = "in", device = "svg")
 
 # get rid of areas of range overfilling
@@ -563,7 +371,7 @@ rangemap_no_pr = ggplot(r, aes(x = longitude, y = latitude)) +
   scale_y_continuous(breaks = c(-90,-60,-30,0,30,60,90), expand = c(0.01,0.01)) + theme_void() +
   theme(legend.position = "none") 
 
-ggsave(rangemap_no_pr, path = 'figures/didactic/', filename = 'range-map-only-rr-no-overfill.svg', 
+ggsave(rangemap_no_pr, path = 'figures/main/didactic', filename = 'range-map-only-rr-no-overfill.svg', 
        height = 6, width = 10, units = "in", device = "svg")
 
 
@@ -591,9 +399,8 @@ stripeyboi <- ggplot(notholes, aes(x = long, y = lat, group = group)) +
   geom_polygon(data = holes, 
                fill = 'white',
                colour = 'black') 
-  
 
-ggsave(stripeyboi, path = 'figures/didactic/', 
+ggsave(stripeyboi, path = 'figures/main/didactic', 
        filename = 'range-map-only-pr-stripey.png', 
        height = 6, width = 10, units = "in", device = "png", bg = "transparent")
 
@@ -619,18 +426,15 @@ stripeybox <- ggplot(box, aes(x = long, y = lat, group = group)) +
     pattern_density = 0.005) +
   coord_fixed() 
 
-ggsave(stripeybox, path = 'figures/didactic/', 
+ggsave(stripeybox, path = 'figures/main/didactic', 
        filename = 'range-map-stripey-box.png', 
        height = 6, width = 10, units = "in", device = "png", bg = "transparent")
 
-
-
-
 ### try one that shows the underlying distribution of temperatutes
-rrs <- as.data.frame(stack(readRDS("data-processed/potential-ranges/prs_terrestrial_Te.rds")[[4]]), xy=TRUE)
+rrs <- as.data.frame(stack(readRDS("data-processed/potential-ranges/terrestrial/prs_terrestrial_Te.rds")[[4]]), xy=TRUE)
 colnames(rrs)[1:2] <- c("longitude", "latitude")
 
-prs <- as.data.frame(stack(readRDS("data-processed/potential-ranges/prs_terrestrial_acclimatized_Te.rds")[[2]]), xy=TRUE)
+prs <- as.data.frame(stack(readRDS("data-processed/potential-ranges/terrestrial/prs_terrestrial_acclimatized.rds")[[2]]), xy=TRUE)
 colnames(prs)[1:2] <- c("longitude", "latitude")
 
 r <- rrs[,c(1:2, rr_index)] 
@@ -650,342 +454,3 @@ rangemap = ggplot(r, aes(x = longitude, y = latitude)) +
   scale_x_continuous(breaks = c(-180,-120,-60,0,60,120,180), expand = c(0.01,0.01)) +
   scale_y_continuous(breaks = c(-90,-60,-30,0,30,60,90), expand = c(0.01,0.01)) + theme_void() +
   theme(legend.position = "none") 
-
-
-
-
-
-### for new figure showing restrictions
-## read in saved data for Elgaria_multicarinata_IUCN:
-pr <- readRDS("data-processed/potential_raster_Em.rds")
-elev <- readRDS("data-processed/elev_Em.rds")
-realm <- readRDS("data-processed/realm_Em.rds")
-pr_restricted <- readRDS("data-processed/pr-restricted_Em.rds")
-rniche_res <- readRDS("data-processed/p-restricted_rniche.rds")
-
-pr <- as.data.frame(pr, xy = T)
-colnames(pr)[1:3] <- c("longitude", "latitude", "pr")
-
-elev <- as.data.frame(elev, xy = T)
-colnames(elev)[1:3] <- c("longitude", "latitude", "elev")
-
-realm <- as.data.frame(realm, xy=TRUE)
-colnames(realm)[1:3] <- c("longitude", "latitude", "realm")
-
-pr_restricted <- as.data.frame(pr_restricted, xy=TRUE)
-colnames(pr_restricted)[1:3] <- c("longitude", "latitude", "pr_res")
-
-rniche_res <- as.data.frame(rniche_res, xy=TRUE)
-colnames(rniche_res)[1:3] <- c("longitude", "latitude", "rniche_res")
-
-map <- stack('data-processed/temperature-data/raster_terr_high.grd')[[1]] 
-map <- as.data.frame(map, xy = T)
-colnames(map)[1:3] <- c("longitude", "latitude", "map")
-
-map$normalized = (map$map-min(map$map, na.rm = TRUE))/(max(map$map, na.rm = TRUE)-min(map$map, na.rm = TRUE))
-
-mask <- map[1:3]
-colnames(mask)[1:3] <- c("longitude", "latitude", "mask")
-mask = mask %>%
-  mutate(mask = ifelse(!is.na(mask), 1, mask))
-
-rr_index <- which(str_detect(colnames(rrs), species) & str_detect(colnames(rrs), source))
-
-r <- rrs[,c(1:2, rr_index)] 
-colnames(r)[3] <- "rr"
-
-test <- map
-
-map <- raster("data-processed/temperature-data/raster_marine_mean.grd")
-map <- as.data.frame(map[[1]], xy = T)
-colnames(map)[1:3] <- c("longitude", "latitude", "map")
-map$normalized = (map$map-min(map$map, na.rm = TRUE))/(max(map$map, na.rm = TRUE)-min(map$map, na.rm = TRUE))
-test <- map
-
-one <- ggplot(test, aes(x = longitude, y = latitude, alpha = 0.4)) +
-  xlim(-180, 180) + ylim(-90, 90) + coord_fixed(ratio = 1) +
-  geom_raster(aes(fill = normalized)) + 
-  scale_fill_gradient2(low = "#0083ccff", high = "#d40000ff", mid = "white", midpoint = 0.75,
-                       na.value = "transparent") +
-  # annotate(geom="raster", x=mask$longitude, y=mask$latitude, alpha = 0.1,
-  #          fill = mask$mask) +
-  # annotate(geom="raster", x=r$longitude, y=r$latitude, alpha = 0.5,
-  #          fill = r$rr) +
-  scale_x_continuous(breaks = c(-180,-120,-60,0,60,120,180), expand = c(0.01,0.01)) +
-  scale_y_continuous(breaks = c(-90,-60,-30,0,30,60,90), expand = c(0.01,0.01)) + theme_void() +
-  theme(legend.position = "none") 
-
-test <- left_join(pr, map[,c(1:4)]) 
-test <- filter(test, !is.na(pr))
-
-two <- ggplot(test, aes(x = longitude, y = latitude, alpha = 0.4)) +
-  xlim(-180, 180) + ylim(-90, 90) + coord_fixed(ratio = 1) +
-  geom_raster(aes(fill = normalized)) + 
-  scale_fill_gradient2(low = "#0083ccff", high = "#d40000ff", mid = "white", midpoint = 0.75,
-                                                            na.value = "transparent") +
-  annotate(geom="raster", x=mask$longitude, y=mask$latitude, alpha = 0.1,
-           fill = mask$mask) +
-  annotate(geom="raster", x=r$longitude, y=r$latitude, alpha = 0.5,
-           fill = r$rr) +
-  scale_x_continuous(breaks = c(-180,-120,-60,0,60,120,180), expand = c(0.01,0.01)) +
-  scale_y_continuous(breaks = c(-90,-60,-30,0,30,60,90), expand = c(0.01,0.01)) + theme_void() +
-  theme(legend.position = "none") 
-
-test <- left_join(elev, map[,c(1:4)]) 
-test <- filter(test, !is.na(elev))
-
-three <- ggplot(test, aes(x = longitude, y = latitude, alpha = 0.3)) +
-  xlim(-180, 180) + ylim(-90, 90) + coord_fixed(ratio = 1) +
-  geom_raster(aes(fill = normalized)) + 
-  scale_fill_gradient2(low = "#0083ccff", high = "#d40000ff", mid = "white", midpoint = 0.75,
-                       na.value = "transparent") +
-  annotate(geom="raster", x=mask$longitude, y=mask$latitude, alpha = 0.1,
-           fill = mask$mask) +
-  annotate(geom="raster", x=r$longitude, y=r$latitude, alpha = 0.5,
-           fill = r$rr) +
-  scale_x_continuous(breaks = c(-180,-120,-60,0,60,120,180), expand = c(0.01,0.01)) +
-  scale_y_continuous(breaks = c(-90,-60,-30,0,30,60,90), expand = c(0.01,0.01)) + theme_void() +
-  theme(legend.position = "none") 
-
-test <- left_join(pr_restricted, map[,c(1:4)]) 
-test <- filter(test, !is.na(pr_res))
-
-four <- ggplot(test, aes(x = longitude, y = latitude, alpha = 0.5)) +
-  xlim(-180, 180) + ylim(-90, 90) + coord_fixed(ratio = 1) +
-  geom_raster(aes(fill = normalized)) + 
-  scale_fill_gradient2(low = "#0083ccff", high = "#d40000ff", mid = "white", midpoint = 0.75,
-                       na.value = "transparent") +
-  annotate(geom="raster", x=mask$longitude, y=mask$latitude, alpha = 0.03,
-           fill = mask$mask) +
-  annotate(geom="raster", x=r$longitude, y=r$latitude, alpha = 0.5,
-           fill = r$rr) +
-  annotate(geom="raster", x=realm$longitude, y=realm$latitude, alpha = 0.07,
-           fill = realm$realm) +
-  scale_x_continuous(breaks = c(-180,-120,-60,0,60,120,180), expand = c(0.01,0.01)) +
-  scale_y_continuous(breaks = c(-90,-60,-30,0,30,60,90), expand = c(0.01,0.01)) + theme_void() +
-  theme(legend.position = "none") 
-
-ggsave(one, path = 'figures/didactic/', 
-       filename = 'range-making_1.png', 
-       height = 6, width = 10, units = "in", device = "png", bg = "transparent")
-
-ggsave(two, path = 'figures/didactic/', 
-       filename = 'range-making_2.png', 
-       height = 6, width = 10, units = "in", device = "png", bg = "transparent")
-
-ggsave(three, path = 'figures/didactic/', 
-       filename = 'range-making_3.png', 
-       height = 6, width = 10, units = "in", device = "png", bg = "transparent")
-
-ggsave(four, path = 'figures/didactic/', 
-       filename = 'range-making_4.png', 
-       height = 6, width = 10, units = "in", device = "png", bg = "transparent")
-
-pr_poly <- rasterToPolygons(rasterFromXYZ(rniche_res)) %>%
-  aggregate(., dissolve = TRUE) %>%
-  broom::tidy()
-
-holes <- filter(pr_poly, hole == TRUE) 
-notholes <- filter(pr_poly, hole == FALSE)
-
-cropped_test <- filter(test, latitude > 0, longitude < -50)
-cropped_mask <- filter(mask, latitude > 0, longitude < -50)
-cropped_r <- filter(r, latitude > 0, longitude < -50)
-cropped_realm <- filter(realm, latitude > 0, longitude < -50)
-
-lat_mp <- cropped_r %>%
-  filter(!is.na(rr)) 
-
-split_range <- cropped_test %>%
-  ggplot(., aes(x = longitude, y = latitude, alpha = 0.5)) +
-  xlim(-180, 180) + ylim(-90, 90) + coord_fixed(ratio = 1) +
-  geom_raster(aes(fill = normalized)) + 
-  scale_fill_gradient2(low = "white", high = "white", mid = "white", midpoint = 0.75,
-                       na.value = "transparent") +
-  annotate(geom="raster", x=cropped_mask$longitude, y=cropped_mask$latitude, alpha = 0.1,
-           fill = cropped_mask$mask) +
-  scale_x_continuous(breaks = c(-180,-120,-60,0,60,120,180), expand = c(0.01,0.01)) +
-  scale_y_continuous(breaks = c(-90,-60,-30,0,30,60,90), expand = c(0.01,0.01)) + theme_void() +
-  theme(legend.position = "none") + 
-  geom_polygon_pattern(data = notholes, aes(x = long, y = lat, fill = hole,
-                                         group = piece),
-    pattern = 'stripe',
-    fill = 'grey90',
-    pattern_fill = 'black',
-    color = 'black',
-    pattern_spacing = 0.03,
-    pattern_density = 0.005,
-    size = 0.5) +
-  annotate(geom="raster", x=cropped_r$longitude, y=cropped_r$latitude, alpha = 0.70,
-           fill = cropped_r$rr) +
-  geom_segment(aes(y = (max(lat_mp$latitude) + min(lat_mp$latitude))/2,
-               yend = (max(lat_mp$latitude) + min(lat_mp$latitude))/2,
-               x = -130, xend = -68))
-
-ggsave(split_range, path = 'figures/didactic/', 
-       filename = 'split-range.png', 
-       height = 4, width = 4, units = "in", device = "png", bg = "transparent")
-
-
-cropped_test <- filter(test, latitude  > 15,latitude  < 80, longitude < -75, longitude > -140)
-cropped_mask <- filter(mask, latitude > 15, latitude  < 80, longitude < -75, longitude > -140)
-cropped_r <- filter(r, latitude > 15, latitude  < 80, longitude < -75, longitude > -140)
-buffer <- buffer(rasterFromXYZ(r), width = 250000)
-plot(buffer)
-
-buffer <- as.data.frame(buffer, xy=TRUE)
-colnames(buffer)[1:3] <- c("longitude", "latitude", "buffer")
-buffer <- filter(buffer, latitude > 15, latitude  < 80, longitude < -75, longitude > -140)
-
-zoomy <- cropped_test %>%
-  ggplot(., aes(x = longitude, y = latitude, alpha = 0.5)) +
-  xlim(-180, 180) + ylim(-90, 90) + coord_fixed(ratio = 1) +
-  geom_raster(aes(fill = normalized)) + 
-  scale_fill_gradient2(low = "white", high = "white", mid = "white", midpoint = 0.75,
-                       na.value = "transparent") +
-  annotate(geom="raster", x=cropped_mask$longitude, y=cropped_mask$latitude, alpha = 0.1,
-           fill = cropped_mask$mask) +
-  scale_x_continuous(breaks = c(-180,-120,-60,0,60,120,180), expand = c(0.01,0.01)) +
-  scale_y_continuous(breaks = c(-90,-60,-30,0,30,60,90), expand = c(0.01,0.01)) + theme_void() +
-  theme(legend.position = "none") +
-  annotate(geom="raster", x=cropped_r$longitude, y=cropped_r$latitude, alpha = 0.5,
-           fill = cropped_r$rr) +
-  annotate(geom="raster", x=buffer$longitude, y=buffer$latitude, alpha = 0.5,
-           fill = buffer$buffer) +
-  geom_segment(aes(y = (max(lat_mp$latitude) + min(lat_mp$latitude))/2,
-                   yend = (max(lat_mp$latitude) + min(lat_mp$latitude))/2,
-                   x = -130, xend = -110))
-
-ggsave(zoomy, path = 'figures/didactic/', 
-       filename = 'zoomed-range.png', 
-       height = 4, width = 4, units = "in", device = "png", bg = "transparent")
-
-test <- map
-cropped_test <- filter(test, latitude  > 15,latitude  < 80, longitude < -75, longitude > -140)
-
-range_potential <- test %>%
-  ggplot(., aes(x = longitude, y = latitude)) +
-  xlim(-180, 0) + ylim(0, 90) + coord_fixed(ratio = 1) +
-  geom_raster(aes(fill = normalized)) +
-  scale_fill_gradient2(low = "#0083ccff", high = "#d40000ff", mid = "white", midpoint = 0.6,
-                       na.value = "transparent") +
-  # annotate(geom="raster", x=cropped_mask$longitude, y=cropped_mask$latitude, alpha = 0.1,
-  #          fill = cropped_mask$mask)  +
-  theme_void() +
-  theme(legend.position = "none") 
-+ 
-  geom_polygon(data = notholes, aes(x = long, y = lat, group = piece), fill = "transparent", colour = "black")
-
-
-
-ggplot(test, aes(x = longitude, y = latitude, alpha = 0.4)) +
-  xlim(-180, 180) + ylim(-90, 90) + coord_fixed(ratio = 1) +
-  geom_raster(aes(fill = normalized)) + 
-  scale_fill_gradient2(low = "#0083ccff", high = "#d40000ff", mid = "white", midpoint = 0.75,
-                       na.value = "transparent") +
-  annotate(geom="raster", x=mask$longitude, y=mask$latitude, alpha = 0.1,
-           fill = mask$mask) +
-  annotate(geom="raster", x=r$longitude, y=r$latitude, alpha = 0.5,
-           fill = r$rr) +
-  scale_x_continuous(breaks = c(-180,-120,-60,0,60,120,180), expand = c(0.01,0.01)) +
-  scale_y_continuous(breaks = c(-90,-60,-30,0,30,60,90), expand = c(0.01,0.01)) + theme_void() +
-  theme(legend.position = "none") 
-
-ggsave(range_potential, path = 'figures/didactic/', 
-       filename = 'temp.png', 
-       height = 4, width = 4, units = "in", device = "png", bg = "transparent")
-
-
-
-## make plot of species' potential latitudinal range extents 
-## get min and max latitude of each range 
-realized_ranges <- st_read("large-files/realized-ranges/realized-ranges.shp") %>%
-  mutate(range_id = paste(species, source, sep = "_")) 
-
-bbox <- as.data.frame(do.call("rbind", lapply(st_geometry(realized_ranges), st_bbox)))
-lat_lims <- data.frame(genus_species = str_replace_all(realized_ranges$species, ' ', "_"),
-                       source = realized_ranges$source,
-                       max_lat = bbox$ymax, min_lat = bbox$ymin)
-
-## get min and max latitude of each potential range 
-prs <- readRDS("data-processed/potential-ranges/all-realms/potential_ranges_Te.rds")
-prs_low <- readRDS("data-processed/potential-ranges/all-realms/potential_ranges_lower_Te.rds")
-prs_high <- readRDS("data-processed/potential-ranges/all-realms/potential_ranges_upper_Te.rds")
-
-all_prs <- stack(prs, prs_low, prs_high)
-
-mins = maxs = c()
-for (i in 1:nlayers(all_prs)) {
-  rpts = as.data.frame(rasterToPoints(all_prs[[i]]))
-  mins <- append(mins, min(rpts$y))
-  maxs <- append(maxs, max(rpts$y))
-}
-names <- append(names(prs), names(prs_low)) %>% append(., names(prs_high))
-lims_used = append(rep("both", nlayers(prs)), rep("lower", nlayers(prs_low))) %>% 
-  append(., rep("upper", nlayers(prs_high)))
-df <- data.frame(genus_species = paste(str_split_fixed(names, "_", 3)[,1], 
-                                       str_split_fixed(names, "_", 3)[,2], sep = "_"), 
-                 source = str_split_fixed(names, "_", 3)[,3],
-                 min_lat_pr = mins, max_lat_pr = maxs, 
-                 lims_used = lims_used)
-
-## combine with our thermal niche filling dataset 
-data <- read.csv("data-processed/thermal-niches/niche-filling/thermal-niche-filling-metrics_model-ready.csv")
-
-thermal_limits <- read.csv("data-processed/traits/thermal-limits_ectotherms-with-ranges_taxized.csv")%>%
-  select(genus_species, type, metric) %>%
-  unique(.)
-
-## re-order factors to give desired contrasts
-data$realm <- relevel(factor(data$realm), ref = "Terrestrial")
-
-## split data by sensitivity type
-sens_types <- group_split(data, sensitivity_type)
-data <- sens_types[[2]]
-data <- left_join(data, lat_lims)
-
-## join pr with rr data
-df <- left_join(data, df)
-
-## subset to only species with range filling values 
-rf <- read.csv("data-processed/potential-ranges/range-filling/rangefilling-metrics_model-ready.csv")
-rf$prop_occupied <- (rf$pr_cells - rf$u_cells) / rf$pr_cells
-rf$log_prop_occupied <- log(rf$prop_occupied)
-rf <- filter(rf, !is.infinite(log_prop_occupied), type == "Te")
-
-## make colour palette
-pal <- pnw_palette(name = "Sunset2",type =  "discrete", n = 2)
-
-p_and_rs <- df %>%
-  filter(lims_used == "both") %>%
-  filter(genus_species %in% rf$species) %>%
-  filter(!is.na(min_lat_pr)) %>%
-  select(range, genus_species, lat_mp, min_lat, max_lat, min_lat_pr, max_lat_pr, realm, lims_used) %>%
-  unique(.) %>%
-  gather(key = "max_lim_type", value = "max_lim", c(max_lat_pr, max_lat)) %>%
-  gather(key = "min_lim_type", value = "min_lim", c(min_lat_pr, min_lat)) %>%
-  filter((min_lim_type == "min_lat" & max_lim_type == "max_lat") | 
-           (min_lim_type == "min_lat_pr" & max_lim_type == "max_lat_pr")) %>%
-  mutate(latlim_type = ifelse(max_lim_type == "max_lat_pr", "Potential thermal range", "Realized range"))  %>%
-  arrange(-desc(lat_mp)) %>%
-  mutate(genus_species_type = factor(paste(genus_species, latlim_type), levels = 
-                                       paste(genus_species, latlim_type), ordered = T)) %>%
-  ggplot(aes(x = genus_species_type, y = lat_mp, colour = latlim_type)) + 
-  geom_hline(yintercept = c(-30, 30), linetype = "dashed", colour = "darkgrey") +
-  geom_hline(yintercept = c(0), colour = "darkgrey") +
-  theme_light() +
-  geom_linerange(aes(ymin = max_lim, ymax = min_lim), size = 0.5) +
-  theme(panel.grid = element_blank(), 
-        axis.ticks.x = element_blank(),
-        legend.position = c(0.15, 0.9),
-        legend.title = element_blank()) +
-  labs(x = "Species", y = "Latitude", colour = "") +
-  scale_x_discrete(labels = c()) +
-  scale_y_continuous(breaks = c(-50, -30, -10, 10, 30, 50, 70), 
-                     labels = c("-50°", "-30°", "-10°", "10°", "30°", "50°", "70°"))  +
-  scale_colour_manual(values = pal) 
-
-## save
-ggsave(p_and_rs, path = "figures/extended-data", filename = "potential-and-realized-across-lat.png",
-       width = 7, height = 4)
-       

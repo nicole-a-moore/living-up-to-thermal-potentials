@@ -513,7 +513,7 @@ latitude <- both %>%
 
 saveRDS(latitude, "data-processed/intermediate-files/predictions_latitude_no-dormants.rds")
 
-ggsave(latitude, path ="figures/additional-figures/dormancy/", filename = "predictions_niche_latitude_no-dormants.png",
+ggsave(latitude, path ="figures/extended-data", filename = "predictions_niche_latitude_no-dormants.png",
        width = 8, height = 3.5, device = "png")
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
