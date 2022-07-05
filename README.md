@@ -5,7 +5,16 @@ This repository contains the data and code used to assess how ectothermic animal
 
 ![Pretty picture](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/figures/main/inkscape-files/fig2_niches.png)
 
-Large files needed to re-run this analysis cannot be hosted on github and so must be downloaded from here:
+Temperature, elevation, and depth data files needed to run this analysis must be downloaded here:
+ - [Berkeley Earth Daily Land (Experimental; 1880 – Recent)](http://berkeleyearth.org/data/) - Average High Temperature (TMAX) and Average High Temperature (TMAX)]
+ - [NOAA OI SST V2 High Resolution Dataset](https://psl.noaa.gov/data/gridded/data.noaa.oisst.v2.highres.html) - Mean Daily Sea Surface Temperature
+ - [General Bathymetric Chart of the Oceans](https://gebco.net/data_and_products/gridded_bathymetry_data/) - TID Grid
+ - [EarthEnv Global 10-km topography](http://www.earthenv.org/topography) - Maximum and Minimum, GMTED2010
+ 
+IUCN realized range polygons needed to run analysis can be downloaded here:
+ - [IUCN Spaial Files](https://www.iucnredlist.org/resources/spatial-data-download) - AMPHIBIANS, BLENNIES, CLUPEIFORMES, FILTERED, FW_FISH, MAMMALS, MARINEFISH, PUFFERFISH, REPTILES, SEABREAMS_PORGIES_PICARELS, SHARKS_RAYS_CHIMAERAS, WRASSES_PARROTFISHES
+
+Other large files needed to re-run this analysis cannot be hosted on github and so must be downloaded from here:
 
 For scripts to successfully run, large files should remain in a folder titled 'large-files' in the repository's working directory.
 
