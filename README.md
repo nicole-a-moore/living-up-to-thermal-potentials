@@ -3,6 +3,8 @@
 ## Introduction
 This repository contains the data and code used to assess how ectothermic animal species fill their potential thermal niches. This study was designed to be easily reproducible, and running all scripts in order should successfully reproduce all analyzes and figures.
 
+![Pretty picture](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/figures/main/inkscape-files/fig2_niches.png)
+
 Large files needed to re-run this analysis cannot be hosted on github and so must be downloaded from here:
 
 For scripts to successfully run, large files should remain in a folder titled 'large-files' in the repository's working directory.
@@ -17,7 +19,8 @@ The following are all of the R scripts contained in this repository and a short 
 - collates and cleans trait data for species incldued in the analysis
 #### [04_acclimatisation-analysis.R](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/R/04_acclimatisation-analysis.R)
 - collates and cleans pre-existing acclimation response ratio databases for use in the acclimatisation analysis 
-#### [05_modelling-operative-temperatures.R](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/R/05_modelling-operative-temperatures.R) - models operative temperatures in different microhabitat for terrestrial species 
+#### [05_modelling-operative-temperatures.R](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/R/05_modelling-operative-temperatures.R)
+- models operative temperatures in different microhabitat for terrestrial species 
 #### [06_creating-potential-ranges.R](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/R/06_creating-potential-ranges.R)
 - creates potential thermal ranges
 #### [07_quantifying-niche-filling.R](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/R/07_quantifying-niche-filling.R)
