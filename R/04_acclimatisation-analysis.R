@@ -74,12 +74,12 @@ rohr <- rohr %>%
 ######      Data with raw thermal limits           #####
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 ##   INTRATHERM
-intratherm <- read.csv("data-raw/arr-data/intratherm-with-elev.csv") %>%
+intratherm <- read.csv("data-raw/arr-data/intratherm.csv") %>%
   filter(original_compilation != "Comte") %>% ## get rid of Comte duplicated data
   mutate(genus_species = paste(genus, species, sep = '_'), compilation = "Intratherm") %>%
   select(genus_species, genus, species, acclim_temp, ref, parameter_value, 
-         parameter_tmax_or_tmin, metric_type, life_stage.x, compilation) %>%
-  dplyr::rename("lifestage" = life_stage.x, "Genus" = genus, "Species" = species)
+         parameter_tmax_or_tmin, metric_type, lifestage, compilation) %>%
+  dplyr::rename("Genus" = genus, "Species" = species)
 
 ##   COMTE AND OLDEN 
 comte <- read.csv("data-raw/arr-data/comte-all.csv") %>%
