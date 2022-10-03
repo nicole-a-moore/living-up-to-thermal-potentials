@@ -122,12 +122,13 @@ while (type < length(types) + 1) {
   ## plot filling across realms:
  beauty_talk <- fig %>%
     filter(!r_p_c %in% c("ctlim")) %>%
+    filter(niche_limit_type %in% c("p_niche_upper", "p_niche_lower")) %>%
     ggplot(data = ., aes(x = lat_mp, y = limit_value, col = w_c, shape = r_p_c)) + 
     scale_colour_manual(values = c("steelblue", '#b45346'), labels = c("Cold limit", "Warm limit")) +
     guides(color = FALSE) +
-    geom_line(data = fig_underfilling, aes(group = line_group2, col = w_c, linetype = "Underfilling"), size = 0.5, colour = "transparent") +
-    geom_line(data = fig_overfilling, aes(group = line_group2, col = w_c, linetype = "Overfilling"), size = 1) +
-    geom_line(data = fig_filling, aes(group = thin_line2), col = "grey80", size = 0.5) + 
+    #geom_line(data = fig_underfilling, aes(group = line_group2, col = w_c, linetype = "Underfilling"), size = 0.5, colour = "transparent") +
+    #geom_line(data = fig_overfilling, aes(group = line_group2, col = w_c, linetype = "Overfilling"), size = 1) +
+    #geom_line(data = fig_filling, aes(group = thin_line2), col = "grey80", size = 0.5) + 
     scale_shape_manual(values=c(21, 19), labels = c("Potential",
                                                        "Realized")) + 
     labs(shape = 'Thermal niche limit', linetype = "", col = '', y = "Temperature (°C)", 
@@ -138,7 +139,7 @@ while (type < length(types) + 1) {
     theme(panel.grid = element_blank()) +
     scale_y_continuous(limits = c(-45, 50))
   
-  ggsave(beauty_talk, path = path, filename = "niche-filling-across-lat_empty.png", 
+  ggsave(beauty_talk, path = path, filename = "niche-filling-across-lat_potential.png", 
          device = "png", width = 8, height = 4)
   
   beauty_abs <- ggplot(data = fig, aes(x = abs(lat_mp), y = limit_value, col = w_c, shape = r_p_c)) +

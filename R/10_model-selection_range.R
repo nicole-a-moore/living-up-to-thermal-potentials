@@ -415,7 +415,7 @@ whisker_asym <- ggplot(data=df, aes(x=fct_rev(coefficient), y=`sum$coefficients$
   coord_flip() +
   theme(legend.position = "none") + 
   scale_fill_manual(values = c("white", "#b0b0b0")) +
-  labs(y = "Effect of variable on asymmetry in underfilling", x = "") +
+  labs(y = "Effect of variable on equatorward bias in underfilling", x = "") +
   scale_x_discrete(labels = c("Realm: subtidal",
                               "Realm: intertidal",
                               "Abs. realized range latitudinal midpoint x realm: subtidal",
@@ -429,6 +429,7 @@ saveRDS(whisker_asym, "data-processed/intermediate-files/whisker_asym-underfilli
 ggsave(whisker_asym, width = 7, height = 2.5, path = "figures/extended-data", 
        filename = "whisker-plot_asym-underfilling.png", 
        device = "png")
+ 
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 #####         Exporting tables                  #####
@@ -536,7 +537,7 @@ asym_lat <- uf %>%
                 shape = realm, colour = bias_in_uf, fill = bias_in_uf, group = realm, linetype = realm)) +
   labs(col = "", shape = "", x =  "Absolute realized range latitudinal midpoint (°N/S)", 
        fill = "", linetype = "",
-       y =  "Difference between\nequatorward and poleward underfilling") +
+       y =  "Equatorward bias in range underfilling") +
   scale_fill_gradient2(midpoint = 0, high = "#b45346", low = "steelblue", mid = "white",
                        limits = c(-1, 1)) +
   geom_ribbon(data = realms_all, inherit.aes = F, 
@@ -557,7 +558,8 @@ asym_lat <- uf %>%
   scale_linetype_discrete(labels = c("Terrestrial", "Intertidal marine", "Subtidal marine")) +
   scale_shape_manual(labels = c("Terrestrial", "Intertidal marine", "Subtidal marine"),
                      values = c(21,22,24)) +
-  geom_abline(intercept = 0, slope = 0, alpha = 0.5) 
+  geom_abline(intercept = 0, slope = 0, alpha = 0.5) +
+  scale_y_continuous(limits = c(-0.5,1)) 
 
 saveRDS(asym_lat, "data-processed/intermediate-files/asym-underfilling_latitude.rds")
 
@@ -680,6 +682,6 @@ whisker <- ggdraw() +
                   y = c(1, 0.73, 0.46, 0.23), size = 10, 
                   color = "grey30") 
 
-ggsave(whisker, width = 6.5, height = 8, path = "figures/extended-data", 
+ggsave(whisker, width = 7, height = 8, path = "figures/extended-data", 
        filename = "whisker-plot_warm-cold-range.png", 
        device = "png")

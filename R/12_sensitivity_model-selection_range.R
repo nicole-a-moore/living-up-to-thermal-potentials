@@ -569,7 +569,7 @@ acc_asym_dw <- dwplot(acc_asym,
                               "Realm: intertidal",
                               "Abs. realized range latitudinal midpoint", 
                               "Reference")) +
-  labs(colour = "", x = "Effect of variable on asymmetry in underfilling") +
+  labs(colour = "", x = "Effect of variable on equatorward bias in underfilling") +
   theme_light() +
   scale_colour_manual(values = c("grey", "black")) + 
   theme(legend.text = element_text(size = 8), legend.key.size = unit(0.75, 'lines'),
@@ -596,14 +596,14 @@ acc_asym_dw <- acc_asym_dw + theme(legend.position = "none")
 acc_dw <- ggdraw() + 
   draw_plot(acc_warm_dw, x = 0, y = 0.73, width = 1, height = 0.27) +
   draw_plot(acc_cold_dw, x = 0, y = 0.46, width = 1, height = 0.27) + 
-  draw_plot(acc_uf_dw, x = 0, y = 0.25, width = 1, height = 0.21) +
+  draw_plot(acc_uf_dw, x = 0.09, y = 0.25, width = 0.91, height = 0.21) +
   draw_plot(acc_asym_dw, x = 0, y = 0, width = 1, height = 0.25) +
   draw_plot_label(label = c("b)", "c)", "d)", "e)"),
                   x = c(0, 0, 0, 0),
                   y = c(1, 0.73, 0.46, 0.25), size = 10, 
                   color = "grey30") 
 
-ggsave(acc_dw, width = 6.2, height = 6.5, path = "figures/extended-data", 
+ggsave(acc_dw, width = 6.6, height = 6.5, path = "figures/extended-data", 
        filename = "whisker-plot_acclimatization_all.png", 
        device = "png")
 

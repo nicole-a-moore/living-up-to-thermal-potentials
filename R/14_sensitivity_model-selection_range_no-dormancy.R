@@ -222,7 +222,7 @@ whisker_asym <- ggplot(data=df, aes(x=fct_rev(coefficient), y=sum$coefficients$f
   coord_flip() +
   theme(legend.position = "none") + 
   scale_fill_manual(values = c("white", "#b0b0b0")) +
-  labs(y = "Effect of variable on asymmetry in underfilling", x = "") +
+  labs(y = "Effect of variable on equatorward bias in underfilling", x = "") +
   scale_x_discrete(labels = c("Abs. realized range latitudinal midpoint x realm: subtidal",
                               "Abs. realized range latitudinal midpoint x realm: intertidal",
                               "Realm: subtidal",
@@ -266,7 +266,7 @@ whisker <- ggdraw() +
   draw_plot(whisker_uf, x = 0, y = 0.25, width = 1, height = 0.22) + 
   draw_plot(whisker_asym, x = 0, y = 0.04, width = 1, height = 0.22)
 
-ggsave(whisker, width = 6.5, height = 6.7, path = "figures/extended-data", 
+ggsave(whisker, width = 6.8, height = 6.7, path = "figures/extended-data", 
        filename = "whisker-plot_no-dormants.png", 
        device = "png")
 
@@ -277,3 +277,4 @@ ggsave(whisker_warm, width = 6, height = 3.5, path = "figures/extended-data",
 ggsave(whisker_cold, width = 6, height = 3.5, path = "figures/extended-data", 
        filename = "whisker-plot_cold-niche_no-dormants.png", 
        device = "png")
+
