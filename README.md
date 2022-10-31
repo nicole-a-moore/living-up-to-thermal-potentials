@@ -1,7 +1,7 @@
 # living-up-to-thermal-potentials
 
 ## Introduction
-This repository contains the data and code used to assess how ectothermic animal species fill their potential thermal niches. This study was designed to be easily reproducible, and running all scripts in order should successfully reproduce all analyzes and figures.
+This repository contains the data and code used to assess how ectothermic animal species fill their potential thermal niches. This study was designed to be easily reproducible, and running all scripts in order should successfully reproduce all analyses and figures.
 
 ![Pretty picture](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/figures/main/inkscape-files/fig2_niches.png)
 
