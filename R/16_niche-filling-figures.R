@@ -4,6 +4,14 @@ library(cowplot)
 library(lme4)
 library(nlme)
 
+thermal =thermal %>%
+  select(genus_species, Genus, Species, realm, Phylum, Class, Order, Family, type, 
+         thermal_limit, metric, 
+         collection_latitude, collection_longitude, 
+         reference)
+
+write.csv(thermal, "files for gabriel/species metadata/species_information.csv", row.names = FALSE)
+
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 #####       Prepping data for figure making     ######
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##

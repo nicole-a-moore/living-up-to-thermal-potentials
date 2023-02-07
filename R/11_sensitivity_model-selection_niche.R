@@ -1164,3 +1164,4 @@ acc_dw <- ggdraw() +
 ggsave(acc_dw, width = 12, height = 5, path = "figures/extended-data", 
        filename = "whisker-plot_acclimatization_niche.png", 
        device = "png")
+

@@ -101,7 +101,7 @@ uf = ufnorm
 #Now, run the full models and check out the residuals:
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 #run full lme model
-model_uf <- lme(log_prop_occupied ~ abs_lat_mp + realm + dispersal_distance_continuous +
+model_uf <- lme(log_prop_occupied ~ abs_lat_mp*realm + dispersal_distance_continuous +
                   log_maximum_body_size,
                 
                 random = ~1|Class/Order/Family/Genus,
@@ -141,18 +141,20 @@ library(htmlTable)
 ## make data frame of details I want to include in our table:
 sum <- summary(avgm_uf)
 sum_warm <- sum$coefmat.full
-eff_type <- c("intercept", "slope", "slope", "slope", 
+eff_type <- c("intercept", "slope", "slope", "slope", "slope", "slope",
               "intercept","intercept")
-coefs <- sum_warm[c(1,6,4,5,2,3),1] # reorder
+coefs <- sum_warm[c(1,4,5,6,7,8,2,3),1] # reorder
 f_effects <- c("(Intercept)",
                "Abs. realized range latitudinal midpoint",
+               "Abs. realized range latitudinal midpoint x realm: subtidal",
+               "Abs. realized range latitudinal midpoint x realm: intertidal",
                "Dispersal distance (km)",
                "Maximum body size (log cm)",
                "Realm: intertidal",
-               "Realm: subtidal")
-std_err <- sum_warm[c(1,6,4,5,2,3),2]  # reorder fixed effects
-z_val <- sum_warm[c(1,6,4,5,2,3),4]
-p_val <- sum_warm[c(1,6,4,5,2,3),5]
+               "Realm: marine")
+std_err <- sum_warm[c(1,4,5,6,7,8,2,3),2]  # reorder fixed effects
+z_val <- sum_warm[c(1,4,5,6,7,8,2,3),4]
+p_val <- sum_warm[c(1,4,5,6,7,8,2,3),5]
 names(coefs) <- names(std_err) <- names(z_val) <- names(p_val) <- NULL
 
 ## put all into a table:
@@ -175,7 +177,7 @@ results$`p-value` <- ifelse(results$`p-value` == 0, "<0.001 **",
 
 table <- results %>%
   addHtmlTableStyle(col.rgroup = c("none", "#F7F7F7")) %>%
-  htmlTable(., rnames = rep("", 6))
+  htmlTable(., rnames = rep("", 8))
 
 ## save model for whisker plot:
 avgm_uf_acc <- avgm_uf
@@ -224,7 +226,7 @@ uf = ufnorm
 #Now, run the full models and check out the residuals:
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 #run full lme model
-model_uf <- lme(log_prop_occupied ~ abs_lat_mp + realm + dispersal_distance_continuous +
+model_uf <- lme(log_prop_occupied ~ abs_lat_mp*realm + dispersal_distance_continuous +
                   log_maximum_body_size,
                 
                 random = ~1|Class/Order/Family/Genus,
@@ -264,18 +266,20 @@ library(htmlTable)
 ## make data frame of details I want to include in our table:
 sum <- summary(avgm_uf)
 sum_warm <- sum$coefmat.full
-eff_type <- c("intercept", "slope", "slope", "slope", 
+eff_type <- c("intercept", "slope", "slope", "slope", "slope", "slope", 
               "intercept","intercept")
-coefs <- sum_warm[c(1,4,5,6,2,3),1] # reorder
+coefs <- sum_warm[c(1,4,5,6,7,8,2,3),1] # reorder
 f_effects <- c("(Intercept)",
                "Abs. realized range latitudinal midpoint",
-               "Realized range size (log no. cells)",
+               "Abs. realized range latitudinal midpoint x realm: subtidal",
+               "Abs. realized range latitudinal midpoint x realm: intertidal",
+               "Dispersal distance (km)",
                "Maximum body size (log cm)",
                "Realm: intertidal",
-               "Realm: subtidal")
-std_err <- sum_warm[c(1,4,5,6,2,3),2]  # reorder fixed effects
-z_val <- sum_warm[c(1,4,5,6,2,3),4]
-p_val <- sum_warm[c(1,4,5,6,2,3),5]
+               "Realm: marine")
+std_err <- sum_warm[c(1,4,5,6,7,8,2,3),2]  # reorder fixed effects
+z_val <- sum_warm[c(1,4,5,6,7,8,2,3),4]
+p_val <- sum_warm[c(1,4,5,6,7,8,2,3),5]
 names(coefs) <- names(std_err) <- names(z_val) <- names(p_val) <- NULL
 
 ## put all into a table:
@@ -298,7 +302,7 @@ results$`p-value` <- ifelse(results$`p-value` == 0, "<0.001 **",
 
 table <- results %>%
   addHtmlTableStyle(col.rgroup = c("none", "#F7F7F7")) %>%
-  htmlTable(., rname = rep("", 6))
+  htmlTable(., rname = rep("", 8))
 
 ## save model for whisker plot:
 avgm_uf_no_acc <- avgm_uf
@@ -315,10 +319,12 @@ names(acc_uf) <- c("Acclimatization", "No acclimatization")
 
 acc_uf_dw <- dwplot(acc_uf, 
                     vline = geom_vline(xintercept = 0, colour = "grey50"),
-                    show_intercept = TRUE) + 
-  scale_y_discrete(labels = c("x realm: intertidal Abs. realized range latitudinal midpoint", 
-                              "Maximum body size (log cm)",
+                    show_intercept = TRUE) +
+  scale_y_discrete(labels = c("Maximum body size (log cm)",
                               "Dispersal distance (km)",
+                              "Abs. realized range latitudinal midpoint x realm: subtidal",
+                              "Abs. realized range latitudinal midpoint x realm: intertidal",
+                              "Abs. realized range latitudinal midpoint",
                               "Realm: subtidal",
                               "Realm: intertidal",
                               "Reference")) +
@@ -561,7 +567,7 @@ names(acc_asym) <- c("Acclimatization", "No acclimatization")
 
 acc_asym_dw <- dwplot(acc_asym, 
                     vline = geom_vline(xintercept = 0, colour = "grey50"),
-                    show_intercept = TRUE) + 
+                    show_intercept = TRUE)+ 
   scale_y_discrete(labels = c("SD obs.",
                               "SD int", "Abs. realized range latitudinal midpoint x realm: subtidal",
                               "Abs. realized range latitudinal midpoint x realm: intertidal",
@@ -596,7 +602,7 @@ acc_asym_dw <- acc_asym_dw + theme(legend.position = "none")
 acc_dw <- ggdraw() + 
   draw_plot(acc_warm_dw, x = 0, y = 0.73, width = 1, height = 0.27) +
   draw_plot(acc_cold_dw, x = 0, y = 0.46, width = 1, height = 0.27) + 
-  draw_plot(acc_uf_dw, x = 0.09, y = 0.25, width = 0.91, height = 0.21) +
+  draw_plot(acc_uf_dw, x = 0.07, y = 0.25, width = 0.93, height = 0.21) +
   draw_plot(acc_asym_dw, x = 0, y = 0, width = 1, height = 0.25) +
   draw_plot_label(label = c("b)", "c)", "d)", "e)"),
                   x = c(0, 0, 0, 0),

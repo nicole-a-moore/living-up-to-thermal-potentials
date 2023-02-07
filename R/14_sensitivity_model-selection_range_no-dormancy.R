@@ -104,7 +104,7 @@ uf = ufnorm
 #Now, run the full models and check out the residuals:
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 #run full lme model
-model_uf <- lme(log_prop_occupied ~ abs_lat_mp + realm + dispersal_distance_continuous +
+model_uf <- lme(log_prop_occupied ~ abs_lat_mp*realm + dispersal_distance_continuous +
                   log_maximum_body_size,
                 
                 random = ~1|Class/Order/Family/Genus,
@@ -153,11 +153,13 @@ whisker_uf <- ggplot(data=df, aes(x=fct_rev(coefficient), y=Estimate)) +
   scale_fill_manual(values = c("white", "#b0b0b0")) +
   labs(y = "Effect of variable on range filling", x = "") +
   scale_x_discrete(labels = c("Realm: subtidal",
-                              "Realm: intertidal", 
+                              "Realm: intertidal",
                               "Maximum body size (log cm)",
                               "Dispersal distance (km)",
-                              "Abs. realized range latitudinal midpoint", 
-                              "Reference"))
+                              "Abs. realized range latitudinal midpoint x realm: subtidal",
+                              "Abs. realized range latitudinal midpoint x realm: intertidal",
+                              "Abs. realized range latitudinal midpoint ",
+                              "Reference")) 
 
 saveRDS(whisker_uf, "data-processed/intermediate-files/whisker_range_no-dormants.rds")
 
@@ -236,7 +238,7 @@ ggsave(whisker_asym, width = 7, height = 1.5, path = "figures/extended-data/",
        filename = "whisker-plot_asym_no-dormants.png", 
        device = "png")
 
- ## combine all whisker plots and save figure:
+## combine all whisker plots and save figure:
 whisker_uf <- readRDS("data-processed/intermediate-files/whisker_range_no-dormants.rds")
 whisker_warm <- readRDS("data-processed/intermediate-files/whisker_warm_no-dormants.rds")
 whisker_cold <- readRDS("data-processed/intermediate-files/whisker_cold_no-dormants.rds")
@@ -248,13 +250,7 @@ whisker_cold <- whisker_cold  +
 whisker_warm <- whisker_warm + 
   scale_y_continuous(limits = c(-18,18)) 
 
-whisker_uf <- whisker_uf + scale_x_discrete(labels = c("Realm: subtidal",
-                                                       "Realm: intertidal",
-                                                       "Realized range size (log no. cells)", 
-                                                       "Maximum body size (log cm)",
-                                                       "Dispersal distance (km)",
-                                                       "x realm: intertidal Abs. realized range latitudinal midpoint", 
-                                                       "Reference")) +
+whisker_uf <- whisker_uf + 
   scale_y_continuous(limits = c(-10,10))
 
 whisker_asym <- whisker_asym + 
@@ -266,7 +262,7 @@ whisker <- ggdraw() +
   draw_plot(whisker_uf, x = 0, y = 0.25, width = 1, height = 0.22) + 
   draw_plot(whisker_asym, x = 0, y = 0.04, width = 1, height = 0.22)
 
-ggsave(whisker, width = 6.8, height = 6.7, path = "figures/extended-data", 
+ggsave(whisker, width = 6.9, height = 6.7, path = "figures/extended-data", 
        filename = "whisker-plot_no-dormants.png", 
        device = "png")
 
