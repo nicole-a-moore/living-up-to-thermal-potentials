@@ -144,7 +144,7 @@ i=1
 while(i < length(microclim_data) + 1) {
   
   # open microclimatic data of this cell
-  microclim_data_cell <- microclim_data_temp[[i]]
+  microclim_data_cell <- microclim_data[[i]]
   
   if (is.null(microclim_data_cell)) {
     microclim_data[[i]] <- microclim_data_cell
