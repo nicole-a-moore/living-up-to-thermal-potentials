@@ -14,7 +14,7 @@ thermal_limits <- read.csv("data-processed/traits/thermal-limits_ectotherms-with
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 ### assumes species are always in the shade at the hottest hour of the hottest day
 ### assumes one thermal limit applies across entire range of species 
-niche_Te <- read.csv("data-processed/thermal-niches/all-realms/niche_Te.csv")
+niche_Te <- read.csv("large-files/thermal-niches/all-realms/niche_Te.csv")
 
 ## split potential and realized
 r_niches <- niche_Te %>%

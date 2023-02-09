@@ -171,10 +171,19 @@ te <- select(te, c(log_prop_occupied, log_pol_equ_diff, abs_lat_mp, realm,
                                log_maximum_body_size, rr_cells, metric,
                                Class, Order, Family, Genus, Species, range, bias_in_uf))
 
+## write out list of species
+write.csv(unique(paste(te$Genus, te$Species, sep=" ")), 
+          "data-processed/thermal-niches/splist_range-filling.csv",
+          row.names = FALSE)
 
 # get complete cases
 te <- subset(te, complete.cases(te))
 dim(te)
+
+## write out list of species
+write.csv(unique(paste(te$Genus, te$Species, sep=" ")), 
+          "data-processed/thermal-niches/splist_range-filling_model.csv",
+          row.names = FALSE)
 
 ## re-order factors to give desired contrasts
 te$realm <- relevel(factor(te$realm), ref = "Terrestrial")
@@ -368,6 +377,10 @@ table <- results %>%
   addHtmlTableStyle(col.rgroup = c("none", "#F7F7F7")) %>%
   htmlTable(., rnames = rep("", 8))
 
+## write out species list 
+write.csv(unique(paste(uf$Genus, uf$Species, sep=" ")), 
+          "data-processed/thermal-niches/splist_asymm-range-filling.csv",
+          row.names = FALSE)
 
 ## fit model to bias in range underfilling 
 model_asym <- lme(bias_in_uf ~ abs_lat_mp*realm + dispersal_distance_continuous +
@@ -685,3 +698,28 @@ whisker <- ggdraw() +
 ggsave(whisker, width = 7, height = 8, path = "figures/extended-data", 
        filename = "whisker-plot_warm-cold-range.png", 
        device = "png")
+
+
+### make table of species names for appendix:
+c = read.csv("data-processed/thermal-niches/splist_cold-niche-filling.csv")
+w = read.csv("data-processed/thermal-niches/splist_warm-niche-filling.csv") 
+r = read.csv("data-processed/thermal-niches/splist_range-filling.csv") 
+c_m = read.csv("data-processed/thermal-niches/splist_cold-niche-filling_model.csv") %>%
+  mutate("Cool niche filling" = "x")
+w_m = read.csv("data-processed/thermal-niches/splist_warm-niche-filling_model.csv") %>%
+  mutate("Warm niche filling" = "x")
+r_m = read.csv("data-processed/thermal-niches/splist_range-filling_model.csv") %>%
+  mutate("Range filling" = "x")
+ur = read.csv("data-processed/thermal-niches/splist_asymm-range-filling.csv") %>%
+  mutate("Bias in underfilling" = "x")
+
+appendix <- full_join(c, w) %>%
+  full_join(., r) %>%
+  left_join(., c_m)%>%
+  left_join(., w_m)%>%
+  left_join(., r_m)%>%
+  left_join(., ur) %>%
+  filter(x != 'Tarentola boettgeri')
+
+write.csv(appendix, "data-processed/AppendixA.csv")
+

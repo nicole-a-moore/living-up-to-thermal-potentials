@@ -191,11 +191,27 @@ warm <- select(warm, c(filling_value, abs_lat_mp, log_range_area, realm,
                        log_maximum_body_size, hot_season_dormancy_,metric, 
                        Class, Order, Family, Genus, Species))
 
+## write list of species
+write.csv(unique(paste(cold$Genus, cold$Species, sep=" ")), 
+          "data-processed/thermal-niches/splist_cold-niche-filling.csv",
+          row.names = FALSE)
+write.csv(unique(paste(warm$Genus, warm$Species, sep=" ")), 
+          "data-processed/thermal-niches/splist_warm-niche-filling.csv",
+          row.names = FALSE)
+
 # get complete cases
 cold <- subset(cold, complete.cases(cold))
 # dim(cold)
 warm <- subset(warm, complete.cases(warm))
 # dim(warm)
+
+## write list of species
+write.csv(unique(paste(cold$Genus, cold$Species, sep=" ")), 
+          "data-processed/thermal-niches/splist_cold-niche-filling_model.csv",
+          row.names = FALSE)
+write.csv(unique(paste(warm$Genus, warm$Species, sep=" ")), 
+          "data-processed/thermal-niches/splist_warm-niche-filling_model.csv",
+          row.names = FALSE)
 
 #scale the continuous variables by subtracting mean and dividing by sd
 means <- sds <- c()
