@@ -240,7 +240,7 @@ te_dots <- select(Te_allspp, -c(Te_sun, Te_shade)) %>%
 te_tb_fig <- Te_allspp %>%
   gather(key = "Te_type", value = "Te", c(Te_sun, Te_shade)) %>%
   ggplot(aes(x = abs(Y), y = Te, group = num)) + 
-  geom_point(shape = 95, alpha = 0.2) + 
+  geom_violin(width = 1.5) + 
   geom_point(data = te_dots, aes(y = meanTb), colour = "red", size = 0.9) + ## add dot for mean Tb
   theme_classic() +
   labs(y = "Temperature (°C)", x = "Absolute latitude of collection location (°N)")
@@ -256,14 +256,18 @@ te_tb_fig_diff <- Te_allspp %>%
   select(species, max_Te, min_Te, num, X, Y, meanTb) %>%
   gather(key = "Te_type", value = "ext_Te", c(max_Te, min_Te)) %>%
   distinct() %>%
-  ggplot(aes(x = abs(Y), y = ext_Te - meanTb, colour = Te_type)) + 
+  mutate(diff = ext_Te - meanTb) %>%
+  mutate(symbol = ifelse(diff < 0 & Te_type == "max_Te", "yes", "no")) %>%
+  ggplot(aes(x = abs(Y), y = ext_Te - meanTb, colour = Te_type, shape = symbol)) + 
+  geom_hline(yintercept = 0) +
   geom_point() + 
   scale_colour_manual(values = c('#b45346', "steelblue"), labels = c("Hottest Te", "Coldest Te")) +
   theme_classic() +
   labs(y = "Difference between extreme Te\nand mean Tb at collection location (°C)", 
        x = "Absolute latitude of collection location (°N)", 
        colour = "Extreme Te:") + 
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
+  scale_shape_manual(values = c(20, 4))
 
 ggsave(te_tb_fig_diff, path = "figures/extended-data/", filename = "Te-Tb-fig-diff.png", 
        width = 6, height = 3, device = "png")
@@ -336,8 +340,9 @@ DEP <- c(0, 2.5,  5,  10,  15,  20,  30,  40,  50,  60)
 
 # run NicheMapR to compute hourly estimations of microclimatic conditions in each grid cell
 # DOY (day of the year), TIME (minutes), TALOC (Air temperature), RHLOC (relative humidity), VLOC (wind speed), and SOLR (solar radiation)
-for (soil in soiltype) {
-  for (refl in REFL) {
+while (refl <= length(REFL)) {
+  soil = 1
+  while (soil <= length(soiltype)) {
     
     microclim_data <- list()
     i=1
@@ -347,6 +352,7 @@ for (soil in soiltype) {
       loc <- c(x=xy.values[i,1], y=xy.values[i,2]) # set lon / lat
       
       
+      tryCatch({
         micro <- micro_global(loc = loc, minshade = minshade, maxshade = maxshade, Usrhyt = Usrhyt, 
                               timeinterval = 365, 
                               soiltype = soiltype[soil], 
@@ -430,14 +436,20 @@ for (soil in soiltype) {
         microclim_data[[i]] <- microclim_data_cell %>%
           mutate(hot_start = hot_start, hot_end = hot_end, cold_start = cold_start, cold_end = cold_end)
       }
+      },
+      error=function(e){cat("ERROR :",conditionMessage(e), "\n")}
+      )
       
       i=i+1
     }
+    
     ## save
     saveRDS(microclim_data, paste("large-files/operative-temperatures/NicheMapR-microclimate_sensitivity_refl-", REFL[refl], 
                                   "_soil-", s[soil], ".rds", sep = ""))
     # each entry of the list "microclim_data" contains a dataframe with all the microclimatic variables we need to compute Te at each cell
+    soil = soil + 1
   }
+  refl = refl + 1
 }
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
@@ -507,190 +519,357 @@ traits <- read.csv("data-processed/traits/rangetherm-traits_all-spp.csv") %>%
 ## convert body length to m
 traits$maximum_body_size_SVL_HBL_cm_ <- traits$maximum_body_size_SVL_HBL_cm_/100
 
-Te_allspp <- list()
-
-## read in microclimate data
 refl=1
-soil=1
-microclim_data <- readRDS(paste("large-files/operative-temperatures/NicheMapR-microclimate_sensitivity_refl-",
-      REFL[refl], "_soil-", s[soil], "_dormancy-indecies.rds", sep = ""))
-
-## for each species:
-x=1
-while (x < (nrow(traits) + 1)) {
-  
-  sp_traits <- traits[x,]
-  
-  ## set species-specific Te model parameters 
-  # body length (m)
-  d <- sp_traits$maximum_body_size_SVL_HBL_cm_
-  
-  # skin resistance to water loss 
-  if (sp_traits$Class == "Amphibia") {
-    # approx. 300 sm-1 for amphibians
-    r <- 300
-  }
-  else {
-    # 6e5 sm-1 for lizards and other dry-skinned ectotherms
-    r = 6e5
-  }
-
-  Te_data <- data.frame(xy.values, cells, "maxTe_sun"=NA, "maxTe_shade"=NA, "minTe_sun"=NA,
-                        "minTe_shade"=NA,"doy_hot" = NA, "doy_cold" = NA, 
-                        "meanTe_sun" = NA, "meanTe_shade" = NA, 
-                        REFL = REFL[refl], soiltype = s[soil], burrow_depth_cm = "avg. across 10, 20, 30, 40, 50")
-  
-  for(i in 1:nrow(Te_data)){
+while (refl <= length(REFL)) {
+  soil = 1
+  while (soil <= length(soiltype)) {
+    ## read in microclimate data
+    microclim_data <- readRDS(paste("large-files/operative-temperatures/NicheMapR-microclimate_sensitivity_refl-",
+                                    REFL[refl], "_soil-", s[soil], ".rds", sep = ""))
     
-    # open microclimatic data of this cell
-    microclim_data_cell <- microclim_data[[i]]
-    
-    ## if no climate data for a cell, set all values of Te to NA
-    if (is.null(microclim_data_cell)) {
-      Te_data$max_maxTe_sun[i] <- NA
-      Te_data$max_maxTe_shade[i] <- NA
-      Te_data$min_minTe_sun[i] <- NA
-      Te_data$min_minTe_shade[i] <- NA
-      Te_data$mean_meanTe_sun[i] <- NA
-      Te_data$mean_meanTe_shade[i] <- NA
-    }
-    else {
+    ## for each species:
+    Te_allspp <- list()
+    x=1
+    while (x < 6) {
       
-      ## get dormancy indecies
-      hot_start <- microclim_data_cell$hot_start[1]
-      cold_start <- microclim_data_cell$cold_start[1]
+      sp_traits <- traits[x,]
       
-      hot_end <- microclim_data_cell$hot_end[1]
-      cold_end <- microclim_data_cell$cold_end[1]
+      ## set species-specific Te model parameters 
+      # body length (m)
+      d <- sp_traits$maximum_body_size_SVL_HBL_cm_
       
-      if(hot_end < hot_start) {
-        hot_indecies <- c(hot_start:365, 1:hot_end)
+      # skin resistance to water loss 
+      if (sp_traits$Class == "Amphibia") {
+        # approx. 300 sm-1 for amphibians
+        r <- 300
       }
       else {
-        hot_indecies <- c(hot_start:hot_end)
-      }
-      if(cold_end < cold_start) {
-        cold_indecies <- c(cold_start:365, 1:cold_end)
-      }
-      else {
-        cold_indecies <- c(cold_start:cold_end)
+        # 6e5 sm-1 for lizards and other dry-skinned ectotherms
+        r = 6e5
       }
       
-      # if seasonal dormancy, block out temps in 6 consecutive warmest/coldest months:
-      if(sp_traits$cold_season_dormancy_ == "Yes" & sp_traits$hot_season_dormancy_ == "Yes") {
-        
-        ## block out temperatures in 6 hottest and coldest consecutive months
-        both_d <- microclim_data_cell %>%
-          filter(!DOY %in% hot_indecies & !DOY %in% cold_indecies) 
-        
-        microclim_data_cell <- both_d
-      }
-      else if (sp_traits$cold_season_dormancy_ == "Yes") {
-        
-        ## block out temperatures in 6 coldest consecutive months
-        c_d <- microclim_data_cell %>%
-          filter(!DOY %in% cold_indecies) 
-        
-        microclim_data_cell <- c_d
-      }
-      else if (sp_traits$hot_season_dormancy_ == "Yes") {
-        
-        ## block out temperatures in 6 hottest consecutive months
-        h_d <- microclim_data_cell %>%
-          filter(!DOY %in% hot_indecies) 
-        
-        microclim_data_cell <- h_d
-      }
+      Te_data <- data.frame(xy.values, cells, max_maxTe_sun = NA, min_minTe_sun = NA, mean_meanTe_sun = NA,
+                            max_maxTe_shade = NA, min_minTe_shade = NA, mean_meanTe_shade = NA,
+                            REFL = REFL[refl], soiltype = s[soil], burrow_depth_cm = "avg. across 0, 10, 20, 30, 40, 50")
       
-      ## make empty vectors 
-      allmaxs_Te_sun <- allmaxs_Te_shade <- allmins_Te_sun <- allmins_Te_shade <- allmeans_Te_sun <- allmeans_Te_shade <- c() 
-      ## take 100 samples per cell
-      for (q in 1:100) {
-        ### VARY MODEL PARAMETERS ###
-        # sample a short wave skin absorption value between 0.85 - 0.95 (Gates 1967):
-        alpha_s <- sample(seq(0.85, 0.95, by = 0.0001), 1)
-        # and a skin emissivity value from 0.95 - 1 (Buckley 2007)
-        eps <- sample(seq(0.95, 1, by = 0.0001), 1)
-        # because long wave absorptance in a given waveband is equal to emissivity in that waveband (Buckley 2007)
-        # let long wave skin absorptance equal skin emissivity 
-        alpha_lw = eps
-        #############################
+      for(i in 1:nrow(Te_data)){
         
-        ## loop through burrow depths (soil surface temperature 0, 10, 20, 30, 40, 50cm below ground)
-        depth <- 1 
-        depths_sun <- c("Tg_sun_0cm", "Tg_sun_10cm", "Tg_sun_20cm", "Tg_sun_30cm", "Tg_sun_40cm", "Tg_sun_50cm")
-        depths_shade <- c("Tg_shade_0cm", "Tg_shade_10cm", "Tg_shade_20cm", "Tg_shade_30cm", 
-                          "Tg_shade_40cm", "Tg_shade_50cm")
-        while (depth <= 6) {
-          # Operative temperature in the sun
-          S_sun <- microclim_data_cell$S_sun # solar radiation (Wm-2)
-          Ta_sun <- microclim_data_cell$Ta_sun # air temperature (?C)
-          Tg_sun <- microclim_data_cell[,which(colnames(microclim_data_cell) == depths_sun[depth])]  
-          # Soil surface temperature (?C)
-          v_sun <- microclim_data_cell$v_sun   # Wind velocity (m/s)
-          RH_sun <- microclim_data_cell$RH_sun # relative humidity (%)
+        # open microclimatic data of this cell
+        microclim_data_cell <- microclim_data[[i]]
+        
+        ## if no climate data for a cell, set all values of Te to NA
+        if (is.null(microclim_data_cell)) {
+          Te_data$max_maxTe_sun[i] <- NA
+          Te_data$max_maxTe_shade[i] <- NA
+          Te_data$min_minTe_sun[i] <- NA
+          Te_data$min_minTe_shade[i] <- NA
+          Te_data$mean_meanTe_sun[i] <- NA
+          Te_data$mean_meanTe_shade[i] <- NA
+        }
+        else {
           
-          Te_sun <- Te_function(S_sun, Ta_sun, Tg_sun, v_sun, RH_sun, d, r, 
-                                alpha_s = alpha_s, alpha_lw = alpha_lw, eps = eps)
+          ## get dormancy indecies
+          hot_start <- microclim_data_cell$hot_start[1]
+          cold_start <- microclim_data_cell$cold_start[1]
           
-          # Operative temperature in the shade
-          S_shade <- microclim_data_cell$S_shade # solar radiation (Wm-2)
-          Ta_shade <- microclim_data_cell$Ta_shade # air temperature (?C)
-          Tg_shade <- microclim_data_cell$Tg_shade # microclim_data_cell[,which(colnames(microclim_data_cell == depths_shade[depth]))]  
-          # Soil surface temperature (?C)
-          v_shade <- microclim_data_cell$v_shade   # Wind velocity (m/s)
-          RH_shade <- microclim_data_cell$RH_shade # relative humidity (%)
+          hot_end <- microclim_data_cell$hot_end[1]
+          cold_end <- microclim_data_cell$cold_end[1]
           
-          Te_shade <- Te_function(S_shade, Ta_shade, Tg_shade, v_shade, RH_shade, d, r,
-                                  alpha_s = alpha_s, alpha_lw = alpha_lw, eps = eps)
+          if(hot_end < hot_start) {
+            hot_indecies <- c(hot_start:365, 1:hot_end)
+          }
+          else {
+            hot_indecies <- c(hot_start:hot_end)
+          }
+          if(cold_end < cold_start) {
+            cold_indecies <- c(cold_start:365, 1:cold_end)
+          }
+          else {
+            cold_indecies <- c(cold_start:cold_end)
+          }
           
-          # Extract maximum and minimum Te, mean Te and add to vector 
-          allmaxs_Te_sun <- append(allmaxs_Te_sun, max(Te_sun))
-          allmaxs_Te_shade <- append(allmaxs_Te_shade, max(Te_shade))
-          allmins_Te_sun <- append(allmins_Te_sun, min(Te_sun))
-          allmins_Te_shade <- append(allmins_Te_shade, min(Te_shade))
-          allmeans_Te_sun <- append(allmeans_Te_sun, mean(Te_sun))
-          allmeans_Te_shade <- append(allmeans_Te_shade, mean(Te_shade))
+          # if seasonal dormancy, block out temps in 6 consecutive warmest/coldest months:
+          if(sp_traits$cold_season_dormancy_ == "Yes" & sp_traits$hot_season_dormancy_ == "Yes") {
+            
+            ## block out temperatures in 6 hottest and coldest consecutive months
+            both_d <- microclim_data_cell %>%
+              filter(!DOY %in% hot_indecies & !DOY %in% cold_indecies) 
+            
+            microclim_data_cell <- both_d
+          }
+          else if (sp_traits$cold_season_dormancy_ == "Yes") {
+            
+            ## block out temperatures in 6 coldest consecutive months
+            c_d <- microclim_data_cell %>%
+              filter(!DOY %in% cold_indecies) 
+            
+            microclim_data_cell <- c_d
+          }
+          else if (sp_traits$hot_season_dormancy_ == "Yes") {
+            
+            ## block out temperatures in 6 hottest consecutive months
+            h_d <- microclim_data_cell %>%
+              filter(!DOY %in% hot_indecies) 
+            
+            microclim_data_cell <- h_d
+          }
           
-          depth = depth + 1
+          ## make empty vectors 
+          allmaxs_Te_sun <- allmaxs_Te_shade <- allmins_Te_sun <- allmins_Te_shade <- allmeans_Te_sun <- allmeans_Te_shade <- c() 
+          ## take 100 samples per cell
+          for (q in 1:100) {
+            ### VARY MODEL PARAMETERS ###
+            # sample a short wave skin absorption value between 0.85 - 0.95 (Gates 1967):
+            alpha_s <- sample(seq(0.85, 0.95, by = 0.0001), 1)
+            # and a skin emissivity value from 0.95 - 1 (Buckley 2007)
+            eps <- sample(seq(0.95, 1, by = 0.0001), 1)
+            # because long wave absorptance in a given waveband is equal to emissivity in that waveband (Buckley 2007)
+            # let long wave skin absorptance equal skin emissivity 
+            alpha_lw = eps
+            #############################
+            
+            ## loop through burrow depths (soil surface temperature 0, 10, 20, 30, 40, 50cm below ground)
+            depth <- 1 
+            depths_sun <- c("Tg_sun_0cm", "Tg_sun_10cm", "Tg_sun_20cm", "Tg_sun_30cm", "Tg_sun_40cm", "Tg_sun_50cm")
+            depths_shade <- c("Tg_shade_0cm", "Tg_shade_10cm", "Tg_shade_20cm", "Tg_shade_30cm", 
+                              "Tg_shade_40cm", "Tg_shade_50cm")
+            while (depth <= 6) {
+              # Operative temperature in the sun
+              S_sun <- microclim_data_cell$S_sun # solar radiation (Wm-2)
+              Ta_sun <- microclim_data_cell$Ta_sun # air temperature (?C)
+              Tg_sun <- microclim_data_cell[,which(colnames(microclim_data_cell) == depths_sun[depth])]  
+              # Soil surface temperature (?C)
+              v_sun <- microclim_data_cell$v_sun   # Wind velocity (m/s)
+              RH_sun <- microclim_data_cell$RH_sun # relative humidity (%)
+              
+              Te_sun <- Te_function(S_sun, Ta_sun, Tg_sun, v_sun, RH_sun, d, r, 
+                                    alpha_s = alpha_s, alpha_lw = alpha_lw, eps = eps)
+              
+              # Operative temperature in the shade
+              S_shade <- microclim_data_cell$S_shade # solar radiation (Wm-2)
+              Ta_shade <- microclim_data_cell$Ta_shade # air temperature (?C)
+              Tg_shade <- microclim_data_cell[,which(colnames(microclim_data_cell) == depths_shade[depth])]  
+              # Soil surface temperature (?C)
+              v_shade <- microclim_data_cell$v_shade   # Wind velocity (m/s)
+              RH_shade <- microclim_data_cell$RH_shade # relative humidity (%)
+              
+              Te_shade <- Te_function(S_shade, Ta_shade, Tg_shade, v_shade, RH_shade, d, r,
+                                      alpha_s = alpha_s, alpha_lw = alpha_lw, eps = eps)
+              
+              # Extract maximum and minimum Te, mean Te and add to vector 
+              allmaxs_Te_sun <- append(allmaxs_Te_sun, max(Te_sun))
+              allmaxs_Te_shade <- append(allmaxs_Te_shade, max(Te_shade))
+              allmins_Te_sun <- append(allmins_Te_sun, min(Te_sun))
+              allmins_Te_shade <- append(allmins_Te_shade, min(Te_shade))
+              allmeans_Te_sun <- append(allmeans_Te_sun, mean(Te_sun))
+              allmeans_Te_shade <- append(allmeans_Te_shade, mean(Te_shade))
+              
+              depth = depth + 1
+            }
+            
+          }
+          
+          ## calculate mean max and min Te in sun and shade across samples
+          Te_data$max_maxTe_sun[i] <- max(allmaxs_Te_sun)
+          Te_data$max_maxTe_shade[i] <- max(allmaxs_Te_shade)
+          Te_data$min_minTe_sun[i] <- min(allmins_Te_sun)
+          Te_data$min_minTe_shade[i] <- min(allmins_Te_shade)
+          Te_data$mean_meanTe_sun[i] <- mean(allmeans_Te_sun)
+          Te_data$mean_meanTe_shade[i] <- mean(allmeans_Te_shade)
+          
+          print(paste("Done cell number: ", i, sep = "", " for species number ", x))
         }
         
       }
       
-      ## calculate mean max and min Te in sun and shade across samples
-      Te_data$max_maxTe_sun[i] <- max(allmaxs_Te_sun)
-      Te_data$max_maxTe_shade[i] <- max(allmaxs_Te_shade)
-      Te_data$min_minTe_sun[i] <- min(allmins_Te_sun)
-      Te_data$min_minTe_shade[i] <- min(allmins_Te_shade)
-      Te_data$mean_meanTe_sun[i] <- mean(allmeans_Te_sun)
-      Te_data$mean_meanTe_shade[i] <- mean(allmeans_Te_shade)
+      Te_allspp[[x]] <- Te_data
+      names(Te_allspp)[x] <- as.character(sp_traits$genus_species)
       
-      print(paste("Done cell number: ", i, sep = "", " for species number ", x))
+      print(paste("Done species number: ", x, sep = ""))
+      
+      x = x+1
     }
     
+    saveRDS(Te_allspp, paste("large-files/operative-temperatures/Te_allspp_sensitivity_refl-",
+                             REFL[refl], "_soil-", s[soil], ".rds", sep = ""))
+    soil = soil + 1
   }
-  
-  Te_allspp[[x]] <- Te_data
-  names(Te_allspp)[x] <- as.character(sp_traits$genus_species)
-  
-  print(paste("Done species number: ", x, sep = ""))
-  
-  x = x+1
+  refl = refl + 1
 }
 
-saveRDS(Te_allspp, paste("large-files/operative-temperatures/Te_allspp_sensitivity_refl-",
-                         REFL[refl], "_soil-", s[soil], "_dormancy-indecies.rds", sep = ""))
 
-# discuss whether the conclusions are the same for other temperatures within that range of uncertainty
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
+#####        5. Map Te of each species             #####
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
+refl=1
+while (refl <= length(REFL)) {
+  soil = 1
+  while (soil <= length(soiltype)) {
+    Te_allspp <- readRDS(paste("large-files/operative-temperatures/Te_allspp_sensitivity_refl-",
+                               REFL[refl], "_soil-", s[soil], ".rds", sep = ""))
+    
+    ## Make maps of max and min Te in the sun and shade and acclimation temperatures for each species 
+    x=1
+    while (x < 6) {
+      Te_data <- Te_allspp[[x]]
+      
+      map_minTe_sun <- map_maxTe_sun <- map_minTe_shade <- map_maxTe_shade <- map
+      map_acc_cold <- map_acc_hot <-map_meanTe <- map
+      for(i in 1:nrow(Te_data)){
+        cell <- Te_data$cells[i]
+        map_minTe_sun[cell] <- Te_data$min_minTe_sun[i]
+        map_maxTe_sun[cell] <- Te_data$max_maxTe_sun[i]
+        map_minTe_shade[cell] <- Te_data$min_minTe_shade[i]
+        map_maxTe_shade[cell] <- Te_data$max_maxTe_shade[i]
+        map_meanTe[cell] <- (Te_data$mean_meanTe_sun[i] + Te_data$mean_meanTe_shade[i])/2
+      }
+      
+      #plot(map_maxTe_sun)
+      #plot(map_minTe_shade)
+      
+      if (x == 1) {
+        Te_sun_min <- map_minTe_sun
+        Te_sun_max <- map_maxTe_sun
+        Te_shade_min <- map_minTe_shade
+        Te_shade_max <- map_maxTe_shade
+        terr_acc_hot <- map_acc_hot
+        terr_acc_cold <- map_acc_cold
+        Te_mean <- map_meanTe
+      }
+      else {
+        Te_sun_min <- addLayer(Te_sun_min, map_minTe_sun)
+        Te_sun_max <- addLayer(Te_sun_max, map_maxTe_sun)
+        Te_shade_min <- addLayer(Te_shade_min, map_minTe_shade)
+        Te_shade_max <- addLayer(Te_shade_max, map_maxTe_shade)
+        terr_acc_hot <- addLayer(terr_acc_hot, map_acc_hot)
+        terr_acc_cold <- addLayer(terr_acc_cold, map_acc_cold)
+        Te_mean <- addLayer(Te_mean, map_meanTe)
+      }
+      print(paste("Done species number: ", x, sep = ""))
+      x=x+1
+    }
+    
+    names(Te_sun_min) <- names(Te_sun_max) <- names(Te_shade_min) <- names(Te_shade_max) <-
+      names(terr_acc_cold) <- names(terr_acc_hot) <- names(Te_mean) <- names(Te_allspp)
+    
+    ## save the maps: 
+    writeRaster(Te_sun_min, paste("large-files/operative-temperatures/Te_sun_min_sensitivity_refl-",
+                                  REFL[refl], "_soil-", s[soil], ".grd", sep = ""),
+                overwrite = TRUE, format = "raster")
+    writeRaster(Te_sun_max, paste("large-files/operative-temperatures/Te_sun_max_sensitivity_refl-",
+                                  REFL[refl], "_soil-", s[soil], ".grd", sep = ""),
+                overwrite = TRUE, format = "raster")
+    writeRaster(Te_shade_min, paste("large-files/operative-temperatures/Te_shade_min_sensitivity_refl-",
+                                    REFL[refl], "_soil-", s[soil], ".grd", sep = ""), 
+                overwrite = TRUE, format = "raster")
+    writeRaster(Te_shade_max, paste("large-files/operative-temperatures/Te_shade_max_sensitivity_refl-",
+                                    REFL[refl], "_soil-", s[soil], ".grd", sep = ""), 
+                overwrite = TRUE, format = "raster")
+    writeRaster(Te_mean, paste("large-files/operative-temperatures/Te_mean_sensitivity_refl-",
+                               REFL[refl], "_soil-", s[soil], ".grd", sep = ""), overwrite = TRUE, format = "raster")
+    
+    soil = soil + 1
+  }
+  refl = refl + 1
+}
 
 
 
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
+#####        6. Compare Te to mean and range       #####
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
+## read in maps of original max and min Te values for each of the 5 species
+Te_shade_min <- stack("large-files/operative-temperatures/Te_shade_min.grd")[[1:5]]
+Te_shade_max <- stack("large-files/operative-temperatures/Te_shade_max.grd")[[1:5]]
+
+## convert to dataframe 
+Te_shade_min_all <- data.frame(rasterToPoints(Te_shade_min))
+Te_shade_max_all <- data.frame(rasterToPoints(Te_shade_max))
+
+Te_shade_min_all$soiltype = Te_shade_max_all$soiltype = "original - loam"
+Te_shade_min_all$reflectance = Te_shade_max_all$reflectance = "original - 0.15"
+
+## read in maps of sensitivity max and min Te values for each of the 5 species
+refl = 1
+while(refl <= length(REFL)) {
+  soil = 1
+  while (soil <= length(s)) {
+    Te_shade_min <- data.frame(rasterToPoints(stack(paste("large-files/operative-temperatures/Te_shade_min_sensitivity_refl-",REFL[refl], "_soil-", s[soil], ".grd", sep = ""))[[1:5]]))
+    Te_shade_max <- data.frame(rasterToPoints(stack(paste("large-files/operative-temperatures/Te_shade_max_sensitivity_refl-",REFL[refl], "_soil-", s[soil], ".grd", sep = ""))[[1:5]]))
+    
+    Te_shade_min$soiltype = Te_shade_max$soiltype = s[soil]
+    Te_shade_min$reflectance = Te_shade_max$reflectance = REFL[refl]
+    
+    Te_shade_min_all <- rbind(Te_shade_min_all, Te_shade_min)
+    Te_shade_max_all <- rbind(Te_shade_max_all, Te_shade_max)
+  
+    soil = soil + 1
+  }
+  refl = refl + 1
+}
+
+Te_shade_max_all <- Te_shade_max_all %>%
+  mutate(reflectance = ifelse(reflectance ==  "0.75", "75% reflectance",
+                              ifelse(reflectance == "0.5", "50% reflectance", 
+                                     ifelse(reflectance == 0.25, "25% reflectance", 
+                                            NA)))) %>%
+  mutate(soiltype = ifelse(soiltype ==  "loam", "Loam",
+                              ifelse(soiltype == "rock", "Rock", 
+                                     ifelse(soiltype == "sand", "Sand", 
+                                            ifelse(soiltype == "original - loam", "original", 
+                                                   NA))))) %>%
+  gather(key = "species", value = "te", c("Agroeca_proxima","Clubiona_diversa","Crustulina_guttata",
+                                          "Oedothorax_apicatus","Pardosa_nigriceps"))
+
+Te_shade_min_all <- Te_shade_min_all %>%
+  mutate(reflectance = ifelse(reflectance ==  "0.75", "75% reflectance",
+                              ifelse(reflectance == "0.5", "50% reflectance", 
+                                     ifelse(reflectance == 0.25, "25% reflectance", 
+                                            NA)))) %>%
+  mutate(soiltype = ifelse(soiltype ==  "loam", "Loam",
+                              ifelse(soiltype == "rock", "Rock", 
+                                     ifelse(soiltype == "sand", "Sand", 
+                                            ifelse(soiltype == "original - loam", "original", 
+                                            NA)))))%>%
+  gather(key = "species", value = "te", c("Agroeca_proxima","Clubiona_diversa","Crustulina_guttata",
+                                          "Oedothorax_apicatus","Pardosa_nigriceps")) 
 
 
+### compare how Te values differ when different parameters are used 
+og_max <- filter(Te_shade_max_all, soiltype == "original") %>%
+  select(-soiltype, -reflectance) %>%
+  filter(species == "Pardosa_nigriceps") 
 
+max_fig <- Te_shade_max_all %>%
+  filter(soiltype != "original") %>% 
+  filter(species == "Pardosa_nigriceps") %>% 
+  ggplot(aes(x = te), fill = "grey",  colour = "grey") +
+  geom_histogram(data = og_max, position = position_dodge(), fill = "#b45346",  colour = "#b45346",
+                 aes(x = te), inherit.aes = FALSE) + 
+  geom_histogram(position = position_dodge(), alpha = 0.5) +
+  facet_wrap(reflectance ~ soiltype) + 
+  theme_bw() +
+  labs(x = "Warmest operative temperature (°C)", y = "Frequency") +
+  theme(panel.grid = element_blank())
 
+og_min <- filter(Te_shade_min_all, soiltype == "original") %>%
+  select(-soiltype, -reflectance) %>%
+  filter(species == "Pardosa_nigriceps") 
 
-
-
-
+min_fig <- Te_shade_min_all %>%
+  filter(soiltype != "original") %>% 
+  filter(species == "Pardosa_nigriceps") %>% 
+  ggplot(aes(x = te), fill = "grey", colour = "grey") +
+  geom_histogram(data = og_min, position = position_dodge(), fill = "steelblue", colour = "steelblue",
+                 aes(x = te), inherit.aes = FALSE) + 
+  geom_histogram(position = position_dodge(), alpha = 0.5) +
+  facet_wrap(reflectance ~ soiltype) + 
+  theme_bw() +
+  labs(x = "Coolest operative temperature (°C)", y = "Frequency") +
+  theme(panel.grid = element_blank())
+  
+ggsave(max_fig, path = "figures/extended-data/", filename = "Te-sensitivity_warm.png",
+       width = 5, height = 4)
+ggsave(min_fig, path = "figures/extended-data/", filename = "Te-sensitivity_cold.png",
+       width = 5, height = 4)
 
