@@ -950,7 +950,7 @@ realm_warm_no_dormancy <- rbind(realm_warm_int, realm_warm_mar) %>%
   mutate(facet = ifelse(.$realm %in% c("Terrestrial", "Intertidal"), "Air-interacting", "Subtidal"))
 
 ## try new colour palette
-palette <- c( "#74add1", "#45b0b4","#313695", "#d16280", "#f46d43", "#a50026")
+palette <- c( "#74add1","#45b0b4", "#313695", "#f57396", "#f58d42", "#a50026")
 linetype <- c("dotdash", "longdash", "solid", "dotdash", "longdash", "solid")
 shapes <- c(17,15,19,17,15,19)
 labels <- c("Intertidal marine", "Subtidal marine", "Terrestrial", "Intertidal marine", "Subtidal marine", "Terrestrial")
@@ -1319,3 +1319,4 @@ ghost_leg <- get_legend(ghost_leg)
 
 ggsave(ghost_leg, "figures/main", filename = "distributions_niche_realm-acc-legend.png",
        width = 2, height = 1, device = "png")
+
