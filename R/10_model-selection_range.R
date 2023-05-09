@@ -172,7 +172,10 @@ te <- select(te, c(log_prop_occupied, log_pol_equ_diff, abs_lat_mp, realm,
                                Class, Order, Family, Genus, Species, range, bias_in_uf))
 
 ## write out list of species
-write.csv(unique(paste(te$Genus, te$Species, sep=" ")), 
+splist_range <- select(te, Genus, Species, Class, Order, Family, Genus) %>%
+  mutate(genus_species = paste(Genus, Species, sep=" "))
+
+write.csv(splist_range, 
           "data-processed/thermal-niches/splist_range-filling.csv",
           row.names = FALSE)
 
@@ -378,7 +381,10 @@ table <- results %>%
   htmlTable(., rnames = rep("", 8))
 
 ## write out species list 
-write.csv(unique(paste(uf$Genus, uf$Species, sep=" ")), 
+splist_asymm <- select(uf, Genus, Species, Class, Order, Family, Genus) %>%
+  mutate(genus_species = paste(Genus, Species, sep=" "))
+
+write.csv(splist_asymm, 
           "data-processed/thermal-niches/splist_asymm-range-filling.csv",
           row.names = FALSE)
 
@@ -704,6 +710,12 @@ ggsave(whisker, width = 7, height = 8, path = "figures/extended-data",
 c = read.csv("data-processed/thermal-niches/splist_cold-niche-filling.csv")
 w = read.csv("data-processed/thermal-niches/splist_warm-niche-filling.csv") 
 r = read.csv("data-processed/thermal-niches/splist_range-filling.csv") 
+ur = read.csv("data-processed/thermal-niches/splist_asymm-range-filling.csv") 
+
+c_sp = select(c, genus_species) %>% rename("x" = genus_species)
+w_sp = select(w, genus_species) %>% rename("x" = genus_species)
+r_sp = select(r, genus_species) %>% rename("x" = genus_species)
+
 c_m = read.csv("data-processed/thermal-niches/splist_cold-niche-filling_model.csv") %>%
   mutate("Cool niche filling" = "x")
 w_m = read.csv("data-processed/thermal-niches/splist_warm-niche-filling_model.csv") %>%
@@ -711,10 +723,12 @@ w_m = read.csv("data-processed/thermal-niches/splist_warm-niche-filling_model.cs
 r_m = read.csv("data-processed/thermal-niches/splist_range-filling_model.csv") %>%
   mutate("Range filling" = "x")
 ur = read.csv("data-processed/thermal-niches/splist_asymm-range-filling.csv") %>%
-  mutate("Bias in underfilling" = "x")
-
-appendix <- full_join(c, w) %>%
-  full_join(., r) %>%
+  select(genus_species) %>% 
+  rename("x" = genus_species) %>%
+  mutate("Bias in underfilling" = "x") 
+  
+appendix <- full_join(c_sp, w_sp) %>%
+  full_join(., r_sp) %>%
   left_join(., c_m)%>%
   left_join(., w_m)%>%
   left_join(., r_m)%>%
@@ -722,4 +736,24 @@ appendix <- full_join(c, w) %>%
   filter(x != 'Tarentola boettgeri')
 
 write.csv(appendix, "data-processed/AppendixA.csv")
+
+### make table showing taxonomic breakdown for appendix:
+appendix2 <- full_join(c, w) %>%
+  full_join(., r) %>%
+  left_join(., c) %>%
+  filter(genus_species != 'Tarentola boettgeri')
+
+## plot by class/clade 
+appendix2 %>%
+  ggplot(aes(x = Class)) + geom_bar() +
+  coord_flip() 
+
+appendix2 <- appendix2 %>% 
+  group_by(Class) %>%
+  tally() %>%
+  arrange(-n) %>%
+  rename("Number of species" = "n", 
+         "Class or clade" = "Class") 
+
+write.csv(appendix2, "data-processed/AppendixA2.csv", row.names = F)
 

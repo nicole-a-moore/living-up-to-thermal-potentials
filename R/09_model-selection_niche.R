@@ -192,10 +192,15 @@ warm <- select(warm, c(filling_value, abs_lat_mp, log_range_area, realm,
                        Class, Order, Family, Genus, Species))
 
 ## write list of species
-write.csv(unique(paste(cold$Genus, cold$Species, sep=" ")), 
+splist_cold <- select(cold, Genus, Species, Class, Order, Family, Genus) %>%
+  mutate(genus_species = paste(Genus, Species, sep=" "))
+splist_warm <- select(warm, Genus, Species, Class, Order, Family, Genus) %>%
+  mutate(genus_species = paste(Genus, Species, sep=" "))
+
+write.csv(splist_cold, 
           "data-processed/thermal-niches/splist_cold-niche-filling.csv",
           row.names = FALSE)
-write.csv(unique(paste(warm$Genus, warm$Species, sep=" ")), 
+write.csv(splist_warm, 
           "data-processed/thermal-niches/splist_warm-niche-filling.csv",
           row.names = FALSE)
 
