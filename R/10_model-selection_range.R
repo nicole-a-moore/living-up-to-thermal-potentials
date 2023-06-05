@@ -188,8 +188,10 @@ write.csv(unique(paste(te$Genus, te$Species, sep=" ")),
           "data-processed/thermal-niches/splist_range-filling_model.csv",
           row.names = FALSE)
 
+
 ## re-order factors to give desired contrasts
 te$realm <- relevel(factor(te$realm), ref = "Terrestrial")
+
 
 #Second, rescale variables and get complete cases
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
@@ -211,6 +213,11 @@ dim(ufnorm)
 scalers = data.frame(var = colnames(uf)[c(3,5,6)], means = means, sds = sds)
 
 uf = ufnorm
+
+## and copy data
+write.csv(uf, 
+          "data-processed/potential-ranges/range-filling/range-complete-cases.csv",
+          row.names = FALSE)
 
 #Now, run the full models and check out the residuals:
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
@@ -736,6 +743,10 @@ appendix <- full_join(c_sp, w_sp) %>%
   filter(x != 'Tarentola boettgeri')
 
 write.csv(appendix, "data-processed/AppendixA.csv")
+
+## make list of species to check time tree
+write.table(appendix$x, file = "data-processed/TimeTreeList.txt", sep = "\t",
+            row.names = FALSE)
 
 ### make table showing taxonomic breakdown for appendix:
 appendix2 <- full_join(c, w) %>%
