@@ -76,7 +76,6 @@ new_traits <- read.csv("data-raw/traits/globtherm_traits_collated_180617_ectothe
 colnames(new_traits) <- str_replace_all(colnames(new_traits), pattern = "\\.", "_")
 colnames(new_traits) <- str_replace_all(colnames(new_traits), pattern = "\\__", "_")
 
-
 dormancy_sub <- new_traits %>%
   mutate(cold_season_dormancy_ = ifelse(str_detect(cold_season_dormancy_, "N") | 
                                          str_detect(cold_season_dormancy_, "no"), 
@@ -347,3 +346,4 @@ tprefs_clean <- tpref %>%
 
 ## write out:
 write.csv(tprefs_clean, "data-processed/traits/Tpref_clean.csv", row.names = FALSE)
+

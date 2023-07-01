@@ -74,6 +74,7 @@ thermal_limits$metric[which(thermal_limits$metric %in% c('DLT50', 'LT50'))] = 'l
 
 write.csv(thermal_limits, "data-processed/traits/globtherm_taxized.csv", row.names = FALSE)
 
+length(unique(thermal_limits$genus_species)) #988
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 ######      IUCN RANGES        #####
