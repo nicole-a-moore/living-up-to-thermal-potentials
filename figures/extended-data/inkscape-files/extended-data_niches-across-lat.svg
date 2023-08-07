@@ -29,12 +29,12 @@
      showgrid="false"
      height="124mm"
      inkscape:zoom="0.74139697"
-     inkscape:cx="308.20196"
-     inkscape:cy="198.27435"
+     inkscape:cx="354.06133"
+     inkscape:cy="365.52618"
      inkscape:window-width="1312"
      inkscape:window-height="916"
      inkscape:window-x="0"
-     inkscape:window-y="38"
+     inkscape:window-y="25"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
   <defs
@@ -58,6 +58,6 @@
        y="109.24944"
        id="text1044"><tspan
          sodipodi:role="line"
-         id="tspan114">n=426</tspan></text>
+         id="tspan114">n = 426</tspan></text>
   </g>
 </svg>
