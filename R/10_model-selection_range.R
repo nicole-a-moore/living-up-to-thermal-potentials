@@ -396,8 +396,7 @@ write.csv(splist_asymm,
           row.names = FALSE)
 
 ## fit model to bias in range underfilling 
-model_asym <- lme(bias_in_uf ~ abs_lat_mp*realm + dispersal_distance_continuous +
-                  log_maximum_body_size,
+model_asym <- lme(bias_in_uf ~ abs_lat_mp*realm, 
                 
                 random = ~1|Class/Order/Family/Genus,
                 
@@ -411,22 +410,13 @@ plot(model_asym)
 E1 <- resid(model_asym)
 plot(E1 ~ abs_lat_mp, data = uf)
 plot(E1 ~ realm, data = uf)
-plot(E1 ~ dispersal_distance_continuous, data = uf)
-plot(E1 ~ log_maximum_body_size, data = uf)
-
 
 #Now, fit all the models using dredge, select the confidence set and average the models:
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 #fit all models
-suppressWarnings(allmodels_asym <- dredge(model_asym, extra="R^2", subset = (`abs_lat_mp:realm`)))
-confset.95p_asym <- get.models(allmodels_asym, subset = cumsum(weight)<=.95) #get confidence set, 5 models
-avgm_asym <- model.avg(confset.95p_asym) # only 1 model so cannot average 
-summary(confset.95p_asym[[1]])
-avgm_asym <- confset.95p_asym[[1]]
-  
-sum <- summary(confset.95p_asym[[1]])
+sum <- summary(model_asym)
 df <- as.data.frame(sum$coefficients$fixed) 
-intervals <- as.data.frame(intervals(confset.95p_asym[[1]], which = "fixed")$fixed)
+intervals <- as.data.frame(intervals(model_asym, which = "fixed")$fixed)
 df$CI.min <- intervals$lower
 df$CI.max <- intervals$upper  # get confidence intervals for model
 data.table::setDT(df, keep.rownames = "coefficient") #put rownames into column
@@ -522,11 +512,14 @@ terr <- uf %>% filter(realm == "Terrestrial")
 
 new_data <- data.frame(expand_grid(abs_lat_mp = seq(min(uf$abs_lat_mp), max(uf$abs_lat_mp), 
                                                     length.out = 1000),
+                                   dispersal_distance_continuous = unique(uf$dispersal_distance_continuous),
+                                   log_maximum_body_size = seq(min(uf$log_maximum_body_size), max(uf$log_maximum_body_size), 
+                                                               length.out = 1000),
                                    realm = c("Terrestrial", 'Marine', 'Intertidal')))
 
 new_data$realm <- factor(new_data$realm, levels = c("Terrestrial", 'Intertidal', 'Marine'))
 
-pred <- predict(avgm_asym, new_data, level = 0, se.fit = T, re.form = NA)
+pred <- predict(model_asym, new_data, level = 0, se.fit = T, re.form = NA)
 
 fitted_pred <- new_data %>%
   mutate(filling_value = pred$fit) %>%
@@ -684,13 +677,15 @@ latitude <- uf %>%
   scale_shape_manual(labels = c("Terrestrial", "Intertidal marine", "Subtidal marine"),
                      values = c(21,22,24)) +
   scale_y_continuous(limits = c(-7.2, 0.1)) +
-  facet_wrap(~realm) + 
+  #facet_wrap(~realm) + 
   theme(legend.position = "none")
 
 saveRDS(latitude, "data-processed/intermediate-files/range_latitude.rds")
 
+# ggsave(latitude, path ="figures/main", filename = "predictions_range_latitude.png",
+#        width = 6.5, height = 2.5, device = "png")
 ggsave(latitude, path ="figures/main", filename = "predictions_range_latitude.png",
-       width = 6.5, height = 2.5, device = "png")
+       width = 3, height = 2.5, device = "png")
 
 ## combine all whisker plots and save figure:
 whisker_uf <- readRDS("data-processed/intermediate-files/whisker_range.rds")

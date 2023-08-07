@@ -9,7 +9,7 @@
    id="svg5"
    inkscape:version="1.1.1 (c3084ef, 2021-09-22)"
    sodipodi:docname="fig2_niches_science.svg"
-   inkscape:export-filename="/Users/nikkimoore/Documents/living-up-to-thermal-potentials/figures/main/inkscape-files/fig2_didactic_nature-ee.png"
+   inkscape:export-filename="/Users/nikkimoore/Documents/living-up-to-thermal-potentials/figures/main/inkscape-files/fig2_niches_nature-ee.png"
    inkscape:export-xdpi="800"
    inkscape:export-ydpi="800"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -27,9 +27,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.79989764"
-     inkscape:cx="856.98466"
-     inkscape:cy="217.52783"
+     inkscape:zoom="0.44598785"
+     inkscape:cx="745.536"
+     inkscape:cy="625.57758"
      inkscape:window-width="1512"
      inkscape:window-height="916"
      inkscape:window-x="0"
@@ -744,9 +744,7 @@
        y="165.28308"
        id="text1318-4-04"><tspan
          sodipodi:role="line"
-         id="tspan4235"
-         x="224.22896"
-         y="165.28308">n = 524</tspan></text>
+         id="tspan329">n = 385</tspan></text>
     <image
        width="356.39545"
        height="178.19772"
@@ -1223,9 +1221,7 @@
        y="164.92932"
        id="text1318"><tspan
          sodipodi:role="line"
-         id="tspan2424"
-         x="20.548109"
-         y="164.92932">n = 436</tspan></text>
+         id="tspan2943">n = 460</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
@@ -1233,7 +1229,7 @@
        y="51.107822"
        id="text1318-4"><tspan
          sodipodi:role="line"
-         id="tspan4204">n = 63</tspan></text>
+         id="tspan1983">n = 53</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
@@ -1241,8 +1237,6 @@
        y="108.20713"
        id="text1318-4-0"><tspan
          sodipodi:role="line"
-         id="tspan4146-4"
-         x="224.5564"
-         y="108.20713">n = 35</tspan></text>
+         id="tspan1209">n = 22</tspan></text>
   </g>
 </svg>

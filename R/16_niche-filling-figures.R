@@ -3,14 +3,7 @@ library(tidyverse)
 library(cowplot)
 library(lme4)
 library(nlme)
-
-thermal =thermal %>%
-  select(genus_species, Genus, Species, realm, Phylum, Class, Order, Family, type, 
-         thermal_limit, metric, 
-         collection_latitude, collection_longitude, 
-         reference)
-
-write.csv(thermal, "files for gabriel/species metadata/species_information.csv", row.names = FALSE)
+select = dplyr::select
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 #####       Prepping data for figure making     ######
@@ -905,3 +898,203 @@ while (type < length(types) + 1) {
 
   type = type + 1
 }
+
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
+#####   Look at how thermal breadth changes with latitude    ######
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
+
+## filter to species with only both thermal tolerance limits 
+both_lims <- Te %>%
+  filter(!is.na(ctmax) & !is.na(ctmin)) %>%
+  mutate(abs_lat_mp = abs(lat_mp))
+
+## calculate thermal breadth 
+both_lims$tolerance_breadth = as.numeric(as.character(both_lims$ctmax - both_lims$ctmin))
+
+asym_lat <- read.csv("data-processed/potential-ranges/range-filling/range-complete-cases.csv")
+
+both_lims <- filter(both_lims, range %in% asym_lat$range) %>%
+  mutate(realm = factor(.$realm, levels = c("Terrestrial", "Intertidal", "Marine")),
+                                                                 ordered = TRUE)
+asym_lat <- asym_lat %>%
+  select(-abs_lat_mp) %>%
+  left_join(., both_lims, by = c("range", "realm"))
+
+## plot 
+both_lims %>%
+  mutate(realm = factor(.$realm, levels = c("Terrestrial", "Intertidal", "Marine")),
+         ordered = TRUE) %>%
+  ggplot(aes(x = abs_lat_mp, y = tolerance_breadth, colour = realm)) +
+  geom_point() +
+  theme_bw() +
+  theme(panel.grid = element_blank()) +
+  geom_smooth(method = "lm") +
+  labs(x = "Realized range latitudinal midpoint (°N/S)",
+       y = "Thermal tolerance breadth (°C)", 
+       colour = "") +
+  scale_colour_manual(values = c("#a50026", "#f57396", "#f58d42"),
+                      labels = c("Terrestrial", "Intertidal marine", "Subtidal marine"))
+
+mod = lm(tolerance_breadth ~ realm*abs_lat_mp, 
+  data = both_lims)
+
+summary(mod)
+
+ter = filter(both_lims, realm == "Terrestrial")
+newdata_ter = expand.grid(realm = unique(ter$realm),
+                      abs_lat_mp = seq(from = min(ter$abs_lat_mp), 
+                                       to = max(ter$abs_lat_mp),
+                                       by = 0.1))
+int = filter(both_lims, realm == "Intertidal")
+newdata_int = expand.grid(realm = unique(int$realm),
+                          abs_lat_mp = seq(from = min(int$abs_lat_mp), 
+                                           to = max(int$abs_lat_mp),
+                                           by = 0.1))
+mar = filter(both_lims, realm == "Marine")
+newdata_mar = expand.grid(realm = unique(mar$realm),
+                          abs_lat_mp = seq(from = min(mar$abs_lat_mp), 
+                                           to = max(mar$abs_lat_mp),
+                                           by = 0.1))
+newdata = rbind(newdata_int, newdata_ter, newdata_mar)
+
+preds = predict(mod, newdata = newdata, se.fit = T)
+
+preds <- newdata %>%
+  mutate(pred_breadth = preds$fit) %>%
+  mutate(pred_breadth_SE = preds$se.fit) %>%
+  mutate(realm = factor(.$realm, levels = c("Terrestrial", "Intertidal", "Marine")),
+         ordered = TRUE) 
+
+## colour by warm range edge underfilling 
+ttb_realms <- asym_lat %>%
+  mutate(realm = factor(.$realm, levels = c("Terrestrial", "Intertidal", "Marine")),
+         ordered = TRUE)%>%
+  ggplot(aes(x = abs_lat_mp, y = tolerance_breadth, fill = bias_in_uf, shape = realm)) +
+  geom_point(size = 2.5, stroke = 0.5, colour = "black") +
+  scale_linetype_discrete(labels = c("Terrestrial", "Intertidal marine", "Subtidal marine")) +
+  theme_bw() +
+  theme(panel.grid = element_blank()) +
+  labs(x = "Absolute realized range latitudinal midpoint (°N/S)",
+       y = "Thermal tolerance breadth (°C)", 
+       colour = "Warm niche\nunderfilling (°C)",
+       fill = "Warm niche\nunderfilling (°C)",
+       linetype = "",
+       shape = "") +
+  scale_fill_gradient(low = "#b45346", high = "white") +
+  geom_line(data = preds, aes(x = abs_lat_mp, y = pred_breadth, group = realm,
+                              linetype = realm),
+            inherit.aes = F) +
+  scale_shape_manual(labels = c("Terrestrial", "Intertidal marine", "Subtidal marine"),
+                     values = c(21,22,24)) +
+  geom_ribbon(data = preds, aes(x = abs_lat_mp,
+                                ymin = (pred_breadth-1.96*pred_breadth_SE),
+                                ymax = pred_breadth+1.96*pred_breadth_SE,
+                                group = realm),
+              fill = "darkgrey",
+              alpha = 0.15,
+              colour = NA,
+              inherit.aes = F) 
+
+ggsave(ttb_realms, path ="figures/main", filename = "predictions_tolerance-breadth_latitude.png",
+       width = 3, height = 2.5, device = "png")
+
+
+## see if warm underfilling increases with thermal tolerance breadth
+asym_lat <- asym_lat %>%
+  mutate(perfect_warm = ifelse(warm_over == 0 & warm_under == 0, 0, NA)) %>%
+  gather(key = "filling_type", value = "filling_value", c(warm_under, warm_over, perfect_warm)) %>%
+  filter(filling_value != 0 | filling_value == 0 & (filling_type %in% c("perfect_warm"))) %>%
+  filter(!is.na(filling_value), !is.infinite(filling_value))
+
+asym_lat
+
+mod_warm_breadth = lm(data = asym_lat, 
+   filling_value ~ tolerance_breadth*realm)
+summary(mod_warm_breadth)
+
+ter = filter(asym_lat, realm == "Terrestrial")
+newdata_ter = expand.grid(realm = unique(ter$realm),
+                          tolerance_breadth = seq(from = min(ter$tolerance_breadth), 
+                                           to = max(ter$tolerance_breadth),
+                                           by = 0.1))
+int = filter(asym_lat, realm == "Intertidal")
+newdata_int = expand.grid(realm = unique(int$realm),
+                          tolerance_breadth = seq(from = min(int$tolerance_breadth), 
+                                           to = max(int$tolerance_breadth),
+                                           by = 0.1))
+mar = filter(both_lims, realm == "Marine")
+newdata_mar = expand.grid(realm = unique(mar$realm),
+                          tolerance_breadth = seq(from = min(mar$tolerance_breadth), 
+                                           to = max(mar$tolerance_breadth),
+                                           by = 0.1))
+newdata = rbind(newdata_int, newdata_ter, newdata_mar)
+
+preds = predict(mod_warm_breadth, newdata = newdata, se.fit = T)
+
+preds <- newdata %>%
+  mutate(pred_warm = preds$fit) %>%
+  mutate(pred_warm_SE = preds$se.fit) %>%
+  mutate(realm = factor(.$realm, levels = c("Terrestrial", "Intertidal", "Marine")),
+         ordered = TRUE) 
+
+asym_lat %>%
+  mutate(realm = factor(.$realm, levels = c("Terrestrial", "Intertidal", "Marine")),
+         ordered = TRUE) %>%
+  ggplot(aes(x = tolerance_breadth, y = filling_value, fill = bias_in_uf, shape = realm)) +
+  scale_fill_gradient2(midpoint = 0, high = "#b45346", low = "steelblue", mid = "white",
+                       limits = c(-1, 1)) +
+  geom_point(size = 2.5, stroke = 0.5, colour = "black") +
+  scale_linetype_discrete(labels = c("Terrestrial", "Intertidal marine", "Subtidal marine")) +
+  theme_bw() +
+  theme(panel.grid = element_blank()) +
+  labs(x = "Thermal tolerance breadth (°C)",
+       y = "Warm niche underfilling (°C)", 
+       colour = "",
+       fill = "Difference between\nequatorward and\npoleward underfilling (°C)", 
+       shape = "",
+       linetype =  "") +
+  geom_line(data = preds, aes(x = tolerance_breadth, y = pred_warm, group = realm,
+                              linetype = realm),
+            inherit.aes = F) +
+  scale_shape_manual(labels = c("Terrestrial", "Intertidal marine", "Subtidal marine"),
+                     values = c(21,22,24)) +
+  geom_ribbon(data = preds, aes(x = tolerance_breadth,
+                                ymin = (pred_warm-1.96*pred_warm_SE),
+                                ymax = pred_warm+1.96*pred_warm_SE,
+                                group = realm),
+              fill = "darkgrey",
+              alpha = 0.15,
+              colour = NA,
+              inherit.aes = F) +
+  geom_abline(intercept = 0, slope = 0, alpha = 0.5) 
+  
+
+
+## now bias in underfilling 
+mod_bias_breadth = lm(data = asym_lat, 
+                      bias_in_uf ~ tolerance_breadth*realm)
+
+summary(mod_bias_breadth)
+
+asym_lat %>%
+  ggplot(aes(x = tolerance_breadth, y = bias_in_uf, shape = realm)) +
+  geom_point()
+
+asym_lat %>%
+  mutate(realm = factor(.$realm, levels = c("Terrestrial", "Intertidal", "Marine")),
+         ordered = TRUE) %>%
+  ggplot(aes(x = tolerance_breadth, y = bias_in_uf, fill = bias_in_uf, shape = realm)) +
+  scale_fill_gradient2(midpoint = 0, high = "#b45346", low = "steelblue", mid = "white",
+                       limits = c(-1, 1)) +
+  geom_point(size = 2.5, stroke = 0.5, colour = "black") +
+  scale_linetype_discrete(labels = c("Terrestrial", "Intertidal marine", "Subtidal marine")) +
+  theme_bw() +
+  theme(panel.grid = element_blank()) +
+  labs(x = "Thermal tolerance breadth (°C)",
+       y = "Difference between\nequatorward and poleward underfilling (°C)", 
+       colour = "",
+       fill = "", 
+       shape = "",
+       linetype =  "") +
+  scale_shape_manual(labels = c("Terrestrial", "Intertidal marine", "Subtidal marine"),
+                     values = c(21,22,24))
