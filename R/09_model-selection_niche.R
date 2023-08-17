@@ -973,8 +973,13 @@ both$colour <- factor(paste(both$niche_edge, both$realm),
                       levels = c("Cold Intertidal", "Cold Marine", "Cold Terrestrial",
                                  "Warm Intertidal", "Warm Marine", "Warm Terrestrial"), 
                       ordered = T)
+realm_warm_no_dormancy$niche_edge <- factor(realm_warm_no_dormancy$niche_edge, 
+                                            levels = c("Warm", "Cold"), ordered = TRUE)
+realm_cold_no_dormancy$niche_edge <- factor(realm_cold_no_dormancy$niche_edge, 
+                                            levels = c("Warm", "Cold"), ordered = TRUE)
 
 latitude <- both %>%
+  mutate(niche_edge = factor(.$niche_edge, levels = c("Warm", "Cold"), ordered = TRUE)) %>%
   ggplot(., aes(x = abs_lat_mp, y = filling_value,
                  colour = colour,
                 #shape = colour
@@ -1018,7 +1023,8 @@ latitude <- both %>%
   scale_linetype_manual(values = linetype, 
                         labels = labels) +
   scale_shape_manual(values = shapes,
-                     labels = labels) + facet_wrap(niche_edge~realm) 
+                     labels = labels) + 
+  facet_wrap(niche_edge~realm) 
 
 latitude <- latitude + theme(legend.position = "none")
 
