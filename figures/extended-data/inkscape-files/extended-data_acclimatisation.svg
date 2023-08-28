@@ -27,13 +27,13 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="1.1329743"
-     inkscape:cx="488.53711"
-     inkscape:cy="684.04021"
+     inkscape:zoom="1.8685882"
+     inkscape:cx="206.84066"
+     inkscape:cy="214.60053"
      inkscape:window-width="1512"
      inkscape:window-height="916"
      inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:window-y="38"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1"
      width="203mm"
@@ -758,5 +758,42 @@
          id="tspan1019"
          x="192.10509"
          y="261.28674">n = 90</tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0.359974;stroke-linecap:round;stroke-miterlimit:4.1;stroke-opacity:1"
+       id="rect3411"
+       width="3.607532"
+       height="22.700031"
+       x="22.482845"
+       y="53.350624" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="-64.807159"
+       y="26.120695"
+       id="text1339"
+       transform="rotate(-90)"><tspan
+         sodipodi:role="line"
+         id="tspan1337"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+         x="-64.807159"
+         y="26.120695">underfilling</tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0.354559;stroke-linecap:round;stroke-miterlimit:4.1;stroke-opacity:1"
+       id="rect3411-1"
+       width="3.7806408"
+       height="21.013891"
+       x="22.684168"
+       y="20.6497" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="-44.812748"
+       y="25.959457"
+       id="text1339-7"
+       transform="rotate(-90)"><tspan
+         sodipodi:role="line"
+         id="tspan7502"
+         x="-44.812748"
+         y="25.959457">underprediction</tspan></text>
   </g>
 </svg>
