@@ -3,7 +3,7 @@
 ## Introduction
 This repository contains the data and code used to produce results presented in Moore et al. 2023: _Temperate species underfill their tropical thermal potentials on land_ (DOI: XXX). This study tests hypotheses about how the role of temperature in limiting species ranges might be overriden by antagonistic species interactions and other range-limiting factors. The study was designed to be reproducible, and running all scripts in order should successfully reproduce all analyses and figures.
 
-![Pretty picture]([https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/figures/main/FINAL/fig2_niches_final.pdf])
+![Pretty picture](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/figures/main/FINAL/fig2_niches_final.pdf)
 
 ## Data 
 A minimum dataset needed to reproduce all main analyses and large files that cannot be hosted on Github can be downloaded from the paper's Figshare repository:
