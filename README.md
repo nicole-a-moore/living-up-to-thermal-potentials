@@ -1,7 +1,7 @@
 # living-up-to-thermal-potentials
 
 ## Introduction
-This repository contains the data and code used to produce results presented in Moore et al. 2023: _Temperate species underfill their tropical thermal potentials on land_ (DOI: XXX). This study tests hypotheses about how the role of temperature in limiting species ranges might be overriden by antagonistic species interactions and other range-limiting factors. The study was designed to be reproducible, and running all scripts in order should successfully reproduce all analyses and figures.
+This repository contains the data and code used to produce results presented in Moore et al. 2023: _Temperate species underfill their tropical thermal potentials on land_ (DOI: XXX). This study tests hypotheses about how the role of temperature in limiting species ranges might be overriden by antagonistic species interactions and other range-limiting factors. The study was designed to be reproducible, and running all scripts in order should successfully reproduce analyses and figures.
 
 ![Pretty picture](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/figures/main/inkscape-files/fig2_niches_final.png)
 
@@ -53,9 +53,15 @@ The following are all of the R scripts contained in this repository and a short 
 #### [15_sensitivity_range-source.R](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/R/15_sensitivity_range-source.R)
 - checks sensitivity of warm and cool niche filling results to realized range source 
 #### [16_niche-filling-figures.R](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/R/16_niche-filling-figures.R)
-- creates warm and cool niche filling figures 
+- creates warm and cool niche filling figures
 #### [17_range-filling-figures.R](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/R/17_range-filling-figures.R)
 - creates range filling figures
-
+#### [18_sensitivity_NicheMapR.R](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/R/18_sensitivity_NicheMapR.R)
+- tests sensitivity of results on land to parameters used in operative temperature models
+#### [19_phylo-gls-sensitivity-analysis.R](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/R/19_phylo-gls-sensitivity-analysis.R)
+- tests sensitivity of results to choice of method used to control for evolutionary relatedness
+#### [20_create-minimum-dataset.R](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/R/20_create-minimum-dataset.R)
+- creates a minimum dataset needed to reproduce main analyses
+  
 ## Ownership
-This reposity is owned by Nikki Moore and Jennifer Sunday. All data, scripts, and figures may be used by others with proper acknowledgement.
+This reposity is owned by Nikki A. Moore and Jennifer M. Sunday. All data, scripts, and figures may be used by others with proper acknowledgement.
