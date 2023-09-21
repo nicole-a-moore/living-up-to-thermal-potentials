@@ -6,9 +6,7 @@ This repository contains the data and code used to produce results presented in 
 ![Pretty picture](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/figures/main/inkscape-files/fig2_niches_final.png)
 
 ## Data 
-A minimum dataset needed to reproduce all main analyses and large files that cannot be hosted on Github can be downloaded from the paper's Figshare repository:
-- [Figshare data repository](10.6084/m9.figshare.20233740)
-For scripts to successfully run, the large files should be donwloaded into a folder titled 'large-files' in the repository's working directory.
+A minimum dataset needed to reproduce all main analyses and large files that cannot be hosted on Github can be downloaded from the paper's Figshare repository, which is linked in the article Data Availability statement. For scripts to successfully run, the large files should be donwloaded into a folder titled 'large-files' in the repository's working directory.
   
 Additional temperature, elevation, and depth data files used in analyses can be downloaded here:
  - [Berkeley Earth Daily Land (Experimental; 1880 – Recent)](http://berkeleyearth.org/data/) - Average High Temperature (TMAX) and Average High Temperature (TMAX)]
