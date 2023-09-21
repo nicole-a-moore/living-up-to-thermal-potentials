@@ -197,6 +197,10 @@ te$realm <- relevel(factor(te$realm), ref = "Terrestrial")
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 uf <- te
 
+write.csv(uf, 
+          "data-processed/potential-ranges/range-filling/range-complete-cases_unscaled.csv",
+          row.names = FALSE)
+
 # rescale the continuous variables
 uf = as.data.frame(uf)
 means <- sds <- c()

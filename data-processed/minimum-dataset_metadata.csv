@@ -1,0 +1,27 @@
+Variable,Definition,Value,Notes
+Realm,Ecological realm the species inhabits,Categorical: Intertidal; Subtitdal; Terrestrial,From Sunday et al. 2019
+Class,Taxonomic Class of the species,Categorical,From Sunday et al. 2019
+Order,Taxonomic Order of the species,Categorical,From Sunday et al. 2019
+Family,Taxonomic Family of the species,Categorical,From Sunday et al. 2019
+Genus,Taxonomic Genus of the species,Categorical,From Sunday et al. 2019
+Species,Taxonomic Species of the species,Categorical,From Sunday et al. 2019
+Tmin,"Measurement of species' cold tolerance limit, in degC",Numerical,From Sunday et al. 2019
+Tmax,"Measurement of species' heat tolerance limit, in degC",Numerical,From Sunday et al. 2019
+Metric_Tmin,Whether cold tolerance limit represents a critical thermal limit (ct) or a lethal thermal limit (lt),Categorical: ct; lt,From Sunday et al. 2019
+Metric_Tmax,Whether heat tolerance limit represents a critical thermal limit (ct) or a lethal thermal limit (lt),Categorical: ct; lt,From Sunday et al. 2019
+RealizedRangeSource,Source of the realized range polygon used in main analyses,Categorical: IUCN; GARD; GBIF,
+AbsLatitude,Absolute latitude of midpoint of the species realized range polygon,Numerical,
+RangeSize,Number of 1 degree latitude x 1 degree longitude raster grid cells inside the species realized range polygon,Numerical,
+LogBodySize,Natural logarithm of the species maximum body size,Numerical,
+DispersalDistance,"Estimated maximum potential dispersal distance of the species, in km",Numerical,"Species were first grouped into dispersal categories based on information in the literature: 0-1km, 10-100km, 100-1000km, 1000+km. The maximum value of the category as then used as a numeric dispersal value in models. "
+HotSeasonDormancy,Whether the species undergoes dormancy during the hot season,Binary; Yes; No,"When no information was available (NA), analyses assumed species do not undergo dormancy "
+ColdSeasonDormancy,Whether the species undergoes dormancy during the cold season,Binary; Yes; No,"When no information was available (NA), analyses assumed species do not undergo dormancy "
+NicheFilling_Warm,"Measurement of warm niche filling, in degC, used in main analysis",Numerical,
+NicheFilling_Cool,"Measurement of cool niche filling, in degC, used in main analysis",Numerical,
+LogRangeFilling,"Natural log of the measurement of range filling (i.e., proportion of potential range that is filled) used in main analysis",Numerical,
+EquatorwardBiasInUnderfilling,"Measure of the equatorward bias in underfilling (i.e., difference between proportion of equatorward and poleward range halves that is underfilled) used in the main analysis",Numerical,
+NicheFilling_Warm_Behaviour,"Measurement of warm niche filling, in degC, used in behaviorual thermoregulation sensitivity analysis ",Numerical,
+NicheFilling_Warm_Acclimation,"Measurement of warm niche filling, in degC, used in acclimatization sensitivity analysis ",Numerical,
+NicheFilling_Cool_Acclimation,"Measurement of cool niche filling, in degC, used in acclimatization sensitivity analysis ",Numerical,
+LogRangeFilling_Acclimation,"Natural log of the measurement of range filling (i.e., proportion of potential range that is filled) used in acclimatization analysis",Numerical,
+EquatorwardBiasInUnderfilling_Acclimation,"Measure of the equatorward bias in underfilling (i.e., difference between proportion of equatorward and poleward range halves that is underfilled) used in the acclimatization analysis",Numerical,

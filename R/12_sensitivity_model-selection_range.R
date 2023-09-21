@@ -80,6 +80,8 @@ acc <- select(acc, c(log_prop_occupied, abs_lat_mp, realm,
 acc <- subset(acc, complete.cases(acc))
 dim(acc)
 
+saveRDS(acc, "data-processed/potential-ranges/range-filling/range-complete-cases_unscaled_acc.rds")
+
 ## re-order factors to give desired contrasts
 acc$realm <- relevel(factor(acc$realm), ref = "Terrestrial")
 

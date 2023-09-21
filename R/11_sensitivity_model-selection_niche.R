@@ -48,11 +48,13 @@ warm <- Te_tpreftb %>%
 warm <- select(warm, c(filling_value, abs_lat_mp, log_range_area, realm,
                        dispersal_distance_continuous,
                        log_maximum_body_size, hot_season_dormancy_,metric, 
-                       Class, Order, Family, Genus, Species))
+                       Class, Order, Family, Genus, Species, range))
 
 # get complete cases
 warm <- subset(warm, complete.cases(warm))
 # dim(warm)
+
+saveRDS(warm, "data-processed/potential-ranges/range-filling/warm-complete-cases_unscaled_behaviour.rds")
 
 #scale the continuous variables by subtracting mean and dividing by sd
 means <- sds <- c()
@@ -616,17 +618,20 @@ warm <- acc %>%
 cold <- select(cold, c(filling_value, abs_lat_mp, log_range_area, realm,
                        dispersal_distance_continuous,
                        log_maximum_body_size, cold_season_dormancy_,metric,
-                       Class, Order, Family, Genus, Species))
+                       Class, Order, Family, Genus, Species, range))
 warm <- select(warm, c(filling_value, abs_lat_mp, log_range_area, realm,
                        dispersal_distance_continuous,
                        log_maximum_body_size, hot_season_dormancy_,metric, 
-                       Class, Order, Family, Genus, Species))
+                       Class, Order, Family, Genus, Species, range))
 
 # get complete cases
 cold <- subset(cold, complete.cases(cold))
 # dim(cold)
 warm <- subset(warm, complete.cases(warm))
 # dim(warm)
+
+saveRDS(cold, "data-processed/potential-ranges/range-filling/cold-complete-cases_unscaled_acc.rds")
+saveRDS(warm, "data-processed/potential-ranges/range-filling/warm-complete-cases_unscaled_acc.rds")
 
 #scale the continuous variables by subtracting mean and dividing by sd
 means <- sds <- c()

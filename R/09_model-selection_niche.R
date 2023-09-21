@@ -185,11 +185,11 @@ vif(modvif_warm)
 cold <- select(cold, c(filling_value, abs_lat_mp, log_range_area, realm,
                        dispersal_distance_continuous,
                        log_maximum_body_size, cold_season_dormancy_,metric,
-                       Class, Order, Family, Genus, Species))
+                       Class, Order, Family, Genus, Species, range, rr_cells))
 warm <- select(warm, c(filling_value, abs_lat_mp, log_range_area, realm,
                        dispersal_distance_continuous,
                        log_maximum_body_size, hot_season_dormancy_,metric, 
-                       Class, Order, Family, Genus, Species))
+                       Class, Order, Family, Genus, Species, range, rr_cells))
 
 ## write list of species
 splist_cold <- select(cold, Genus, Species, Class, Order, Family, Genus) %>%
@@ -217,6 +217,9 @@ write.csv(unique(paste(cold$Genus, cold$Species, sep=" ")),
 write.csv(unique(paste(warm$Genus, warm$Species, sep=" ")), 
           "data-processed/thermal-niches/splist_warm-niche-filling_model.csv",
           row.names = FALSE)
+
+saveRDS(cold, "data-processed/thermal-niches/niche-filling/cold-complete-cases_unscaled.rds")
+saveRDS(warm, "data-processed/thermal-niches/niche-filling/warm-complete-cases_unscaled.rds")
 
 #scale the continuous variables by subtracting mean and dividing by sd
 means <- sds <- c()
