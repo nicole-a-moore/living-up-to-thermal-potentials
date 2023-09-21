@@ -1,22 +1,24 @@
 # living-up-to-thermal-potentials
 
 ## Introduction
-This repository contains the data and code used to assess how ectothermic animal species fill their potential thermal niches. This study was designed to be easily reproducible, and running all scripts in order should successfully reproduce all analyses and figures.
+This repository contains the data and code used to produce results presented in Moore et al. 2023: _Temperate species underfill their tropical thermal potentials on land_ (DOI: XXX). This study tests hypotheses about how the role of temperature in limiting species ranges might be overriden by antagonistic species interactions and other range-limiting factors. The study was designed to be reproducible, and running all scripts in order should successfully reproduce all analyses and figures.
 
-![Pretty picture](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/figures/main/inkscape-files/fig2_niches.png)
+![Pretty picture]([https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/figures/main/inkscape-files/fig2_niches.png](https://github.com/nicole-a-moore/living-up-to-thermal-potentials/blob/main/figures/main/FINAL/fig2_niches_final.pdf)
 
-Temperature, elevation, and depth data files needed to run this analysis must be downloaded here:
+## Data 
+A minimum dataset needed to reproduce all main analyses and large files that cannot be hosted on Github can be downloaded from the paper's Figshare repository:
+- [Figshare data repository](10.6084/m9.figshare.20233740)
+For scripts to successfully run, the large files should be donwloaded into a folder titled 'large-files' in the repository's working directory.
+  
+Additional temperature, elevation, and depth data files used in analyses can be downloaded here:
  - [Berkeley Earth Daily Land (Experimental; 1880 – Recent)](http://berkeleyearth.org/data/) - Average High Temperature (TMAX) and Average High Temperature (TMAX)]
  - [NOAA OI SST V2 High Resolution Dataset](https://psl.noaa.gov/data/gridded/data.noaa.oisst.v2.highres.html) - Mean Daily Sea Surface Temperature
  - [General Bathymetric Chart of the Oceans](https://gebco.net/data_and_products/gridded_bathymetry_data/) - TID Grid
  - [EarthEnv Global 10-km topography](http://www.earthenv.org/topography) - Maximum and Minimum, GMTED2010
  
-IUCN realized range polygons needed to run analysis can be downloaded here:
+Realized range polygons needed to run analysis can be downloaded here:
  - [IUCN Spaial Files](https://www.iucnredlist.org/resources/spatial-data-download) - AMPHIBIANS, BLENNIES, CLUPEIFORMES, FILTERED, FW_FISH, MAMMALS, MARINEFISH, PUFFERFISH, REPTILES, SEABREAMS_PORGIES_PICARELS, SHARKS_RAYS_CHIMAERAS, WRASSES_PARROTFISHES
-
-Other large files needed to re-run this analysis cannot be hosted on github and so must be downloaded from here:
-
-For scripts to successfully run, large files should remain in a folder titled 'large-files' in the repository's working directory.
+ - [GARD Version 1.1](http://www.gardinitiative.org/data.html)
 
 ## Code
 The following are all of the R scripts contained in this repository and a short description of what each accomplishes:
